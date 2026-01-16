@@ -1,0 +1,24 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const skills = {
+  frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Vue.js', 'Astro', 'Tailwind CSS'],
+  backend: ['Node.js', 'Python', 'Express', 'PostgreSQL', 'MongoDB', 'REST APIs', 'GraphQL'],
+  tools: ['Git', 'Docker', 'VS Code', 'Figma', 'Linux', 'CI/CD', 'AWS'],
+};
+---
+
+<section id="skills" class="skills">
+
+</section>
+
+<style>
+ 
+</style>

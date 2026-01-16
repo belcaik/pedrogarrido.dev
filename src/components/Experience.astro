@@ -1,0 +1,23 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+import en from '../assets/translations/en.json';
+import es from '../assets/translations/es.json';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const translations = { en, es };
+// const jobs = translations[lang].experience.jobs;
+---
+
+<section id="experience" class="experience">
+  <div></div>
+
+</section>
+
+<style>
+
+</style>
