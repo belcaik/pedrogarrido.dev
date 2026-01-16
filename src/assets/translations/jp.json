@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "title": "Pedro Garrido | Software Developer",
+    "description": "Software Developer specializing in backend systems, DevOps automation, and legacy modernization. 3+ years building scalable solutions for financial institutions."
+  },
+  "nav": {
+    "experience": "Experience",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "hero": {
+    "badge": "Open to Work",
+    "greeting": "Hi, I'm",
+    "name": "Pedro Garrido",
+    "title": "Software Developer",
+    "subtitle": "Building scalable backend systems and automating infrastructure for financial institutions. Based in Chile 🇨🇱 — Open to remote & relocation.",
+    "cta": "Get in touch",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "about": {
+    "title": "About Me",
+    "paragraphs": [
+      "I'm a Software Developer specializing in backend systems, DevOps automation, and legacy modernization. Currently pursuing my Bachelor's in Software Engineering at Universidad Andrés Bello.",
+      "I've helped financial institutions like Citi Bank modernize critical payment systems, achieving 6x performance improvements and saving $36K+ in annual licensing costs through smart automation.",
+      "My toolkit spans .NET Core, Node.js, Python, React, and a deep understanding of CI/CD pipelines with Jenkins, OpenShift, and AWS. I'm passionate about clean architecture, Domain-Driven Design, and building systems that scale."
+    ],
+    "downloadResume": "Download Resume"
+  },
+  "experience": {
+    "title": "Experience",
+    "jobs": [
+      {
+        "company": "Citi Bank",
+        "via": "via Kibernum",
+        "position": "Software Developer",
+        "date": "March 2024 - Present",
+        "location": "Remote, Chile",
+        "description": [
+          "Led rewrite of legacy .NET Framework apps into micro-frontend architecture (React + NestJS), achieving 6x performance improvement (30s → 5s)",
+          "Built CI/CD pipelines from scratch for 9 applications using Jenkins, TeamCity, Harness, and OpenShift",
+          "Eliminated $36K+ annual licensing costs by replacing PKWARE with native Windows tooling",
+          "Implemented testing framework achieving 80% code coverage for mission-critical payment systems (FlexCube ↔ BankCard)"
+        ],
+        "tech": [".NET Core", "NestJS", "React", "Jenkins", "TeamCity", "OpenShift", "Helm", "PowerShell", "SonarQube"]
+      },
+      {
+        "company": "Tutelkan",
+        "position": "Software Engineer",
+        "date": "January 2023 - March 2024",
+        "location": "Remote, Chile",
+        "description": [
+          "Built full-stack agricultural platform: Vue.js dashboard, React Native mobile app, NestJS API, and Python ML services",
+          "Deployed microservices infrastructure on AWS ECS (6 containers including PostgreSQL, RabbitMQ, and ML inference workers)",
+          "Developed computer vision pipeline with OpenCV + YOLOv5 for automated fruit quality classification"
+        ],
+        "tech": ["NestJS", "Vue.js", "React Native", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS", "Docker"]
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "institution": "Universidad Andrés Bello",
+        "degree": "Bachelor's Degree in Computer Software Engineering",
+        "date": "2025 - 2027",
+        "status": "In Progress"
+      },
+      {
+        "institution": "CFT San Agustín",
+        "degree": "Associate's Degree in Computer Programming",
+        "date": "2021 - 2023",
+        "honors": "Graduated with Honors — 6.3/7.0"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Tech Stack",
+    "categories": {
+      "languages": {
+        "title": "Languages",
+        "items": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL"]
+      },
+      "backend": {
+        "title": "Backend",
+        "items": [".NET Core", "NestJS", "Node.js", "Express.js"]
+      },
+      "frontend": {
+        "title": "Frontend",
+        "items": ["React", "Angular", "Vue.js", "HTML5", "CSS3"]
+      },
+      "databases": {
+        "title": "Databases & Messaging",
+        "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"]
+      },
+      "devops": {
+        "title": "DevOps & Cloud",
+        "items": ["Docker", "OpenShift", "Kubernetes", "AWS ECS", "Jenkins", "TeamCity", "Harness", "Helm"]
+      },
+      "tools": {
+        "title": "Tools & Practices",
+        "items": ["Git", "SonarQube", "BlackDuck", "Snyk", "CI/CD", "DDD", "TDD", "Microservices"]
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "items": [
+      {
+        "name": "Agricultural Quality Analysis Platform",
+        "role": "Full-Stack Developer",
+        "year": "2023",
+        "description": "End-to-end agricultural technology platform for automated fruit quality classification using computer vision. Built Vue.js dashboard, React Native mobile app, NestJS API orchestration, and Python ML services with OpenCV + YOLOv5.",
+        "tech": ["Vue.js", "React Native", "NestJS", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS"],
+        "github": "",
+        "demo": "",
+        "private": false
+      },
+      {
+        "name": "Enterprise Payment System Modernization",
+        "role": "Software Developer",
+        "year": "2024",
+        "description": "Led modernization of legacy .NET desktop applications into micro-frontend architecture for Citi Bank's payment processing systems. Achieved 6x performance improvement by migrating batch processing from client-side to server-side execution.",
+        "tech": ["React", "NestJS", ".NET Core", "OpenShift", "Helm", "Harness", "Jenkins"],
+        "github": "",
+        "demo": "",
+        "private": true
+      },
+      {
+        "name": "CI/CD Infrastructure Automation",
+        "role": "DevOps Engineer",
+        "year": "2024",
+        "description": "Automated deployment infrastructure for 9 legacy applications, eliminating manual processes. Replaced $36K+ in annual PKWARE licenses with PowerShell automation and integrated security scanning with SonarQube, BlackDuck, and Snyk.",
+        "tech": ["Jenkins", "TeamCity", "PowerShell", "Windows Server", "SonarQube", "BlackDuck"],
+        "github": "",
+        "demo": "",
+        "private": true
+      }
+    ],
+    "privateLabel": "Enterprise Project",
+    "viewCode": "Code",
+    "viewDemo": "Demo"
+  },
+  "github": {
+    "title": "GitHub Activity",
+    "stats": {
+      "repos": "Public Repos",
+      "stars": "Total Stars",
+      "contributions": "Contributions",
+      "followers": "Followers"
+    },
+    "viewProfile": "View Full Profile"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "headline": "Let's build something together",
+    "description": "I'm currently open to new opportunities — remote, hybrid, or relocation. Whether you have a project in mind, a job opportunity, or just want to connect, feel free to reach out.",
+    "info": {
+      "email": {
+        "label": "Email",
+        "value": "pedrogarrido.dev@gmail.com"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Chile (Open to Relocation)"
+      },
+      "response": {
+        "label": "Response Time",
+        "value": "Within 24 hours"
+      }
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": {
+        "label": "Subject",
+        "options": {
+          "project": "Project Inquiry",
+          "job": "Job Opportunity",
+          "collaboration": "Collaboration",
+          "general": "General Message"
+        }
+      },
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending..."
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Pedro Garrido. All rights reserved.",
+    "builtWith": "Built with Astro"
+  },
+  "common": {
+    "present": "Present",
+    "comingSoon": "Coming Soon",
+    "learnMore": "Learn more",
+    "backToTop": "Back to Top"
+  }
+}

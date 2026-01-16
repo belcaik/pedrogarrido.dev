@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "Portafolio | Desarrollador Full Stack",
+    "description": "Bienvenido a mi portafolio. Soy un desarrollador full stack apasionado por crear experiencias web increíbles."
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Tu Nombre",
+    "title": "Desarrollador Full Stack",
+    "subtitle": "Construyo experiencias digitales excepcionales que generan impacto.",
+    "cta": "Contáctame"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description": "Soy un desarrollador full stack apasionado con experiencia en la construcción de aplicaciones web. Me encanta crear soluciones limpias, eficientes y fáciles de usar.",
+    "paragraph1": "Comencé mi camino en el desarrollo de software hace varios años, y desde entonces he tenido la oportunidad de trabajar en proyectos diversos que van desde sitios web para pequeñas empresas hasta aplicaciones empresariales a gran escala.",
+    "paragraph2": "Cuando no estoy programando, puedes encontrarme explorando nuevas tecnologías, contribuyendo a proyectos de código abierto o disfrutando de actividades al aire libre."
+  },
+  "experience": {
+    "title": "Experiencia",
+    "present": "Presente",
+    "jobs": [
+      {
+        "title": "Desarrollador Senior",
+        "company": "Tech Company",
+        "period": "2022 - Presente",
+        "description": "Liderando el desarrollo de aplicaciones web usando tecnologías modernas. Mentorizando desarrolladores junior e implementando mejores prácticas."
+      },
+      {
+        "title": "Desarrollador Full Stack",
+        "company": "Startup Inc",
+        "period": "2020 - 2022",
+        "description": "Construí y mantuve múltiples aplicaciones orientadas al cliente. Colaboré con equipos de diseño y producto para entregar funcionalidades."
+      },
+      {
+        "title": "Desarrollador Junior",
+        "company": "Digital Agency",
+        "period": "2018 - 2020",
+        "description": "Desarrollé sitios web responsive y aplicaciones web. Gané experiencia en varios frameworks y herramientas."
+      }
+    ]
+  },
+  "skills": {
+    "title": "Habilidades",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Herramientas y Otros"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "viewProject": "Ver Proyecto",
+    "viewCode": "Ver Código",
+    "items": [
+      {
+        "title": "Plataforma E-Commerce",
+        "description": "Una plataforma de comercio electrónico completa con carrito de compras, integración de pagos y panel de administración.",
+        "tech": ["React", "Node.js", "MongoDB", "Stripe"]
+      },
+      {
+        "title": "App de Gestión de Tareas",
+        "description": "Una aplicación colaborativa de gestión de tareas con actualizaciones en tiempo real y funciones de equipo.",
+        "tech": ["Vue.js", "Firebase", "Tailwind CSS"]
+      },
+      {
+        "title": "Sitio Web de Portafolio",
+        "description": "Un sitio web de portafolio responsive construido con tecnologías web modernas.",
+        "tech": ["Astro", "TypeScript", "CSS"]
+      }
+    ]
+  },
+  "github": {
+    "title": "Actividad en GitHub",
+    "description": "Mira mis últimas contribuciones y repositorios en GitHub.",
+    "viewProfile": "Ver Perfil de GitHub"
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tu visión.",
+    "email": "Correo",
+    "sendMessage": "Enviar Mensaje",
+    "name": "Nombre",
+    "message": "Mensaje",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "tu.correo@ejemplo.com",
+    "messagePlaceholder": "Tu mensaje..."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Construido con"
+  }
+}
