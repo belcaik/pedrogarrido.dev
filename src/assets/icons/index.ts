@@ -1,0 +1,12 @@
+export { default as GithubIcon } from './github.svg';
+export { default as LinkedinIcon } from './linkedin.svg';
+export { default as MailIcon } from './mail.svg';
+export { default as LocalizationIcon } from './localization.svg';
+export { default as SunIcon } from './sun.svg';
+export { default as MoonIcon } from './moon.svg';
+export { default as LinkIcon } from './link.svg';
+export { default as CredIcon } from './cred.svg';
+export { default as BriefcaseIcon } from './briefcase.svg';
+export { default as TimelineIcon } from './timeline.svg';
+export { default as DownloadIcon } from './download.svg';
+export { default as DropdownIcon } from './dropdown.svg';
