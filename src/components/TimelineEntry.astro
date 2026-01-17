@@ -1,0 +1,326 @@
+---
+import type { Lang } from '../i18n';
+import type { TimelineEntry } from '../utils';
+import { BriefcaseIcon, CredIcon } from '../assets/icons';
+
+interface Props {
+  entry: TimelineEntry;
+  position: 'left' | 'right';
+  lang: Lang;
+}
+
+const { entry, position } = Astro.props;
+const Icon = entry.type === 'position' ? BriefcaseIcon : CredIcon;
+---
+
+<article class={`entry entry--${position} entry--${entry.type}`}>
+  <!-- Node + Connector: extends from card edge to spine -->
+  <div class="entry-connector">
+    <span class="entry-node"></span>
+  </div>
+
+  <!-- Card Content -->
+  <div class="entry-card">
+    <div class="entry-header">
+      <Icon class="entry-icon" />
+      <div class="entry-titles">
+        <h4 class="entry-title">{entry.title}</h4>
+        <p class="entry-subtitle">
+          <span class="entry-company">{entry.subtitle}</span>
+          {entry.via && <span class="entry-via">{entry.via}</span>}
+        </p>
+      </div>
+    </div>
+
+    <div class="entry-meta">
+      <time class="entry-date">{entry.dateString}</time>
+      {entry.status && <span class="entry-status">{entry.status}</span>}
+    </div>
+
+    {entry.location && <p class="entry-location">{entry.location}</p>}
+
+    {entry.description && entry.description.length > 0 && (
+      <ul class="entry-description">
+        {entry.description.map(item => <li>{item}</li>)}
+      </ul>
+    )}
+
+    {entry.honors && <p class="entry-honors">{entry.honors}</p>}
+
+    {entry.tech && entry.tech.length > 0 && (
+      <div class="entry-tech">
+        {entry.tech.map(tech => <span class="tech-tag">{tech}</span>)}
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .entry {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  /* ================================
+     CONNECTOR + NODE
+     ================================ */
+  .entry-connector {
+    position: absolute;
+    top: 1.25rem;
+    height: 2px;
+    background: rgb(var(--color-border));
+    z-index: 1;
+  }
+
+  .entry-node {
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(var(--color-surface));
+    border: 2px solid rgb(var(--color-primary));
+    z-index: 2;
+    transform: translateY(-50%);
+  }
+
+  /* Left position: connector extends RIGHT across full gap to spine center */
+  .entry--left .entry-connector {
+    left: 100%;
+    width: calc(var(--column-gap, 4rem) + 1px);
+  }
+
+  .entry--left .entry-node {
+    left: auto;
+    right: -6px; /* Center the 12px node at the end of connector (on spine) */
+  }
+
+  /* Right position: connector extends LEFT across full gap to spine center */
+  .entry--right .entry-connector {
+    right: 100%;
+    width: calc(var(--column-gap, 4rem) + 1px);
+  }
+
+  .entry--right .entry-node {
+    right: auto;
+    left: -6px;
+  }
+  /* Node colors by type */
+  .entry--degree .entry-node {
+    border-color: rgb(var(--color-primary));
+  }
+
+  .entry--position .entry-node {
+    border-color: rgb(var(--color-accent, var(--color-primary)));
+  }
+
+  /* ================================
+     CARD STYLES
+     ================================ */
+  .entry-card {
+    width: 100%;
+    padding: 1.25rem;
+    background: rgb(var(--color-surface));
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 0.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .entry-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .entry--left .entry-card {
+    text-align: right;
+  }
+
+  .entry--right .entry-card {
+    text-align: left;
+  }
+
+  .entry-header {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .entry--left .entry-header {
+    flex-direction: row-reverse;
+  }
+
+  .entry-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: rgb(var(--color-primary));
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .entry-titles {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .entry-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(var(--color-text));
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .entry-subtitle {
+    font-size: 0.875rem;
+    margin: 0.25rem 0 0 0;
+    line-height: 1.4;
+  }
+
+  .entry-company {
+    color: rgb(var(--color-primary));
+    font-weight: 500;
+  }
+
+  .entry-via {
+    color: rgb(var(--color-text-muted));
+    font-weight: 400;
+  }
+
+  .entry-via::before {
+    content: ' ';
+  }
+
+  .entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .entry--left .entry-meta {
+    justify-content: flex-end;
+  }
+
+  .entry-date {
+    font-size: 0.8rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .entry-status {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    background: rgba(var(--color-primary), 0.15);
+    color: rgb(var(--color-primary));
+  }
+
+  .entry-location {
+    font-size: 0.8rem;
+    color: rgb(var(--color-text-subtle));
+    margin: 0 0 0.75rem 0;
+  }
+
+  .entry-description {
+    font-size: 0.85rem;
+    color: rgb(var(--color-text-muted));
+    margin: 0.75rem 0;
+    padding-left: 1rem;
+    line-height: 1.5;
+  }
+
+  .entry--left .entry-description {
+    padding-left: 0;
+    padding-right: 1rem;
+  }
+
+  .entry-description li {
+    margin-bottom: 0.4rem;
+  }
+
+  .entry-description li:last-child {
+    margin-bottom: 0;
+  }
+
+  .entry-honors {
+    font-size: 0.85rem;
+    color: rgb(var(--color-text-muted));
+    margin: 0.5rem 0;
+    font-style: italic;
+  }
+
+  .entry-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .entry--left .entry-tech {
+    justify-content: flex-end;
+  }
+
+  .tech-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    background: rgb(var(--color-tag-bg));
+    color: rgb(var(--color-tag-text));
+  }
+
+  /* ================================
+     MOBILE OVERRIDES
+     ================================ */
+  @media (max-width: 768px) {
+    .entry {
+      max-width: none;
+    }
+
+    /* On mobile, all entries are "right" positioned */
+    .entry--left .entry-card,
+    .entry--right .entry-card {
+      text-align: left;
+    }
+
+    .entry--left .entry-header,
+    .entry--right .entry-header {
+      flex-direction: row;
+    }
+
+    .entry--left .entry-meta,
+    .entry--right .entry-meta {
+      justify-content: flex-start;
+    }
+
+    .entry--left .entry-description,
+    .entry--right .entry-description {
+      padding-left: 1rem;
+      padding-right: 0;
+    }
+
+    .entry--left .entry-tech,
+    .entry--right .entry-tech {
+      justify-content: flex-start;
+    }
+
+    /* Mobile connector positioning - reset both left/right for all entry types */
+    .entry--left .entry-connector,
+    .entry--right .entry-connector {
+      left: 0;
+      right: auto;
+      transform: translateX(-100%);
+      width: 1.5rem;
+    }
+
+    .entry--left .entry-node,
+    .entry--right .entry-node {
+      left: -6px;
+      right: auto;
+    }
+  }
+</style>

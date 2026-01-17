@@ -59,6 +59,18 @@
           "Desarrollé pipeline de visión computacional con OpenCV + YOLOv5 para clasificación automatizada de calidad de fruta"
         ],
         "tech": ["NestJS", "Vue.js", "React Native", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS", "Docker"]
+      },
+      {
+        "company": "Tutelkan",
+        "position": "Practicante de Desarrollo de Software",
+        "date": "2022 - 2023",
+        "location": "Remoto, Chile",
+        "description": [
+          "Asistí en el desarrollo de aplicaciones web usando frameworks JavaScript modernos",
+          "Participé en revisiones de código y aprendí mejores prácticas de desarrollo de software",
+          "Contribuí a la documentación y testing de aplicaciones existentes"
+        ],
+        "tech": ["JavaScript", "Vue.js", "Node.js", "Git"]
       }
     ]
   },

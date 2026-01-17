@@ -80,6 +80,23 @@
           "AWS ECS",
           "Docker"
         ]
+      },
+      {
+        "company": "Tutelkan",
+        "position": "Software Development Intern",
+        "date": "2022 - 2023",
+        "location": "Remote, Chile",
+        "description": [
+          "Assisted in developing web applications using modern JavaScript frameworks",
+          "Participated in code reviews and learned best practices for software development",
+          "Contributed to documentation and testing of existing applications"
+        ],
+        "tech": [
+          "JavaScript",
+          "Vue.js",
+          "Node.js",
+          "Git"
+        ]
       }
     ]
   },
