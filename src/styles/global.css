@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Fondos */
+    --color-background: 250 248 252;
+    /* #faf8fc - blanco cálido con tinte */
+    --color-surface: 255 255 255;
+    /* #ffffff - cards */
+    --color-surface-elevated: 245 242 250;
+    /* #f5f2fa - elevación sutil */
+
+    /* Textos */
+    --color-text: 26 20 40;
+    /* #1a1428 - casi negro, con tinte */
+    --color-text-muted: 90 80 110;
+    /* #5a506e - texto secundario */
+    --color-text-subtle: 140 130 160;
+    /* #8c82a0 - placeholders */
+
+    /* Acentos */
+    --color-primary: 98 35 153;
+    /* #622399 - violeta más oscuro para contraste */
+    --color-primary-hover: 123 44 191;
+    /* #7b2cbf */
+    --color-primary-muted: 98 35 153 / 0.1;
+
+    /* Gradiente */
+    --gradient-color: 230 220 245;
+    /* #e6dcf5 - lavanda suave */
+
+    /* UI Elements */
+    --color-border: 0 0 0 / 0.1;
+    --color-border-focus: 98 35 153 / 0.4;
+    --shadow-color: 26 10 46 / 0.08;
+    /* sombra con tinte de marca */
+
+    /* Tags/badges */
+    --color-tag-bg: 98 35 153 / 0.12;
+    --color-tag-text: 74 14 78;
+    /* #4a0e4e */
+
+    /* Estados */
+    --color-success: 30 140 90;
+    /* #1e8c5a */
+    --color-warning: 180 120 20;
+    /* #b47814 */
+    --color-error: 180 50 70;
+    /* #b43246 */
+
+  }
+
+  .dark {
+    /* Fondos */
+    --color-background: 10 10 10;
+    /* #0a0a0a - negro profundo, no puro */
+    --color-surface: 18 14 28;
+    /* #120e1c - superficie con tinte púrpura */
+    --color-surface-elevated: 26 20 40;
+    /* #1a1428 - cards, modales */
+
+    /* Textos */
+    --color-text: 235 235 240;
+    /* #ebebf0 - blanco suave, no puro */
+    --color-text-muted: 160 155 170;
+    /* #a09baa - texto secundario */
+    --color-text-subtle: 100 95 110;
+    /* #645f6e - placeholders, hints */
+
+    /* Acentos */
+    --color-primary: 123 44 191;
+    /* #7b2cbf - violeta eléctrico */
+    --color-primary-hover: 147 60 220;
+    /* #933cdc - hover state */
+    --color-primary-muted: 123 44 191 / 0.15;
+    /* para backgrounds sutiles */
+
+    /* Gradiente */
+    --gradient-color: 26 10 46;
+    /* #1a0a2e - púrpura oscuro */
+
+    /* UI Elements */
+    --color-border: 255 255 255 / 0.12;
+    /* bordes sutiles */
+    --color-border-focus: 123 44 191 / 0.5;
+    /* focus states */
+    --shadow-color: 0 0 0 / 0.4;
+    /* sombras */
+
+    /* Tags/badges */
+    --color-tag-bg: 74 14 78 / 0.4;
+    /* #4a0e4e con transparencia */
+    --color-tag-text: 200 180 220;
+    /* #c8b4dc - legible sobre tag */
+
+    /* Estados */
+    --color-success: 45 180 120;
+    /* #2db478 */
+    --color-warning: 230 170 50;
+    /* #e6aa32 */
+    --color-error: 220 70 90;
+    /* #dc465a */
+  }
+
+  .background-gradient {
+    background: radial-gradient(125% 125% at 80% 100%, rgb(var(--color-background)) 40%, rgb(var(--gradient-color)) 100%);
+  }
+
+  /* background: radial-gradient(125% 125% at 50% 10%, #fff 40%, #6366f1 100%) */
+
+  html {
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-text));
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    background-color: rgb(var(--color-background));
+  }
+
+
+  h1,
+  h2,
+  h3 {
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 svg {
+    margin-right: 0.69rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    display: flex;
+  }
+
+}

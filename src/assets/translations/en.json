@@ -25,7 +25,7 @@
   "about": {
     "title": "About Me",
     "paragraphs": [
-      "I'm a Software Developer specializing in backend systems, DevOps automation, and legacy modernization. Currently pursuing my Bachelor's in Software Engineering at Universidad Andrés Bello.",
+      "I'm a Software Engineer specializing in backend systems, DevOps automation, and legacy modernization. Currently pursuing my Bachelor's in Software Engineering at Universidad Andrés Bello.",
       "I've helped financial institutions like Citi Bank modernize critical payment systems, achieving 6x performance improvements and saving $36K+ in annual licensing costs through smart automation.",
       "My toolkit spans .NET Core, Node.js, Python, React, and a deep understanding of CI/CD pipelines with Jenkins, OpenShift, and AWS. I'm passionate about clean architecture, Domain-Driven Design, and building systems that scale."
     ],
@@ -38,7 +38,7 @@
         "company": "Citi Bank",
         "via": "via Kibernum",
         "position": "Software Developer",
-        "date": "March 2024 - Present",
+        "date": "March 2024 - February 2026",
         "location": "Remote, Chile",
         "description": [
           "Led rewrite of legacy .NET Framework apps into micro-frontend architecture (React + NestJS), achieving 6x performance improvement (30s → 5s)",

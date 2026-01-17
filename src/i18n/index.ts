@@ -18,8 +18,10 @@ export function getLangFromUrl(url: URL): Lang {
   return defaultLang;
 }
 
+type TranslationValue = string | string[];
+
 export function useTranslations(lang: Lang) {
-  return function t(key: string): string {
+  return function t(key: string): TranslationValue {
     const keys = key.split('.');
     let value: unknown = translations[lang];
 
@@ -40,7 +42,9 @@ export function useTranslations(lang: Lang) {
       }
     }
 
-    return typeof value === 'string' ? value : key;
+    if (typeof value === 'string') return value;
+    if (Array.isArray(value) && value.every((v) => typeof v === 'string')) return value;
+    return key;
   };
 }
 

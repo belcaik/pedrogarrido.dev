@@ -1,98 +1,204 @@
 {
   "meta": {
-    "title": "Portafolio | Desarrollador Full Stack",
-    "description": "Bienvenido a mi portafolio. Soy un desarrollador full stack apasionado por crear experiencias web increíbles."
+    "title": "Pedro Garrido | Desarrollador de Software",
+    "description": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. 3+ años construyendo soluciones escalables para instituciones financieras."
   },
   "nav": {
-    "about": "Sobre mí",
     "experience": "Experiencia",
-    "skills": "Habilidades",
     "projects": "Proyectos",
-    "contact": "Contacto"
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "resume": "Currículum"
   },
   "hero": {
+    "badge": "Disponible para trabajar",
     "greeting": "Hola, soy",
-    "name": "Tu Nombre",
-    "title": "Desarrollador Full Stack",
-    "subtitle": "Construyo experiencias digitales excepcionales que generan impacto.",
-    "cta": "Contáctame"
+    "name": "Pedro Garrido",
+    "experience": "3+ años de experiencia como",
+    "title": "Ingeniero de Software",
+    "subtitle": "Construyendo sistemas backend escalables y automatizando infraestructura para instituciones financieras.",
+    "location": "Desde Chile 🇨🇱 — Abierto a remoto y relocalización.",
+    "cta": "Contáctame",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   },
   "about": {
-    "title": "Sobre Mí",
-    "description": "Soy un desarrollador full stack apasionado con experiencia en la construcción de aplicaciones web. Me encanta crear soluciones limpias, eficientes y fáciles de usar.",
-    "paragraph1": "Comencé mi camino en el desarrollo de software hace varios años, y desde entonces he tenido la oportunidad de trabajar en proyectos diversos que van desde sitios web para pequeñas empresas hasta aplicaciones empresariales a gran escala.",
-    "paragraph2": "Cuando no estoy programando, puedes encontrarme explorando nuevas tecnologías, contribuyendo a proyectos de código abierto o disfrutando de actividades al aire libre."
+    "title": "Sobre mí",
+    "paragraphs": [
+      "Soy Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Actualmente cursando Ingeniería en Software en la Universidad Andrés Bello.",
+      "He ayudado a instituciones financieras como Citi Bank a modernizar sistemas críticos de pagos, logrando mejoras de rendimiento de 6x y ahorrando más de $36K anuales en costos de licencias mediante automatización inteligente.",
+      "Mi stack incluye .NET Core, Node.js, Python, React, y un profundo conocimiento de pipelines CI/CD con Jenkins, OpenShift y AWS. Me apasiona la arquitectura limpia, Domain-Driven Design y construir sistemas que escalen."
+    ],
+    "downloadResume": "Descargar CV"
   },
   "experience": {
     "title": "Experiencia",
-    "present": "Presente",
     "jobs": [
       {
-        "title": "Desarrollador Senior",
-        "company": "Tech Company",
-        "period": "2022 - Presente",
-        "description": "Liderando el desarrollo de aplicaciones web usando tecnologías modernas. Mentorizando desarrolladores junior e implementando mejores prácticas."
+        "company": "Citi Bank",
+        "via": "vía Kibernum",
+        "position": "Desarrollador de Software",
+        "date": "Marzo 2024 - Presente",
+        "location": "Remoto, Chile",
+        "description": [
+          "Lideré la reescritura de aplicaciones legacy .NET Framework a arquitectura micro-frontend (React + NestJS), logrando mejora de rendimiento de 6x (30s → 5s)",
+          "Construí pipelines CI/CD desde cero para 9 aplicaciones usando Jenkins, TeamCity, Harness y OpenShift",
+          "Eliminé más de $36K anuales en costos de licencias reemplazando PKWARE con herramientas nativas de Windows",
+          "Implementé framework de testing logrando 80% de cobertura de código para sistemas críticos de pagos (FlexCube ↔ BankCard)"
+        ],
+        "tech": [".NET Core", "NestJS", "React", "Jenkins", "TeamCity", "OpenShift", "Helm", "PowerShell", "SonarQube"]
       },
       {
-        "title": "Desarrollador Full Stack",
-        "company": "Startup Inc",
-        "period": "2020 - 2022",
-        "description": "Construí y mantuve múltiples aplicaciones orientadas al cliente. Colaboré con equipos de diseño y producto para entregar funcionalidades."
+        "company": "Tutelkan",
+        "position": "Ingeniero de Software",
+        "date": "Enero 2023 - Marzo 2024",
+        "location": "Remoto, Chile",
+        "description": [
+          "Construí plataforma agrícola full-stack: dashboard Vue.js, app móvil React Native, API NestJS y servicios ML en Python",
+          "Desplegué infraestructura de microservicios en AWS ECS (6 contenedores incluyendo PostgreSQL, RabbitMQ y workers de inferencia ML)",
+          "Desarrollé pipeline de visión computacional con OpenCV + YOLOv5 para clasificación automatizada de calidad de fruta"
+        ],
+        "tech": ["NestJS", "Vue.js", "React Native", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS", "Docker"]
+      }
+    ]
+  },
+  "education": {
+    "title": "Educación",
+    "items": [
+      {
+        "institution": "Universidad Andrés Bello",
+        "degree": "Ingeniería en Software",
+        "date": "2025 - 2027",
+        "status": "En curso"
       },
       {
-        "title": "Desarrollador Junior",
-        "company": "Digital Agency",
-        "period": "2018 - 2020",
-        "description": "Desarrollé sitios web responsive y aplicaciones web. Gané experiencia en varios frameworks y herramientas."
+        "institution": "CFT San Agustín",
+        "degree": "Analista Programador",
+        "date": "2021 - 2023",
+        "honors": "Egresado con honores — 6.3/7.0"
       }
     ]
   },
   "skills": {
-    "title": "Habilidades",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "tools": "Herramientas y Otros"
+    "title": "Stack Tecnológico",
+    "categories": {
+      "languages": {
+        "title": "Lenguajes",
+        "items": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL"]
+      },
+      "backend": {
+        "title": "Backend",
+        "items": [".NET Core", "NestJS", "Node.js", "Express.js"]
+      },
+      "frontend": {
+        "title": "Frontend",
+        "items": ["React", "Angular", "Vue.js", "HTML5", "CSS3"]
+      },
+      "databases": {
+        "title": "Bases de Datos y Mensajería",
+        "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"]
+      },
+      "devops": {
+        "title": "DevOps y Cloud",
+        "items": ["Docker", "OpenShift", "Kubernetes", "AWS ECS", "Jenkins", "TeamCity", "Harness", "Helm"]
+      },
+      "tools": {
+        "title": "Herramientas y Prácticas",
+        "items": ["Git", "SonarQube", "BlackDuck", "Snyk", "CI/CD", "DDD", "TDD", "Microservicios"]
+      }
+    }
   },
   "projects": {
     "title": "Proyectos",
-    "viewProject": "Ver Proyecto",
-    "viewCode": "Ver Código",
     "items": [
       {
-        "title": "Plataforma E-Commerce",
-        "description": "Una plataforma de comercio electrónico completa con carrito de compras, integración de pagos y panel de administración.",
-        "tech": ["React", "Node.js", "MongoDB", "Stripe"]
+        "name": "Plataforma de Análisis de Calidad Agrícola",
+        "role": "Desarrollador Full-Stack",
+        "year": "2023",
+        "description": "Plataforma tecnológica agrícola end-to-end para clasificación automatizada de calidad de fruta usando visión computacional. Dashboard Vue.js, app móvil React Native, orquestación API con NestJS y servicios ML en Python con OpenCV + YOLOv5.",
+        "tech": ["Vue.js", "React Native", "NestJS", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS"],
+        "github": "",
+        "demo": "",
+        "private": false
       },
       {
-        "title": "App de Gestión de Tareas",
-        "description": "Una aplicación colaborativa de gestión de tareas con actualizaciones en tiempo real y funciones de equipo.",
-        "tech": ["Vue.js", "Firebase", "Tailwind CSS"]
+        "name": "Modernización de Sistema de Pagos Empresarial",
+        "role": "Desarrollador de Software",
+        "year": "2024",
+        "description": "Lideré la modernización de aplicaciones de escritorio legacy .NET a arquitectura micro-frontend para sistemas de procesamiento de pagos de Citi Bank. Logré mejora de rendimiento de 6x migrando procesamiento batch del cliente al servidor.",
+        "tech": ["React", "NestJS", ".NET Core", "OpenShift", "Helm", "Harness", "Jenkins"],
+        "github": "",
+        "demo": "",
+        "private": true
       },
       {
-        "title": "Sitio Web de Portafolio",
-        "description": "Un sitio web de portafolio responsive construido con tecnologías web modernas.",
-        "tech": ["Astro", "TypeScript", "CSS"]
+        "name": "Automatización de Infraestructura CI/CD",
+        "role": "Ingeniero DevOps",
+        "year": "2024",
+        "description": "Automaticé infraestructura de despliegue para 9 aplicaciones legacy, eliminando procesos manuales. Reemplacé más de $36K anuales en licencias PKWARE con automatización PowerShell e integré escaneo de seguridad con SonarQube, BlackDuck y Snyk.",
+        "tech": ["Jenkins", "TeamCity", "PowerShell", "Windows Server", "SonarQube", "BlackDuck"],
+        "github": "",
+        "demo": "",
+        "private": true
       }
-    ]
+    ],
+    "privateLabel": "Proyecto Empresarial",
+    "viewCode": "Código",
+    "viewDemo": "Demo"
   },
   "github": {
     "title": "Actividad en GitHub",
-    "description": "Mira mis últimas contribuciones y repositorios en GitHub.",
-    "viewProfile": "Ver Perfil de GitHub"
+    "stats": {
+      "repos": "Repos Públicos",
+      "stars": "Estrellas",
+      "contributions": "Contribuciones",
+      "followers": "Seguidores"
+    },
+    "viewProfile": "Ver Perfil Completo"
   },
   "contact": {
-    "title": "Ponte en Contacto",
-    "description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tu visión.",
-    "email": "Correo",
-    "sendMessage": "Enviar Mensaje",
-    "name": "Nombre",
-    "message": "Mensaje",
-    "namePlaceholder": "Tu nombre",
-    "emailPlaceholder": "tu.correo@ejemplo.com",
-    "messagePlaceholder": "Tu mensaje..."
+    "title": "Contacto",
+    "headline": "Construyamos algo juntos",
+    "description": "Actualmente estoy abierto a nuevas oportunidades — remoto, híbrido o relocalización. Ya sea que tengas un proyecto en mente, una oportunidad laboral, o simplemente quieras conectar, no dudes en contactarme.",
+    "info": {
+      "email": {
+        "label": "Email",
+        "value": "pedrogarrido.dev@gmail.com"
+      },
+      "location": {
+        "label": "Ubicación",
+        "value": "Chile (Abierto a relocalización)"
+      },
+      "response": {
+        "label": "Tiempo de respuesta",
+        "value": "Dentro de 24 horas"
+      }
+    },
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "subject": {
+        "label": "Asunto",
+        "options": {
+          "project": "Consulta de Proyecto",
+          "job": "Oportunidad Laboral",
+          "collaboration": "Colaboración",
+          "general": "Mensaje General"
+        }
+      },
+      "message": "Mensaje",
+      "submit": "Enviar Mensaje",
+      "sending": "Enviando..."
+    }
   },
   "footer": {
-    "rights": "Todos los derechos reservados.",
-    "builtWith": "Construido con"
+    "copyright": "© 2025 Pedro Garrido. Todos los derechos reservados.",
+    "builtWith": "Hecho con Astro"
+  },
+  "common": {
+    "present": "Presente",
+    "comingSoon": "Próximamente",
+    "learnMore": "Saber más",
+    "backToTop": "Volver arriba"
   }
 }

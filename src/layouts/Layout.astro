@@ -1,6 +1,8 @@
 ---
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import ThemeSwitch from "../components/ThemeSwitch.astro";
 import { useTranslations, type Lang, languages } from "../i18n";
+import "../styles/global.css";
 
 interface Props {
   lang: Lang;
@@ -40,21 +42,39 @@ const alternateLinks = Object.keys(languages).map((l) => {
         <link rel="alternate" hreflang={link.lang} href={link.href} />
       ))
     }
+    <script is:inline>
+      (function () {
+        const theme =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
   </head>
   <body>
-    <LanguageSwitcher lang={lang} />
-    <slot />
+    <div class="fixed inset-0 z-0 background-gradient"></div>
+    <div class="min-h-screen w-full relative">
+      <nav class="top-nav">
+        <ThemeSwitch />
+        <LanguageSwitcher lang={lang} />
+      </nav>
+      <slot />
+    </div>
   </body>
 </html>
 
 <style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-    font-family:
-      Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
-      sans-serif;
+  .top-nav {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 </style>

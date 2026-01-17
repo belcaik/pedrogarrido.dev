@@ -14,8 +14,10 @@
     "badge": "Open to Work",
     "greeting": "Hi, I'm",
     "name": "Pedro Garrido",
-    "title": "Software Developer",
-    "subtitle": "Building scalable backend systems and automating infrastructure for financial institutions. Based in Chile 🇨🇱 — Open to remote & relocation.",
+    "experience": "3+ years of experience as",
+    "title": "Software Engineer & DevOps Enthusiast",
+    "subtitle": "building scalable backend systems and automating infrastructure for financial institutions.",
+    "location":"Based in Chile 🇨🇱 — Open to remote & relocation.",
     "cta": "Get in touch",
     "linkedin": "LinkedIn",
     "github": "GitHub"
@@ -44,7 +46,17 @@
           "Eliminated $36K+ annual licensing costs by replacing PKWARE with native Windows tooling",
           "Implemented testing framework achieving 80% code coverage for mission-critical payment systems (FlexCube ↔ BankCard)"
         ],
-        "tech": [".NET Core", "NestJS", "React", "Jenkins", "TeamCity", "OpenShift", "Helm", "PowerShell", "SonarQube"]
+        "tech": [
+          ".NET Core",
+          "NestJS",
+          "React",
+          "Jenkins",
+          "TeamCity",
+          "OpenShift",
+          "Helm",
+          "PowerShell",
+          "SonarQube"
+        ]
       },
       {
         "company": "Tutelkan",
@@ -56,7 +68,18 @@
           "Deployed microservices infrastructure on AWS ECS (6 containers including PostgreSQL, RabbitMQ, and ML inference workers)",
           "Developed computer vision pipeline with OpenCV + YOLOv5 for automated fruit quality classification"
         ],
-        "tech": ["NestJS", "Vue.js", "React Native", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS", "Docker"]
+        "tech": [
+          "NestJS",
+          "Vue.js",
+          "React Native",
+          "Python",
+          "OpenCV",
+          "YOLOv5",
+          "PostgreSQL",
+          "RabbitMQ",
+          "AWS ECS",
+          "Docker"
+        ]
       }
     ]
   },
@@ -82,27 +105,68 @@
     "categories": {
       "languages": {
         "title": "Languages",
-        "items": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL"]
+        "items": [
+          "C#",
+          "TypeScript",
+          "JavaScript",
+          "Python",
+          "Java",
+          "SQL"
+        ]
       },
       "backend": {
         "title": "Backend",
-        "items": [".NET Core", "NestJS", "Node.js", "Express.js"]
+        "items": [
+          ".NET Core",
+          "NestJS",
+          "Node.js",
+          "Express.js"
+        ]
       },
       "frontend": {
         "title": "Frontend",
-        "items": ["React", "Angular", "Vue.js", "HTML5", "CSS3"]
+        "items": [
+          "React",
+          "Angular",
+          "Vue.js",
+          "HTML5",
+          "CSS3"
+        ]
       },
       "databases": {
         "title": "Databases & Messaging",
-        "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"]
+        "items": [
+          "PostgreSQL",
+          "SQL Server",
+          "MongoDB",
+          "RabbitMQ"
+        ]
       },
       "devops": {
         "title": "DevOps & Cloud",
-        "items": ["Docker", "OpenShift", "Kubernetes", "AWS ECS", "Jenkins", "TeamCity", "Harness", "Helm"]
+        "items": [
+          "Docker",
+          "OpenShift",
+          "Kubernetes",
+          "AWS ECS",
+          "Jenkins",
+          "TeamCity",
+          "Harness",
+          "Helm"
+        ]
       },
       "tools": {
         "title": "Tools & Practices",
-        "items": ["Git", "SonarQube", "BlackDuck", "Snyk", "CI/CD", "DDD", "TDD", "Microservices"]
+        "items": [
+          "Git",
+          "SonarQube",
+          "BlackDuck",
+          "Snyk",
+          "CI/CD",
+          "DDD",
+          "TDD",
+          "Microservices"
+        ]
       }
     }
   },
@@ -114,7 +178,17 @@
         "role": "Full-Stack Developer",
         "year": "2023",
         "description": "End-to-end agricultural technology platform for automated fruit quality classification using computer vision. Built Vue.js dashboard, React Native mobile app, NestJS API orchestration, and Python ML services with OpenCV + YOLOv5.",
-        "tech": ["Vue.js", "React Native", "NestJS", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS"],
+        "tech": [
+          "Vue.js",
+          "React Native",
+          "NestJS",
+          "Python",
+          "OpenCV",
+          "YOLOv5",
+          "PostgreSQL",
+          "RabbitMQ",
+          "AWS ECS"
+        ],
         "github": "",
         "demo": "",
         "private": false
@@ -124,7 +198,15 @@
         "role": "Software Developer",
         "year": "2024",
         "description": "Led modernization of legacy .NET desktop applications into micro-frontend architecture for Citi Bank's payment processing systems. Achieved 6x performance improvement by migrating batch processing from client-side to server-side execution.",
-        "tech": ["React", "NestJS", ".NET Core", "OpenShift", "Helm", "Harness", "Jenkins"],
+        "tech": [
+          "React",
+          "NestJS",
+          ".NET Core",
+          "OpenShift",
+          "Helm",
+          "Harness",
+          "Jenkins"
+        ],
         "github": "",
         "demo": "",
         "private": true
@@ -134,7 +216,14 @@
         "role": "DevOps Engineer",
         "year": "2024",
         "description": "Automated deployment infrastructure for 9 legacy applications, eliminating manual processes. Replaced $36K+ in annual PKWARE licenses with PowerShell automation and integrated security scanning with SonarQube, BlackDuck, and Snyk.",
-        "tech": ["Jenkins", "TeamCity", "PowerShell", "Windows Server", "SonarQube", "BlackDuck"],
+        "tech": [
+          "Jenkins",
+          "TeamCity",
+          "PowerShell",
+          "Windows Server",
+          "SonarQube",
+          "BlackDuck"
+        ],
         "github": "",
         "demo": "",
         "private": true
