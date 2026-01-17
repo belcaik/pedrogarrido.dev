@@ -1,0 +1,131 @@
+---
+import { SunIcon, MoonIcon } from "../assets/icons";
+---
+
+<button
+    id="theme-toggle"
+    class="theme-toggle"
+    aria-label="Toggle theme"
+    title="Toggle theme"
+>
+    <SunIcon class="icon sun-icon" />
+    <MoonIcon class="icon moon-icon" />
+</button>
+
+<script>
+    function initThemeToggle() {
+        const toggle = document.getElementById("theme-toggle");
+        if (!toggle) return;
+
+        function getThemePreference(): string {
+            if (
+                typeof localStorage !== "undefined" &&
+                localStorage.getItem("theme")
+            ) {
+                return localStorage.getItem("theme")!;
+            }
+            return window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+        }
+
+        function setTheme(theme: string) {
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+            localStorage.setItem("theme", theme);
+        }
+
+        // Set initial theme
+        setTheme(getThemePreference());
+
+        // Toggle theme on button click
+        toggle.addEventListener("click", () => {
+            const currentTheme = document.documentElement.classList.contains(
+                "dark",
+            )
+                ? "dark"
+                : "light";
+            setTheme(currentTheme === "dark" ? "light" : "dark");
+        });
+
+        // Listen for system theme changes
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", (e) => {
+                if (!localStorage.getItem("theme")) {
+                    setTheme(e.matches ? "dark" : "light");
+                }
+            });
+    }
+
+    // Run on initial page load
+    initThemeToggle();
+
+    // Handle Astro page transitions
+    document.addEventListener("astro:page-load", initThemeToggle);
+</script>
+
+<style>
+    .theme-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+        background: rgba(var(--color-surface), 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgb(var(--color-border));
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(var(--shadow-color), 0.1);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+        box-shadow: 0 4px 12px rgba(var(--shadow-color), 0.15);
+        transform: scale(1.05);
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .sun-icon {
+        color: #f59e0b;
+    }
+
+    .moon-icon {
+        color: #6366f1;
+        position: absolute;
+    }
+
+    /* Light mode: show sun, hide moon */
+    :global(html:not(.dark)) .sun-icon {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    :global(html:not(.dark)) .moon-icon {
+        opacity: 0;
+        transform: rotate(-90deg);
+    }
+
+    /* Dark mode: show moon, hide sun */
+    :global(html.dark) .sun-icon {
+        opacity: 0;
+        transform: rotate(90deg);
+    }
+
+    :global(html.dark) .moon-icon {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+</style>

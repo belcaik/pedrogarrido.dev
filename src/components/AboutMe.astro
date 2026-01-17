@@ -1,5 +1,6 @@
 ---
-import { useTranslations, type Lang } from '../i18n';
+import { useTranslations, type Lang } from "../i18n";
+import { CredIcon } from "../assets/icons";
 
 interface Props {
   lang: Lang;
@@ -10,9 +11,26 @@ const t = useTranslations(lang);
 ---
 
 <section id="about" class="about">
- 
+  <h3 class="about-title"><CredIcon  class="about-icon"/> {t("about.title")}</h3>
+  {
+    (t("about.paragraphs") as string[]).map((paragraph) => (
+      <>
+        <p>{paragraph}</p>
+        <br />
+      </>
+    ))
+  }
 </section>
 
 <style>
-  
+  .about {
+  }
+  .about-title {
+   
+  }
+  /* .about-icon {
+    width: 2rem;
+    height: 2rem;
+  } */
+
 </style>

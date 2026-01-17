@@ -2,7 +2,6 @@
 import { useTranslations, type Lang, getLocalizedPath } from "../i18n";
 import { GithubIcon, LinkedinIcon, MailIcon } from "../assets/icons";
 
-
 interface Props {
   lang: Lang;
 }
@@ -11,93 +10,48 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="hero" class="hero">
-  <h1>
-    {t("hero.greeting")}
+<section id="hero" class="hero flex flex-col">
+  <h1 >
+  <!-- class="text-6xl md:text-6xl lg:text-6xl inline-block"> -->
+    <span class="block mb-4 md:inline md:mb-0 mr-4">
+      {t("hero.greeting")}
+    </span>
 
-    <span class="hero-name">
+    <span class="font-bold">
       {t("hero.name")}
     </span>
   </h1>
   <h2>
     {t("hero.experience")}
-    <span class="hero-title">{t("hero.title")}</span>
+    <span>{t("hero.title")}</span>
     {t("hero.subtitle")}
     <br />
-    {t('hero.location')}
+    {t("hero.location")}
   </h2>
 
-  <div>
+  <div class="hero-contact flex flex-col md:flex-row gap-4 mt-6 lg:flex-row">
     <a class="cta-button">
-      <MailIcon 
-      class="hero-icon"
-      />
-      
+      <MailIcon class="hero-icon" />
+
       {t("hero.cta")}
     </a>
     <a class="cta-button">
-
-      <LinkedinIcon 
-      class="hero-icon"
-      />
+      <LinkedinIcon class="hero-icon" />
       {t("hero.linkedin")}
     </a>
     <a class="cta-button">
-      <GithubIcon 
-      class="hero-icon"
-      />
+      <GithubIcon class="hero-icon" />
       {t("hero.github")}
     </a>
   </div>
 </section>
 
 <style>
+  .cta-button {
+    @apply flex justify-center border border-[rgb(var(--color-border))] dark:border-[rgb(var(--color-border))]  rounded-3xl px-4 py-2 items-center gap-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition;
+  }
 
-.hero-icon{
-  width: 1.2rem;
-  height: 1.2rem;
-  vertical-align: sub;
-  margin-right: 0.5rem;
-  fill: white;
-}
-
-.hero{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: left;
-  padding: 4rem 1rem;
-}
-
-.hero-name {
-  font-weight: bold;
-  background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-top: 0.5rem;
-}
-
-.hero-title {
-  font-weight: bold;
-  background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 1.5rem;
-  margin-right: 1rem;
-  padding: 0.5rem 1.25rem;
-  background: rgba(37, 99, 235, 0.5);
-  color: black;
-  text-decoration: none;
-  border-radius: 2em;
-  outline: solid 2px #2563eb;
-  transition: background 0.3s ease;
-} 
-
-
-
+  .hero-icon {
+    @apply w-5 h-5;
+  }
 </style>
