@@ -1,6 +1,6 @@
 ---
 import { useTranslations, type Lang } from "../i18n";
-import { CredIcon } from "../assets/icons";
+import { CredIcon, MailIcon, LinkedinIcon, GithubIcon, DownloadIcon } from "../assets/icons";
 
 interface Props {
   lang: Lang;
@@ -11,26 +11,145 @@ const t = useTranslations(lang);
 ---
 
 <section id="about" class="about">
-  <h3 class="about-title"><CredIcon  class="about-icon"/> {t("about.title")}</h3>
-  {
-    (t("about.paragraphs") as string[]).map((paragraph) => (
-      <>
-        <p>{paragraph}</p>
-        <br />
-      </>
-    ))
-  }
+  <div class="about-header">
+    <CredIcon class="about-icon" />
+    <h2 class="about-title">{t("about.title")}</h2>
+  </div>
+
+  <div class="about-content">
+    {
+      (t("about.paragraphs") as string[]).map((paragraph) => (
+        <p class="about-paragraph">{paragraph}</p>
+      ))
+    }
+  </div>
+
+  <div class="about-links">
+    <a href="mailto:pedrogarrido.dev@gmail.com" class="about-link" target="_blank" rel="noopener noreferrer">
+      <MailIcon />
+      <span>pedrogarrido.dev@gmail.com</span>
+    </a>
+    <a href="https://linkedin.com/in/pedrogarridodev" class="about-link" target="_blank" rel="noopener noreferrer">
+      <LinkedinIcon />
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/belcaik" class="about-link" target="_blank" rel="noopener noreferrer">
+      <GithubIcon />
+      <span>GitHub</span>
+    </a>
+    <a href="/resume.pdf" class="about-link download-link" download>
+      <DownloadIcon />
+      <span>{t("about.downloadResume")}</span>
+    </a>
+  </div>
 </section>
 
 <style>
   .about {
+    padding: 4rem 0;
+    max-width: 900px;
+    margin: 0 auto;
   }
-  .about-title {
-   
+
+  .about-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
   }
-  /* .about-icon {
+
+  .about-icon {
     width: 2rem;
     height: 2rem;
-  } */
+    color: var(--primary-color);
+  }
 
+  .about-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-paragraph {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .about-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+  }
+
+  .about-link:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .about-link :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  .download-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+  }
+
+  .download-link:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: 3rem 0;
+    }
+
+    .about-title {
+      font-size: 1.75rem;
+    }
+
+    .about-paragraph {
+      font-size: 1rem;
+    }
+
+    .about-links {
+      flex-direction: column;
+    }
+
+    .about-link {
+      justify-content: center;
+    }
+  }
 </style>
