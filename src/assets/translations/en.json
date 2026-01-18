@@ -38,7 +38,7 @@
         "company": "Citi Bank",
         "via": "via Kibernum",
         "position": "Software Developer",
-        "date": "March 2024 - February 2026",
+        "date": "March 2024 - Present",
         "location": "Remote, Chile",
         "description": [
           "Led rewrite of legacy .NET Framework apps into micro-frontend architecture (React + NestJS), achieving 6x performance improvement (30s → 5s)",
