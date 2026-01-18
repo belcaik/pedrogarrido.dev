@@ -1,5 +1,6 @@
 ---
 import { useTranslations, type Lang } from '../i18n';
+import { MailIcon } from '../assets/icons';
 
 interface Props {
   lang: Lang;
@@ -7,11 +8,349 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+interface ContactInfo {
+  label: string;
+  value: string;
+}
+
+const contactInfo = {
+  email: t('contact.info.email') as unknown as ContactInfo,
+  location: t('contact.info.location') as unknown as ContactInfo,
+  response: t('contact.info.response') as unknown as ContactInfo,
+};
+
+interface SubjectOptions {
+  project: string;
+  job: string;
+  collaboration: string;
+  general: string;
+}
+
+const subjectOptions = t('contact.form.subject.options') as unknown as SubjectOptions;
 ---
 
 <section id="contact" class="contact">
- 
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2 class="contact-title">{t('contact.title')}</h2>
+      <p class="contact-headline">{t('contact.headline')}</p>
+      <p class="contact-description">{t('contact.description')}</p>
+    </div>
+
+    <div class="contact-content">
+      <div class="contact-info-section">
+        <h3 class="info-title">Contact Information</h3>
+
+        <div class="info-items">
+          <div class="info-item">
+            <MailIcon />
+            <div class="info-details">
+              <span class="info-label">{contactInfo.email.label}</span>
+              <a href={`mailto:${contactInfo.email.value}`} class="info-value email-link">
+                {contactInfo.email.value}
+              </a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-details">
+              <span class="info-label">{contactInfo.location.label}</span>
+              <span class="info-value">{contactInfo.location.value}</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">⏱️</div>
+            <div class="info-details">
+              <span class="info-label">{contactInfo.response.label}</span>
+              <span class="info-value">{contactInfo.response.value}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" action="https://formspree.io/f/xanyzbpd" method="POST">
+        <div class="form-group">
+          <label for="name" class="form-label">{t('contact.form.name')}</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-input"
+            required
+            placeholder="John Doe"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">{t('contact.form.email')}</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            required
+            placeholder="john@example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="subject" class="form-label">{t('contact.form.subject.label')}</label>
+          <select id="subject" name="subject" class="form-input form-select" required>
+            <option value="">{t('contact.form.subject.label')}</option>
+            <option value="project">{subjectOptions.project}</option>
+            <option value="job">{subjectOptions.job}</option>
+            <option value="collaboration">{subjectOptions.collaboration}</option>
+            <option value="general">{subjectOptions.general}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">{t('contact.form.message')}</label>
+          <textarea
+            id="message"
+            name="message"
+            class="form-input form-textarea"
+            required
+            rows="5"
+            placeholder="Tell me about your project or opportunity..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">
+          <span>{t('contact.form.submit')}</span>
+        </button>
+      </form>
+    </div>
+  </div>
 </section>
 
 <style>
+  .contact {
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .contact-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .contact-headline {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .contact-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+  }
+
+  .contact-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .info-item :global(svg) {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .info-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .info-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .info-value {
+    font-size: 1rem;
+    color: var(--text-primary);
+  }
+
+  .email-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .email-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .form-input {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  .form-select {
+    cursor: pointer;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+  }
+
+  .submit-button {
+    padding: 0.875rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+  }
+
+  .submit-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
+
+  .submit-button:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 968px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-info-section {
+      order: 2;
+    }
+
+    .contact-form {
+      order: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact {
+      padding: 3rem 0;
+    }
+
+    .contact-title {
+      font-size: 1.75rem;
+    }
+
+    .contact-headline {
+      font-size: 1.25rem;
+    }
+
+    .contact-description {
+      font-size: 0.9375rem;
+    }
+
+    .contact-form {
+      padding: 1.5rem;
+    }
+
+    .info-title {
+      font-size: 1.125rem;
+    }
+  }
 </style>
