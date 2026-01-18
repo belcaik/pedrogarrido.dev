@@ -104,6 +104,21 @@
     /* #dc465a */
   }
 
+  /* Component variable mappings */
+  :root,
+  .dark {
+    --bg-primary: rgb(var(--color-background));
+    --bg-secondary: rgb(var(--color-surface));
+    --text-primary: rgb(var(--color-text));
+    --text-secondary: rgb(var(--color-text-muted));
+    --primary-color: rgb(var(--color-primary));
+    --primary-hover: rgb(var(--color-primary-hover));
+    --border-color: rgb(var(--color-border));
+    --tag-bg: rgb(var(--color-tag-bg));
+    --tag-text: rgb(var(--color-tag-text));
+    --tag-border: rgb(var(--color-border));
+  }
+
   .background-gradient {
     background: radial-gradient(125% 125% at 80% 100%, rgb(var(--color-background)) 40%, rgb(var(--gradient-color)) 100%);
   }
