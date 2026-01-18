@@ -15,16 +15,19 @@ const categories = ['languages', 'backend', 'frontend', 'databases', 'devops', '
   <h2 class="skills-title">{t('skills.title')}</h2>
 
   <div class="skills-grid">
-    {categories.map((category) => (
-      <div class="skill-category">
-        <h3 class="category-title">{t(`skills.categories.${category}.title`)}</h3>
-        <div class="category-items">
-          {t(`skills.categories.${category}.items`).map((item: string) => (
-            <span class="skill-tag">{item}</span>
-          ))}
+    {categories.map((category) => {
+      const items = t(`skills.categories.${category}.items`) as string[];
+      return (
+        <div class="skill-category">
+          <h3 class="category-title">{t(`skills.categories.${category}.title`)}</h3>
+          <div class="category-items">
+            {items.map((item: string) => (
+              <span class="skill-tag">{item}</span>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 </section>
 
