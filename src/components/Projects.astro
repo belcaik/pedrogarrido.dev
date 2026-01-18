@@ -1,7 +1,6 @@
 ---
 import { useTranslations, type Lang } from '../i18n';
-import en from '../assets/translations/en.json';
-import es from '../assets/translations/es.json';
+import { GithubIcon, LinkIcon } from '../assets/icons';
 
 interface Props {
   lang: Lang;
@@ -9,13 +8,243 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const translations = { en, es };
-// const projects = translations[lang].projects.items;
+
+interface Project {
+  name: string;
+  role: string;
+  year: string;
+  description: string;
+  tech: string[];
+  github?: string;
+  demo?: string;
+  private: boolean;
+}
+
+const projects = t('projects.items') as Project[];
 ---
 
 <section id="projects" class="projects">
+  <h2 class="projects-title">{t('projects.title')}</h2>
 
+  <div class="projects-grid">
+    {projects.map((project) => (
+      <article class="project-card">
+        <div class="project-header">
+          <div class="project-info">
+            <h3 class="project-name">{project.name}</h3>
+            <p class="project-meta">
+              {project.role} • {project.year}
+            </p>
+          </div>
+          {project.private && (
+            <span class="private-badge">{t('projects.privateLabel')}</span>
+          )}
+        </div>
+
+        <p class="project-description">{project.description}</p>
+
+        <div class="project-tech">
+          {project.tech.map((tech) => (
+            <span class="tech-tag">{tech}</span>
+          ))}
+        </div>
+
+        {!project.private && (project.github || project.demo) && (
+          <div class="project-links">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+                aria-label="View code on GitHub"
+              >
+                <GithubIcon />
+                <span>{t('projects.viewCode')}</span>
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+                aria-label="View live demo"
+              >
+                <LinkIcon />
+                <span>{t('projects.viewDemo')}</span>
+              </a>
+            )}
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
 </section>
 
 <style>
+  .projects {
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .projects-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    color: var(--text-primary);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .project-info {
+    flex: 1;
+  }
+
+  .project-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+
+  .project-meta {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .private-badge {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--tag-border);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border: 1px solid var(--tag-border);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .project-link:hover {
+    color: var(--primary-color);
+  }
+
+  .project-link :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (max-width: 768px) {
+    .projects {
+      padding: 3rem 0;
+    }
+
+    .projects-title {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+    }
+
+    .project-name {
+      font-size: 1.125rem;
+    }
+
+    .project-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .private-badge {
+      align-self: flex-start;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
