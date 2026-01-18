@@ -20,7 +20,7 @@ interface Project {
   private: boolean;
 }
 
-const projects = t('projects.items') as Project[];
+const projects = t('projects.items') as unknown as Project[];
 ---
 
 <section id="projects" class="projects">
