@@ -1,9 +1,8 @@
 ---
-import { LinkedinIcon, MailIcon } from "../assets/icons";
+import { Linkedin, Mail } from "@lucide/astro";
 import { getContactData } from "../utils/contact";
 import ObfuscatedEmail from "./ObfuscatedEmail.astro";
 import type { Lang } from "../i18n";
-import ObfuscatedLink from "./ObfuscatedLink.astro";
 
 interface Props {
   lang: Lang;
@@ -13,271 +12,59 @@ const { lang } = Astro.props;
 const { t, contactInfo } = getContactData(lang);
 ---
 
-<section id="contact" class="contact">
-  <div class="contact-container">
-    <div class="contact-header">
-      <h2 class="contact-title">{t("contact.title")}</h2>
-      <p class="contact-headline">{t("contact.headline")}</p>
-      <p class="contact-description">{t("contact.description")}</p>
+<section id="contact" class="section-container section-padding">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+    <div class="text-left max-w-[700px] mx-auto md:grid-col-1">
+      <h2 class="section-title">{t("contact.title")}</h2>
+      <p class="text-2xl md:text-xl font-semibold mb-4 text-primary">
+        {t("contact.headline")}
+      </p>
+      <p
+        class="text-base md:text-[0.9375rem] leading-relaxed text-text-muted m-0"
+      >
+        {t("contact.description")}
+      </p>
     </div>
 
-    <div class="contact-content">
-      <div class="contact-info-section">
-        <h3 class="info-title">Contact Information</h3>
+    <div class="flex flex-col gap-6 max-w-[700px] mx-auto md:grid-col-2">
+      <h3 class="text-xl md:text-lg font-semibold text-text mb-2">
+        Contact Information
+      </h3>
 
-        <div class="info-items">
-          <div class="info-item">
-            <MailIcon />
-            <div class="info-details">
-              <span class="info-label">{contactInfo.email.label}</span>
-              <ObfuscatedEmail email={contactInfo.email.value} class="info-value" />
-            </div>
+      <div class="flex flex-col gap-6">
+        <div class="flex gap-4 items-start">
+          <Mail class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" size={24} />
+          <div class="flex flex-col gap-1">
+            <span
+              class="text-sm font-semibold text-text-muted uppercase tracking-wide"
+              >{contactInfo.email.label}</span
+            >
+            <ObfuscatedEmail
+              email={contactInfo.email.value}
+              class="text-base text-text"
+            />
           </div>
+        </div>
 
-          <div class="info-item">
-            <LinkedinIcon />
-            <div class="info-details">
-              <span class="info-label">{contactInfo.linkedin.label}</span>
-              <!-- <a class="info-value" href={contactInfo.linkedin.url} target="_blank" rel="noopener noreferrer"
-              >{contactInfo.linkedin.value}</a> -->
-              <ObfuscatedLink 
-                url={contactInfo.linkedin.url}
-                class="info-value"
-              />
-            </div>
+        <div class="flex gap-4 items-start">
+          <Linkedin
+            class="w-6 h-6 text-primary flex-shrink-0 mt-0.5"
+            size={24}
+          />
+          <div class="flex flex-col gap-1">
+            <span
+              class="text-sm font-semibold text-text-muted uppercase tracking-wide"
+              >{contactInfo.linkedin.label}</span
+            >
+            <a
+              class="link-primary text-base"
+              href={contactInfo.linkedin.url}
+              target="_blank"
+              rel="noopener noreferrer">{contactInfo.linkedin.value}</a
+            >
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .contact {
-    padding: 4rem 0;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .contact-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-
-  .contact-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .contact-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-  }
-
-  .contact-headline {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-  }
-
-  .contact-description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-
-  .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 3rem;
-  }
-
-  .contact-info-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .info-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-  }
-
-  .info-items {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .info-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-
-  .info-item :global(svg) {
-    width: 24px;
-    height: 24px;
-    color: var(--primary-color);
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .info-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  .info-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .info-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .info-value {
-    font-size: 1rem;
-    color: var(--text-primary);
-  }
-
-  .email-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .email-link:hover {
-    opacity: 0.8;
-    text-decoration: underline;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .form-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .form-input {
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-size: 1rem;
-    font-family: inherit;
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
-  }
-
-  .form-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-  }
-
-  .form-select {
-    cursor: pointer;
-  }
-
-  .form-textarea {
-    resize: vertical;
-    min-height: 120px;
-    font-family: inherit;
-  }
-
-  .submit-button {
-    padding: 0.875rem 2rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    align-self: flex-start;
-  }
-
-  .submit-button:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-  }
-
-  .submit-button:active {
-    transform: translateY(0);
-  }
-
-  @media (max-width: 968px) {
-    .contact-content {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .contact-info-section {
-      order: 2;
-    }
-
-    .contact-form {
-      order: 1;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .contact {
-      padding: 3rem 0;
-    }
-
-    .contact-title {
-      font-size: 1.75rem;
-    }
-
-    .contact-headline {
-      font-size: 1.25rem;
-    }
-
-    .contact-description {
-      font-size: 0.9375rem;
-    }
-
-    .contact-form {
-      padding: 1.5rem;
-    }
-
-    .info-title {
-      font-size: 1.125rem;
-    }
-  }
-</style>

@@ -6,9 +6,10 @@
 interface Props {
   email: string;
   class?: string;
+  ariaLabel?: string;
 }
 
-const { email, class: className = '' } = Astro.props;
+const { email, class: className = '', ariaLabel = 'Send email' } = Astro.props;
 
 // Encode the entire email
 const encodedEmail = Buffer.from(email).toString('base64');
@@ -17,9 +18,10 @@ const uniqueId = `link-${Math.random().toString(36).substring(2, 9)}`;
 
 <a
   href="#contact"
-  class={`obfuscated-link ${className}`}
+  class={`obfuscated-link cursor-pointer ${className}`}
   data-e={encodedEmail}
   id={uniqueId}
+  aria-label={ariaLabel}
 >
   <slot />
 </a>
@@ -34,9 +36,3 @@ const uniqueId = `link-${Math.random().toString(36).substring(2, 9)}`;
     el.href = 'mailto:' + email;
   })();
 </script>
-
-<style>
-  .obfuscated-link {
-    cursor: pointer;
-  }
-</style>

@@ -1,6 +1,6 @@
 ---
 import { useTranslations, type Lang } from "../i18n";
-import { CredIcon, MailIcon, LinkedinIcon, GithubIcon, DownloadIcon } from "../assets/icons";
+import { UserCircle } from "@lucide/astro";
 
 interface Props {
   lang: Lang;
@@ -10,105 +10,17 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="about" class="about">
-  <div class="about-header">
-    <CredIcon class="about-icon" />
-    <h2 class="about-title">{t("about.title")}</h2>
-  </div>
+<section id="about" class="section-container section-padding ">
+  <h2 class="section-title">
+    <UserCircle class="section-title-icon" size={32} />
+    {t("about.title")}
+  </h2>
 
-  <div class="about-content">
+  <div class="">
     {
       (t("about.paragraphs") as string[]).map((paragraph) => (
-        <p class="about-paragraph">{paragraph}</p>
+        <p class="text-[1.125rem] md:text-base leading-relaxed text-text-muted m-0">{paragraph}</p>
       ))
     }
   </div>
 </section>
-
-<style>
-  .about {
-    padding: 4rem 0;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .about-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
-  }
-
-  .about-icon {
-    width: 2rem;
-    height: 2rem;
-    color: var(--primary-color);
-  }
-
-  .about-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
-  }
-
-  .about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
-  }
-
-  .about-paragraph {
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-
-  .about-link:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  .about-link :global(svg) {
-    width: 18px;
-    height: 18px;
-  }
-
-  .download-link {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-    font-weight: 600;
-  }
-
-  .download-link:hover {
-    background-color: var(--primary-hover);
-    border-color: var(--primary-hover);
-  }
-
-  @media (max-width: 768px) {
-    .about {
-      padding: 3rem 0;
-    }
-
-    .about-title {
-      font-size: 1.75rem;
-    }
-
-    .about-paragraph {
-      font-size: 1rem;
-    }
-
-    .about-links {
-      flex-direction: column;
-    }
-
-    .about-link {
-      justify-content: center;
-    }
-  }
-</style>

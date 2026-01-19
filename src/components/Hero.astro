@@ -1,5 +1,5 @@
 ---
-import { GithubIcon, LinkedinIcon, MailIcon } from "../assets/icons";
+import { Github, Linkedin, Mail } from "@lucide/astro";
 import { getContactData } from "../utils/contact";
 import ObfuscatedLink from "./ObfuscatedLink.astro";
 import type { Lang } from "../i18n";
@@ -13,13 +13,11 @@ const { lang } = Astro.props;
 const { t, contactInfo } = getContactData(lang);
 ---
 
-<section id="hero" class="hero flex flex-col">
-  <h1 >
-  <!-- class="text-6xl md:text-6xl lg:text-6xl inline-block"> -->
+<section id="hero" class="section-container section-padding flex flex-col">
+  <h1>
     <span class="block mb-4 md:inline md:mb-0 mr-4">
       {t("hero.greeting")}
     </span>
-
     <span class="font-bold">
       {t("hero.name")}
     </span>
@@ -30,28 +28,26 @@ const { t, contactInfo } = getContactData(lang);
     {t("hero.subtitle")} {t("hero.location")}
   </h2>
 
-  <div class="hero-contact flex flex-col md:flex-row gap-4 mt-6 lg:flex-row">
-    <ObfuscatedLink email={contactInfo.email.value} class="cta-button">
-      <MailIcon class="hero-icon" />
+  <div class="flex flex-col md:flex-row gap-4 mt-6">
+    <ObfuscatedLink email={contactInfo.email.value} class="btn-cta">
+      <Mail class="btn-icon" />
       {t("hero.cta")}
     </ObfuscatedLink>
-    <a class="cta-button" href={contactInfo.linkedin.url} target="_blank" rel="noopener noreferrer">
-      <LinkedinIcon class="hero-icon" />
+    <a class="btn-cta" href={contactInfo.linkedin.url} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+      <Linkedin class="btn-icon" />
       {t("hero.linkedin")}
     </a>
-    <a class="cta-button" href={contactInfo.github?.url} target="_blank" rel="noopener noreferrer">
-      <GithubIcon class="hero-icon" />
+    <a class="btn-cta" href={contactInfo.github?.url} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+      <Github class="btn-icon" />
       {t("hero.github")}
     </a>
   </div>
 </section>
 
 <style>
-  .cta-button {
-    @apply flex justify-center border border-[rgb(var(--color-border))] dark:border-[rgb(var(--color-border))]  rounded-3xl px-4 py-2 items-center gap-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition;
-  }
-
-  .hero-icon {
-    @apply w-5 h-5;
-  }
+  
+    #hero h2 {
+        display: inline-block;
+    }
+  
 </style>

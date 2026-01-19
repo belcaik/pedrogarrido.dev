@@ -7,35 +7,37 @@
 ---
 
 <!-- Hidden honeypot trap - invisible to real users -->
-<div class="hp-trap" aria-hidden="true" tabindex="-1">
+<div class="hp-trap" aria-hidden="true">
   <!-- Fake email link that only bots would follow -->
-  <a href="/trap" class="hp-link" rel="nofollow noindex">
+  <a href="/trap" class="hp-link" rel="nofollow noindex" tabindex="-1" aria-hidden="true">
     Contact Admin
   </a>
 
   <!-- Hidden form field - if filled, it's a bot -->
   <form class="hp-form" action="/trap" method="POST">
-    <label for="hp-website">Website</label>
     <input
       type="text"
       id="hp-website"
       name="website_url_field"
       autocomplete="off"
       tabindex="-1"
+      aria-label="Website"
+      aria-hidden="true"
     />
-    <label for="hp-email">Email Address</label>
     <input
       type="email"
       id="hp-email"
       name="contact_email_address"
       autocomplete="off"
       tabindex="-1"
+      aria-label="Email Address"
+      aria-hidden="true"
     />
   </form>
 </div>
 
 <style>
-  /* Hide honeypot from real users using multiple techniques */
+  /* Hide honeypot from real users and screen readers completely */
   .hp-trap {
     position: absolute;
     left: -9999px;
@@ -46,10 +48,13 @@
     opacity: 0;
     pointer-events: none;
     z-index: -1;
+    visibility: hidden;
   }
 
-  /* Additional hiding for screen readers */
-  .hp-trap * {
-    visibility: hidden;
+  /* Make content visible only to bots that ignore CSS */
+  .hp-trap input,
+  .hp-trap a {
+    visibility: visible;
+    position: absolute;
   }
 </style>

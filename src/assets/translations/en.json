@@ -38,7 +38,7 @@
         "company": "Citi Bank",
         "via": "via Kibernum",
         "position": "Software Developer",
-        "date": "March 2024 - Present",
+        "date": "March 2024 - February 2026",
         "location": "Remote, Chile",
         "description": [
           "Led rewrite of legacy .NET Framework apps into micro-frontend architecture (React + NestJS), achieving 6x performance improvement (30s → 5s)",
@@ -84,7 +84,7 @@
       {
         "company": "Tutelkan",
         "position": "Software Development Intern",
-        "date": "2022 - 2023",
+        "date": "2022",
         "location": "Remote, Chile",
         "description": [
           "Assisted in developing web applications using modern JavaScript frameworks",
@@ -191,10 +191,10 @@
     "title": "Projects",
     "items": [
       {
-        "name": "Agricultural Quality Analysis Platform",
-        "role": "Full-Stack Developer",
-        "year": "2023",
-        "description": "End-to-end agricultural technology platform for automated fruit quality classification using computer vision. Built Vue.js dashboard, React Native mobile app, NestJS API orchestration, and Python ML services with OpenCV + YOLOv5.",
+        "name": "",
+        "role": "",
+        "year": "",
+        "description": "",
         "tech": [
           "Vue.js",
           "React Native",

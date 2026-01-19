@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../i18n';
 import type { TimelineEntry } from '../utils';
-import { BriefcaseIcon, CredIcon } from '../assets/icons';
+import { Briefcase, GraduationCap } from '@lucide/astro';
 
 interface Props {
   entry: TimelineEntry;
@@ -10,34 +10,35 @@ interface Props {
 }
 
 const { entry, position } = Astro.props;
-const Icon = entry.type === 'position' ? BriefcaseIcon : CredIcon;
+const isPosition = entry.type === 'position';
 ---
 
 <article class={`entry entry--${position} entry--${entry.type}`}>
-  <!-- Node + Connector: extends from card edge to spine -->
-  <div class="entry-connector">
-    <span class="entry-node"></span>
+  <!-- Icon circle on the card border (spine side) -->
+  <div class="entry-icon-wrapper">
+    {isPosition ? (
+      <Briefcase class="w-5 h-5 text-primary" size={20} />
+    ) : (
+      <GraduationCap class="w-5 h-5 text-primary" size={20} />
+    )}
   </div>
 
   <!-- Card Content -->
   <div class="entry-card">
-    <div class="entry-header">
-      <Icon class="entry-icon" />
-      <div class="entry-titles">
-        <h4 class="entry-title">{entry.title}</h4>
-        <p class="entry-subtitle">
-          <span class="entry-company">{entry.subtitle}</span>
-          {entry.via && <span class="entry-via">{entry.via}</span>}
-        </p>
-      </div>
+    <div class="mb-2">
+      <h4 class="text-base font-semibold text-text m-0 leading-tight">{entry.title}</h4>
+      <p class="text-sm mt-1 mb-0 leading-normal">
+        <span class="text-primary font-medium">{entry.subtitle}</span>
+        {entry.via && <span class="text-text-muted font-normal"> {entry.via}</span>}
+      </p>
     </div>
 
     <div class="entry-meta">
-      <time class="entry-date">{entry.dateString}</time>
+      <time class="text-xs text-text-muted">{entry.dateString}</time>
       {entry.status && <span class="entry-status">{entry.status}</span>}
     </div>
 
-    {entry.location && <p class="entry-location">{entry.location}</p>}
+    {entry.location && <p class="text-xs text-text-subtle m-0 mb-3">{entry.location}</p>}
 
     {entry.description && entry.description.length > 0 && (
       <ul class="entry-description">
@@ -45,11 +46,11 @@ const Icon = entry.type === 'position' ? BriefcaseIcon : CredIcon;
       </ul>
     )}
 
-    {entry.honors && <p class="entry-honors">{entry.honors}</p>}
+    {entry.honors && <p class="text-sm text-text-muted my-2 italic">{entry.honors}</p>}
 
     {entry.tech && entry.tech.length > 0 && (
       <div class="entry-tech">
-        {entry.tech.map(tech => <span class="tech-tag">{tech}</span>)}
+        {entry.tech.map(tech => <span class="tech-tag tech-tag-sm">{tech}</span>)}
       </div>
     )}
   </div>
@@ -57,270 +58,112 @@ const Icon = entry.type === 'position' ? BriefcaseIcon : CredIcon;
 
 <style>
   .entry {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 450px;
+    @apply relative flex w-full;
   }
 
-  /* ================================
-     CONNECTOR + NODE
-     ================================ */
-  .entry-connector {
-    position: absolute;
-    top: 1.25rem;
-    height: 2px;
-    background: rgb(var(--color-border));
-    z-index: 1;
+  /* Icon wrapper (circle on card border) */
+  .entry-icon-wrapper {
+    @apply absolute top-6 w-10 h-10 rounded-full bg-surface border-[3px] border-primary flex items-center justify-center z-10;
   }
 
-  .entry-node {
-    position: absolute;
-    top: 50%;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgb(var(--color-surface));
-    border: 2px solid rgb(var(--color-primary));
-    z-index: 2;
-    transform: translateY(-50%);
+  /* Position-specific icon placement */
+  .entry--left .entry-icon-wrapper {
+    right: -1.25rem;
   }
 
-  /* Left position: connector extends RIGHT across full gap to spine center */
-  .entry--left .entry-connector {
-    left: 100%;
-    width: calc(var(--column-gap, 4rem) + 1px);
+  .entry--right .entry-icon-wrapper {
+    left: -1.25rem;
   }
 
-  .entry--left .entry-node {
-    left: auto;
-    right: -6px; /* Center the 12px node at the end of connector (on spine) */
-  }
-
-  /* Right position: connector extends LEFT across full gap to spine center */
-  .entry--right .entry-connector {
-    right: 100%;
-    width: calc(var(--column-gap, 4rem) + 1px);
-  }
-
-  .entry--right .entry-node {
-    right: auto;
-    left: -6px;
-  }
-  /* Node colors by type */
-  .entry--degree .entry-node {
-    border-color: rgb(var(--color-primary));
-  }
-
-  .entry--position .entry-node {
-    border-color: rgb(var(--color-accent, var(--color-primary)));
-  }
-
-  /* ================================
-     CARD STYLES
-     ================================ */
+  /* Card styles */
   .entry-card {
-    width: 100%;
-    padding: 1.25rem;
-    background: rgb(var(--color-surface));
-    border: 1px solid rgb(var(--color-border));
-    border-radius: 0.75rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    @apply w-full p-5 bg-surface border border-border rounded-card transition-all duration-200;
   }
 
   .entry-card:hover {
-    transform: translateY(-2px);
+    @apply -translate-y-0.5;
     box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
   }
 
   .entry--left .entry-card {
-    text-align: right;
+    @apply text-right mr-6;
   }
 
   .entry--right .entry-card {
-    text-align: left;
-  }
-
-  .entry-header {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .entry--left .entry-header {
-    flex-direction: row-reverse;
-  }
-
-  .entry-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: rgb(var(--color-primary));
-    flex-shrink: 0;
-    margin-top: 0.125rem;
-  }
-
-  .entry-titles {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .entry-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: rgb(var(--color-text));
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  .entry-subtitle {
-    font-size: 0.875rem;
-    margin: 0.25rem 0 0 0;
-    line-height: 1.4;
-  }
-
-  .entry-company {
-    color: rgb(var(--color-primary));
-    font-weight: 500;
-  }
-
-  .entry-via {
-    color: rgb(var(--color-text-muted));
-    font-weight: 400;
-  }
-
-  .entry-via::before {
-    content: ' ';
+    @apply text-left ml-6;
   }
 
   .entry-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    flex-wrap: wrap;
+    @apply flex items-center gap-2 mb-2 flex-wrap;
   }
 
   .entry--left .entry-meta {
-    justify-content: flex-end;
+    @apply justify-end;
   }
 
-  .entry-date {
-    font-size: 0.8rem;
-    color: rgb(var(--color-text-muted));
+  .entry--right .entry-meta {
+    @apply justify-start;
   }
 
   .entry-status {
-    font-size: 0.7rem;
-    font-weight: 500;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    background: rgba(var(--color-primary), 0.15);
-    color: rgb(var(--color-primary));
-  }
-
-  .entry-location {
-    font-size: 0.8rem;
-    color: rgb(var(--color-text-subtle));
-    margin: 0 0 0.75rem 0;
+    @apply text-[0.7rem] font-medium py-0.5 px-2.5 rounded-full bg-primary/15 text-primary;
   }
 
   .entry-description {
-    font-size: 0.85rem;
-    color: rgb(var(--color-text-muted));
-    margin: 0.75rem 0;
-    padding-left: 1rem;
-    line-height: 1.5;
+    @apply text-sm text-text-muted my-3 leading-relaxed;
   }
 
   .entry--left .entry-description {
-    padding-left: 0;
-    padding-right: 1rem;
+    @apply pl-0 pr-4 list-inside;
+  }
+
+  .entry--right .entry-description {
+    @apply pl-4 pr-0;
   }
 
   .entry-description li {
-    margin-bottom: 0.4rem;
-  }
-
-  .entry-description li:last-child {
-    margin-bottom: 0;
-  }
-
-  .entry-honors {
-    font-size: 0.85rem;
-    color: rgb(var(--color-text-muted));
-    margin: 0.5rem 0;
-    font-style: italic;
+    @apply mb-1.5 last:mb-0;
   }
 
   .entry-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.75rem;
+    @apply flex flex-wrap gap-1.5 mt-3;
   }
 
   .entry--left .entry-tech {
-    justify-content: flex-end;
+    @apply justify-end;
   }
 
-  .tech-tag {
-    font-size: 0.7rem;
-    font-weight: 500;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.375rem;
-    background: rgb(var(--color-tag-bg));
-    color: rgb(var(--color-tag-text));
+  .entry--right .entry-tech {
+    @apply justify-start;
   }
 
-  /* ================================
-     MOBILE OVERRIDES
-     ================================ */
+  /* Mobile overrides */
   @media (max-width: 768px) {
-    .entry {
-      max-width: none;
-    }
-
-    /* On mobile, all entries are "right" positioned */
     .entry--left .entry-card,
     .entry--right .entry-card {
-      text-align: left;
+      @apply text-left ml-6 mr-0;
     }
 
-    .entry--left .entry-header,
-    .entry--right .entry-header {
-      flex-direction: row;
+    .entry--left .entry-icon-wrapper,
+    .entry--right .entry-icon-wrapper {
+      left: -1.25rem;
+      right: auto;
     }
 
     .entry--left .entry-meta,
     .entry--right .entry-meta {
-      justify-content: flex-start;
+      @apply justify-start;
     }
 
     .entry--left .entry-description,
     .entry--right .entry-description {
-      padding-left: 1rem;
-      padding-right: 0;
+      @apply pl-4 pr-0;
+      list-style-position: outside;
     }
 
     .entry--left .entry-tech,
     .entry--right .entry-tech {
-      justify-content: flex-start;
-    }
-
-    /* Mobile connector positioning - reset both left/right for all entry types */
-    .entry--left .entry-connector,
-    .entry--right .entry-connector {
-      left: 0;
-      right: auto;
-      transform: translateX(-100%);
-      width: 1.5rem;
-    }
-
-    .entry--left .entry-node,
-    .entry--right .entry-node {
-      left: -6px;
-      right: auto;
+      @apply justify-start;
     }
   }
 </style>

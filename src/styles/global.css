@@ -2,6 +2,133 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================================
+   COMPONENT LAYER - Reusable patterns
+   ================================ */
+@layer components {
+
+  /* Section containers */
+  .section-container {
+    @apply max-w-content mx-auto px-4;
+  }
+
+  .section-container-narrow {
+    @apply max-w-content-narrow mx-auto px-4;
+  }
+
+  .section-padding {
+    @apply py-section;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      @apply py-section-sm;
+    }
+  }
+
+  /* Section titles with icon support */
+  .section-title {
+    @apply text-section-title text-text flex items-center gap-2 mb-8;
+  }
+
+  .section-title-icon {
+    @apply w-8 h-8 text-primary;
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      @apply text-section-title-sm mb-6;
+    }
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-surface border border-border rounded-card p-6 transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-card hover:border-primary;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      @apply p-5;
+    }
+  }
+
+  /* Tech/skill tags */
+  .tech-tag {
+    @apply bg-tag-bg text-tag-text px-3 py-1.5 rounded-tag text-sm font-medium border border-border;
+  }
+
+  .tech-tag-hover {
+    @apply transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary hover:scale-105;
+  }
+
+  .tech-tag-sm {
+    @apply px-2 py-1 text-xs;
+  }
+
+  /* CTA / Action buttons */
+  .btn-cta {
+    @apply flex items-center justify-center gap-2 px-4 py-2 rounded-btn border border-border text-text transition-all duration-200;
+  }
+
+  .btn-cta:hover {
+    @apply bg-surface-elevated;
+  }
+
+  .btn-icon {
+    @apply w-5 h-5;
+  }
+
+  /* Glass effect (for nav, dropdowns, etc.) */
+  .glass {
+    @apply bg-surface/90 backdrop-blur-glass border border-border shadow-glass;
+  }
+
+  .glass:hover {
+    @apply bg-surface shadow-glass-hover;
+  }
+
+  /* Link styles */
+  .link-primary {
+    @apply text-primary hover:opacity-80 transition-opacity duration-200;
+  }
+
+  .link-muted {
+    @apply text-text-muted hover:text-primary transition-colors duration-200;
+  }
+
+  /* Social link button */
+  .social-btn {
+    @apply flex items-center justify-center w-10 h-10 bg-background border border-border rounded-lg text-text-muted transition-all duration-200;
+  }
+
+  .social-btn:hover {
+    @apply bg-primary border-primary text-white -translate-y-0.5;
+  }
+
+  /* Grid layouts */
+  .grid-cards {
+    @apply grid gap-8;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+
+  .grid-skills {
+    @apply grid gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  @media (max-width: 768px) {
+
+    .grid-cards,
+    .grid-skills {
+      @apply grid-cols-1 gap-6;
+    }
+  }
+}
+
 @layer base {
   :root {
     /* Fondos */
@@ -104,105 +231,65 @@
     /* #dc465a */
   }
 
-  /* Component variable mappings */
-  :root,
-  .dark {
-    --bg-primary: rgb(var(--color-background));
-    --bg-secondary: rgb(var(--color-surface));
-    --text-primary: rgb(var(--color-text));
-    --text-secondary: rgb(var(--color-text-muted));
-    --primary-color: rgb(var(--color-primary));
-    --primary-hover: rgb(var(--color-primary-hover));
-    --border-color: rgb(var(--color-border));
-    --tag-bg: rgb(var(--color-tag-bg));
-    --tag-text: rgb(var(--color-tag-text));
-    --tag-border: rgb(var(--color-border));
-  }
-
+  /* Background gradient effect */
   .background-gradient {
     background: radial-gradient(125% 125% at 80% 100%, rgb(var(--color-background)) 40%, rgb(var(--gradient-color)) 100%);
   }
 
-  /* background: radial-gradient(125% 125% at 50% 10%, #fff 40%, #6366f1 100%) */
-
   html {
-    background-color: rgb(var(--color-background));
-    color: rgb(var(--color-text));
+    @apply bg-background text-text;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   body {
-    background-color: rgb(var(--color-background));
+    @apply bg-background;
   }
 
-
+  /* Typography defaults */
   h1,
   h2,
   h3 {
-    align-items: center;
+    @apply flex items-center;
   }
 
   h1 {
-    font-size: 4rem;
+    @apply text-6xl;
   }
 
   h2 {
-    font-size: 2rem;
-  }
-
-  h3 svg {
-    margin-right: 0.69rem;
-    width: 2.5rem;
-    height: 2.5rem;
+    @apply text-3xl;
   }
 
   h3 {
-    font-size: 1.75rem;
-    display: flex;
+    @apply text-2xl;
   }
 
+  h3 svg {
+    @apply mr-2.5 w-10 h-10;
+  }
 }
 
 /* ================================
    ANTI-SCRAPING PROTECTION
    ================================ */
-
-/* Prevent text selection on sensitive data */
 .no-select,
 .protected-data {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  @apply select-none;
 }
 
-/* Hide content from print */
 @media print {
+
   .no-print,
   .protected-data {
     display: none !important;
   }
 }
 
-/* Disable right-click context menu styling hint */
 .protected-area {
   -webkit-touch-callout: none;
 }
 
-/* Make email links require JS interaction */
-.obfuscated-email .email-placeholder {
-  font-style: italic;
-  opacity: 0.7;
-}
-
-/* Decoded email styling */
+/* Obfuscated email - decoded via JS */
 .obfuscated-email .decoded-email {
-  color: rgb(var(--color-primary));
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.obfuscated-email .decoded-email:hover {
-  opacity: 0.8;
-  text-decoration: underline;
+  @apply text-primary no-underline transition-opacity duration-200 hover:opacity-80 hover:underline;
 }

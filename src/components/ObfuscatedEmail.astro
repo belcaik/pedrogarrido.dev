@@ -19,13 +19,13 @@ const uniqueId = `email-${Math.random().toString(36).substring(2, 9)}`;
 ---
 
 <span
-  class={`obfuscated-email ${className}`}
+  class={`obfuscated-email inline ${className}`}
   data-u={encodedUser}
   data-d={encodedDomain}
   id={uniqueId}
 >
   <noscript>Enable JavaScript to view email</noscript>
-  <span class="email-placeholder">[email protected]</span>
+  <span class="text-text-muted italic">[email protected]</span>
 </span>
 
 <script define:vars={{ uniqueId, encodedUser, encodedDomain }}>
@@ -49,25 +49,3 @@ const uniqueId = `email-${Math.random().toString(36).substring(2, 9)}`;
     el.appendChild(link);
   })();
 </script>
-
-<style>
-  .obfuscated-email {
-    display: inline;
-  }
-
-  .email-placeholder {
-    color: var(--text-secondary);
-    font-style: italic;
-  }
-
-  .decoded-email {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .decoded-email:hover {
-    opacity: 0.8;
-    text-decoration: underline;
-  }
-</style>

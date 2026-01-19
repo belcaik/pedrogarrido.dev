@@ -1,6 +1,6 @@
 ---
 import { useTranslations, type Lang } from "../i18n";
-import { DownloadIcon, TimelineIcon } from "../assets/icons";
+import { Download, CalendarDays } from "@lucide/astro";
 import TimelineEntry from "./TimelineEntry.astro";
 import en from "../assets/translations/en.json";
 import es from "../assets/translations/es.json";
@@ -16,137 +16,65 @@ const translations = { en, es } as const;
 const jobs = translations[lang].experience.jobs as Job[];
 const schools = translations[lang].education.items as School[];
 
-const { allEntries, slots, totalRows } = createTimelineContext(
-  jobs,
-  schools,
-  lang,
-);
+const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
 ---
 
-<section id="experience" class="experience">
-  <h3 class="experience-title">
-    <TimelineIcon class="experience-icon" />
+<section id="experience" class="section-container py-8">
+  <h3 class="section-title">
+    <CalendarDays class="section-title-icon" size={32} />
     {t("experience.title")} & {t("education.title")}
   </h3>
 
-  <a href="/assets/cv/fullstack.pdf" class="cv-button download-link" rel="nofollow noindex" download>
-    <DownloadIcon class="cv-btn-icon" />
+  <a href="/assets/cv/fullstack.pdf" class="btn-cta w-fit" rel="nofollow noindex" download aria-label="Download resume">
+    <Download class="btn-icon" size={20} />
     <span>{t("about.downloadResume")}</span>
   </a>
-  <!-- Desktop: Bifurcated timeline with temporal alignment -->
-  <br />
-  <div class="timeline-desktop" style={`--total-rows: ${totalRows}`}>
-    <!-- Render entries with explicit grid-row assignments based on temporal slots -->
-    {
-      slots.map((slot) => (
-        <>
-          {slot.left && (
-            <div
-              class="entry-slot entry-slot--left"
-              style={`grid-row: ${slot.row}`}
-            >
-              <TimelineEntry entry={slot.left} position="left" lang={lang} />
-            </div>
-          )}
-          {slot.right && (
-            <div
-              class="entry-slot entry-slot--right"
-              style={`grid-row: ${slot.row}`}
-            >
-              <TimelineEntry entry={slot.right} position="right" lang={lang} />
-            </div>
-          )}
-        </>
-      ))
-    }
 
-    <!-- Center spine: spans all rows -->
+  <!-- Desktop: Alternating timeline -->
+  <div class="timeline" style={`--total-rows: ${totalRows}`}>
     <div class="timeline-spine"></div>
+
+    {slots.map((slot) => (
+      <div
+        class={`timeline-slot timeline-slot--${slot.position}`}
+        style={`grid-row: ${slot.row}`}
+      >
+        <TimelineEntry entry={slot.entry} position={slot.position} lang={lang} />
+      </div>
+    ))}
   </div>
 
   <!-- Mobile: Linear timeline -->
   <div class="timeline-mobile">
     <div class="timeline-spine"></div>
-    <div class="timeline-column">
-      {
-        allEntries.map((entry) => (
-          <TimelineEntry entry={entry} position="right" lang={lang} />
-        ))
-      }
+    <div class="timeline-entries">
+      {slots.map((slot) => (
+        <TimelineEntry entry={slot.entry} position="right" lang={lang} />
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .cv-button {
-    @apply flex justify-center border border-[rgb(var(--color-border))] dark:border-[rgb(var(--color-border))]  rounded-3xl px-4 py-2 items-center gap-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition;
-  }
-
-  .cv-btn-icon {
-    @apply w-5 h-5;
-  }
-  .experience {
-    padding: 2rem 0;
-  }
-
-  .experience-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: rgb(var(--color-text));
-    margin-bottom: 2.5rem;
-  }
-
-  .experience-icon {
-    width: 2rem;
-    height: 2rem;
-    color: rgb(var(--color-primary));
-  }
-
-  /* ================================
-     DESKTOP LAYOUT
-     ================================ */
-  .timeline-desktop {
-    --column-gap: 4rem;
+  /* Desktop: Alternating timeline */
+  .timeline {
     display: grid;
-    grid-template-columns: 1fr 2px 1fr;
+    grid-template-columns: 1fr 4px 1fr;
     grid-template-rows: repeat(var(--total-rows), auto);
-    gap: 1.5rem var(--column-gap);
+    gap: 2rem 0;
     position: relative;
-    align-items: start;
+    margin-top: 2rem;
   }
 
   .timeline-mobile {
     display: none;
   }
 
-  /* Entry slot wrappers - pass column-gap to child entries */
-  .entry-slot {
-    display: flex;
-    width: 100%;
-    --column-gap: inherit;
-    align-items: center;
-  }
-
-  .entry-slot--left {
-    grid-column: 1;
-    justify-content: flex-end;
-  }
-
-  .entry-slot--right {
-    grid-column: 3;
-    justify-content: flex-start;
-  }
-
-  /* Desktop spine: centered in column 2, spanning all rows */
-  .timeline-desktop .timeline-spine {
+  /* Central spine */
+  .timeline .timeline-spine {
     grid-column: 2;
     grid-row: 1 / -1;
-    position: relative;
-    width: 2px;
-    justify-self: center;
+    @apply w-1 justify-self-center relative;
     background: linear-gradient(
       to bottom,
       transparent 0%,
@@ -156,40 +84,50 @@ const { allEntries, slots, totalRows } = createTimelineContext(
     );
   }
 
-  /* ================================
-     MOBILE LAYOUT
-     ================================ */
+  /* Slot positioning */
+  .timeline-slot {
+    @apply flex items-start;
+  }
+
+  .timeline-slot--left {
+    grid-column: 1;
+    @apply justify-end pr-6;
+  }
+
+  .timeline-slot--right {
+    grid-column: 3;
+    @apply justify-start pl-6;
+  }
+
+  /* Mobile: Linear timeline */
   @media (max-width: 768px) {
-    .timeline-desktop {
+    .timeline {
       display: none;
     }
 
     .timeline-mobile {
       display: grid;
-      grid-template-columns: 2px 1fr;
-      gap: 0 1.5rem;
-      padding-left: 0.5rem;
+      grid-template-columns: 4px 1fr;
+      @apply gap-x-4 mt-8 pl-2;
     }
 
     .timeline-mobile .timeline-spine {
       grid-column: 1;
       grid-row: 1;
-      width: 2px;
+      @apply w-1;
       background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgb(var(--color-border)) 2%,
-        rgb(var(--color-border)) 98%,
+        rgb(var(--color-border)) 1%,
+        rgb(var(--color-border)) 99%,
         transparent 100%
       );
     }
 
-    .timeline-mobile .timeline-column {
+    .timeline-mobile .timeline-entries {
       grid-column: 2;
       grid-row: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      @apply flex flex-col gap-6;
     }
   }
 </style>

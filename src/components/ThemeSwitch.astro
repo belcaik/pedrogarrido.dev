@@ -1,15 +1,15 @@
 ---
-import { SunIcon, MoonIcon } from "../assets/icons";
+import { Sun, Moon } from "@lucide/astro";
 ---
 
 <button
     id="theme-toggle"
-    class="theme-toggle"
+    class="flex glass w-10 h-10 p-2 rounded-lg cursor-pointer transition-all hover:scale-105"
     aria-label="Toggle theme"
     title="Toggle theme"
 >
-    <SunIcon class="icon sun-icon" />
-    <MoonIcon class="icon moon-icon" />
+    <Sun class="icon sun-icon" />
+    <Moon class="icon moon-icon" />
 </button>
 
 <script>
@@ -69,33 +69,8 @@ import { SunIcon, MoonIcon } from "../assets/icons";
 </script>
 
 <style>
-    .theme-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        padding: 0.5rem;
-        background: rgba(var(--color-surface), 0.9);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgb(var(--color-border));
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(var(--shadow-color), 0.1);
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .theme-toggle:hover {
-        box-shadow: 0 4px 12px rgba(var(--shadow-color), 0.15);
-        transform: scale(1.05);
-    }
-
     .icon {
-        width: 20px;
-        height: 20px;
-        transition:
-            opacity 0.2s ease,
-            transform 0.2s ease;
+        @apply w-5 h-5 transition-all duration-200;
     }
 
     .sun-icon {
@@ -103,29 +78,25 @@ import { SunIcon, MoonIcon } from "../assets/icons";
     }
 
     .moon-icon {
+        @apply absolute;
         color: #6366f1;
-        position: absolute;
     }
 
     /* Light mode: show sun, hide moon */
     :global(html:not(.dark)) .sun-icon {
-        opacity: 1;
-        transform: rotate(0deg);
+        @apply opacity-100 rotate-0;
     }
 
     :global(html:not(.dark)) .moon-icon {
-        opacity: 0;
-        transform: rotate(-90deg);
+        @apply opacity-0 -rotate-90;
     }
 
     /* Dark mode: show moon, hide sun */
     :global(html.dark) .sun-icon {
-        opacity: 0;
-        transform: rotate(90deg);
+        @apply opacity-0 rotate-90;
     }
 
     :global(html.dark) .moon-icon {
-        opacity: 1;
-        transform: rotate(0deg);
+        @apply opacity-100 rotate-0;
     }
 </style>

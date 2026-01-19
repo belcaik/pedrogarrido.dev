@@ -86,23 +86,14 @@ export function sortTimelineEntries(entries: TimelineEntry[]): TimelineEntry[] {
 
 export interface TimelineSlot {
   row: number;
-  left?: TimelineEntry;
-  right?: TimelineEntry;
+  entry: TimelineEntry;
+  position: 'left' | 'right';
 }
 
 export interface TimelineContext {
   allEntries: TimelineEntry[];
   slots: TimelineSlot[];
   totalRows: number;
-}
-
-function rangesOverlap(a: ParsedDateRange, b: ParsedDateRange): boolean {
-  // Treat ongoing entries as having an end date of "infinity"
-  const aEnd = a.endDate ?? new Date(8640000000000000);
-  const bEnd = b.endDate ?? new Date(8640000000000000);
-
-  // Ranges overlap if: startA <= endB AND startB <= endA
-  return a.startDate <= bEnd && b.startDate <= aEnd;
 }
 
 export function createTimelineContext(jobs: Job[], schools: School[], lang: Lang): TimelineContext {
@@ -112,65 +103,16 @@ export function createTimelineContext(jobs: Job[], schools: School[], lang: Lang
   // Sort all entries by startDate DESC (newest first)
   const allEntries = sortTimelineEntries([...positionEntries, ...degreeEntries]);
 
-  // Sort each column independently
-  const leftEntries = sortTimelineEntries([...degreeEntries]);  // degrees
-  const rightEntries = sortTimelineEntries([...positionEntries]); // positions
-
-  // Create slots by interleaving based on startDate
-  const slots: TimelineSlot[] = [];
-  let leftIdx = 0;
-  let rightIdx = 0;
-  let currentRow = 1;
-
-  while (leftIdx < leftEntries.length || rightIdx < rightEntries.length) {
-    const leftEntry = leftEntries[leftIdx];
-    const rightEntry = rightEntries[rightIdx];
-
-    const slot: TimelineSlot = { row: currentRow };
-
-    if (!leftEntry) {
-      // Only right entries remaining
-      slot.right = rightEntry;
-      rightIdx++;
-    } else if (!rightEntry) {
-      // Only left entries remaining
-      slot.left = leftEntry;
-      leftIdx++;
-    } else {
-      // Both columns have entries - check if date ranges overlap
-      const areConcurrent = rangesOverlap(
-        leftEntry.parsedDates,
-        rightEntry.parsedDates
-      );
-
-      if (areConcurrent) {
-        // Ranges overlap - place both in same slot
-        slot.left = leftEntry;
-        slot.right = rightEntry;
-        leftIdx++;
-        rightIdx++;
-      } else {
-        // No overlap - place the more recent one alone
-        const leftStart = leftEntry.parsedDates.startDate.getTime();
-        const rightStart = rightEntry.parsedDates.startDate.getTime();
-
-        if (leftStart > rightStart) {
-          slot.left = leftEntry;
-          leftIdx++;
-        } else {
-          slot.right = rightEntry;
-          rightIdx++;
-        }
-      }
-    }
-
-    slots.push(slot);
-    currentRow++;
-  }
+  // Create slots with alternating positions (index-based, not type-based)
+  const slots: TimelineSlot[] = allEntries.map((entry, index) => ({
+    row: index + 1,
+    entry,
+    position: index % 2 === 0 ? 'left' : 'right',
+  }));
 
   return {
     allEntries,
     slots,
-    totalRows: slots.length,
+    totalRows: allEntries.length,
   };
 }

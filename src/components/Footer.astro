@@ -1,6 +1,6 @@
 ---
 import { useTranslations, type Lang } from '../i18n';
-import { GithubIcon, LinkedinIcon, MailIcon } from '../assets/icons';
+import { Github, Linkedin, Mail } from '@lucide/astro';
 import { getContactData } from '../utils/contact';
 
 interface Props {
@@ -22,28 +22,25 @@ const navLinks = [
 
 // Encode email for obfuscation - will be decoded client-side
 const encodedEmail = Buffer.from(contactInfo.email.value).toString('base64');
-
-const socialLinks = [
-  { href: contactInfo.github?.url || 'https://github.com/belcaik', icon: GithubIcon, label: 'GitHub', isEmail: false },
-  { href: contactInfo.linkedin.url, icon: LinkedinIcon, label: 'LinkedIn', isEmail: false },
-  { href: '#contact', icon: MailIcon, label: 'Email', isEmail: true, encodedEmail },
-];
 ---
 
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-top">
-      <div class="footer-section">
-        <h3 class="footer-brand">Pedro Garrido</h3>
-        <p class="footer-tagline">Software Engineer & DevOps Enthusiast</p>
+<footer class="bg-surface border-t border-border py-12 md:py-10 px-4 mt-24 md:mt-16">
+  <div class="section-container flex flex-col gap-10">
+    <div class="md:grid grid-cols-[2fr_1fr_1fr] gap-12 md:gap-8">
+      
+      <div class="flex flex-col gap-4">
+        <h3 class="text-2xl font-bold text-text m-0">Pedro Garrido</h3>
+        <p class="text-text-muted text-[0.9375rem] m-0 max-w-[300px] md:max-w-full">
+          Software Engineer & DevOps Enthusiast
+        </p>
       </div>
 
-      <nav class="footer-nav" aria-label="Footer Navigation">
-        <h4 class="footer-heading">Navigation</h4>
-        <ul class="footer-links">
+      <nav class="flex flex-col gap-4" aria-label="Footer Navigation">
+        <h4 class="text-base font-semibold text-text m-0 uppercase tracking-wide">Navigation</h4>
+        <ul class="list-none p-0 m-0 flex flex-col gap-3">
           {navLinks.map((link) => (
             <li>
-              <a href={link.href} class="footer-link">
+              <a href={link.href} class="link-muted text-[0.9375rem]">
                 {link.label}
               </a>
             </li>
@@ -51,40 +48,44 @@ const socialLinks = [
         </ul>
       </nav>
 
-      <div class="footer-section">
-        <h4 class="footer-heading">Connect</h4>
-        <div class="social-links">
-          {socialLinks.map((social) => (
-            social.isEmail ? (
-              <a
-                href={social.href}
-                class="social-link email-social-link"
-                aria-label={social.label}
-                data-e={social.encodedEmail}
-              >
-                <social.icon />
-              </a>
-            ) : (
-              <a
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-                aria-label={social.label}
-              >
-                <social.icon />
-              </a>
-            )
-          ))}
+      <div class="flex flex-col gap-4">
+        <h4 class="text-base font-semibold text-text m-0 uppercase tracking-wide">Connect</h4>
+        <div class="flex gap-4">
+          <a
+            href={contactInfo.github?.url || 'https://github.com/belcaik'}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            aria-label="GitHub"
+          >
+            <Github size={20} />
+          </a>
+          <a
+            href={contactInfo.linkedin.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a
+            href="#contact"
+            class="social-btn email-social-link"
+            aria-label="Email"
+            data-e={encodedEmail}
+          >
+            <Mail size={20} />
+          </a>
         </div>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p class="copyright">
+    <div class="sm:flex-col md:grid lg:grid-cols-2">
+      <p class="text-text-muted text-sm m-0 md:grid-col-1 lg:grid-col-1">
         © {currentYear} {t('footer.copyright')}
       </p>
-      <p class="built-with">
+      <p class="text-text-muted text-sm m-0 flex items-center gap-2 md:grid-col-2 lg:grid-col-2 justify-end">
         {t('footer.builtWith')}
       </p>
     </div>
@@ -102,164 +103,3 @@ const socialLinks = [
     }
   });
 </script>
-
-<style>
-  .footer {
-    background-color: var(--bg-secondary);
-    border-top: 1px solid var(--border-color);
-    padding: 3rem 1rem 2rem;
-    margin-top: 6rem;
-  }
-
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  .footer-top {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .footer-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .footer-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
-  }
-
-  .footer-tagline {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-    margin: 0;
-    max-width: 300px;
-  }
-
-  .footer-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .footer-heading {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .footer-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9375rem;
-    transition: color 0.2s ease;
-  }
-
-  .footer-link:hover {
-    color: var(--primary-color);
-  }
-
-  .social-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    transition: all 0.2s ease;
-  }
-
-  .social-link:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  .social-link :global(svg) {
-    width: 20px;
-    height: 20px;
-  }
-
-  .footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .copyright,
-  .built-with {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    margin: 0;
-  }
-
-  .built-with {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .footer {
-      padding: 2.5rem 1rem 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .footer-top {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .footer-section {
-      text-align: center;
-      align-items: center;
-    }
-
-    .footer-nav {
-      align-items: center;
-    }
-
-    .footer-tagline {
-      max-width: 100%;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
-      text-align: center;
-      padding-top: 1.5rem;
-    }
-  }
-</style>

@@ -64,18 +64,20 @@ const alternateLinks = Object.keys(languages).map((l) => {
     <Honeypot />
     <div class="fixed inset-0 z-0 background-gradient"></div>
     <div class="min-h-screen w-full relative">
-      <nav class="main-nav">
-        <div class="nav-container">
-          <a href={`/${lang}`} class="nav-brand">Pedro Garrido</a>
+      <nav class="sticky top-0 z-[1000] bg-background/80 backdrop-blur-glass border-b border-border py-4">
+        <div class="section-container flex items-center justify-between gap-8 md:gap-4">
+          <a href={`/${lang}`} class="text-xl font-bold text-text no-underline transition-colors hover:text-primary">
+            Pedro Garrido
+          </a>
 
-          <div class="nav-links">
+          <div class="hidden md:flex items-center gap-8 flex-1 justify-center">
             <a href="#about" class="nav-link">{t("nav.about")}</a>
             <a href="#experience" class="nav-link">{t("nav.experience")}</a>
             <a href="#projects" class="nav-link">{t("nav.projects")}</a>
             <a href="#contact" class="nav-link">{t("nav.contact")}</a>
           </div>
 
-          <div class="nav-controls">
+          <div class="flex items-center gap-2">
             <ThemeSwitch />
             <LanguageSwitcher lang={lang} />
           </div>
@@ -87,87 +89,20 @@ const alternateLinks = Object.keys(languages).map((l) => {
 </html>
 
 <style>
-  .main-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(var(--color-background), 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgb(var(--color-border));
-    padding: 1rem 0;
-  }
-
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .nav-brand {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: rgb(var(--color-text));
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .nav-brand:hover {
-    color: rgb(var(--color-primary));
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex: 1;
-    justify-content: center;
-  }
-
   .nav-link {
-    color: rgb(var(--color-text-muted));
-    text-decoration: none;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    transition: color 0.2s ease;
-    position: relative;
+    @apply text-text-muted no-underline text-[0.9375rem] font-medium transition-colors relative;
   }
 
   .nav-link:hover {
-    color: rgb(var(--color-primary));
+    @apply text-primary;
   }
 
   .nav-link::after {
     content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: rgb(var(--color-primary));
-    transition: width 0.2s ease;
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200;
   }
 
   .nav-link:hover::after {
-    width: 100%;
-  }
-
-  .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-    }
-
-    .nav-container {
-      gap: 1rem;
-    }
+    @apply w-full;
   }
 </style>
