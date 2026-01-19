@@ -18,7 +18,7 @@ export function getLangFromUrl(url: URL): Lang {
   return defaultLang;
 }
 
-type TranslationValue = string | string[];
+type TranslationValue = string | unknown[];
 
 export function useTranslations(lang: Lang) {
   return function t(key: string): TranslationValue {
@@ -43,7 +43,7 @@ export function useTranslations(lang: Lang) {
     }
 
     if (typeof value === 'string') return value;
-    if (Array.isArray(value) && value.every((v) => typeof v === 'string')) return value;
+    if (Array.isArray(value)) return value;
     return key;
   };
 }

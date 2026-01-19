@@ -1,0 +1,55 @@
+---
+/**
+ * Honeypot Component
+ * Hidden trap for bots - legitimate users won't see or interact with this
+ * Bots that follow this link or fill this form will be flagged
+ */
+---
+
+<!-- Hidden honeypot trap - invisible to real users -->
+<div class="hp-trap" aria-hidden="true" tabindex="-1">
+  <!-- Fake email link that only bots would follow -->
+  <a href="/trap" class="hp-link" rel="nofollow noindex">
+    Contact Admin
+  </a>
+
+  <!-- Hidden form field - if filled, it's a bot -->
+  <form class="hp-form" action="/trap" method="POST">
+    <label for="hp-website">Website</label>
+    <input
+      type="text"
+      id="hp-website"
+      name="website_url_field"
+      autocomplete="off"
+      tabindex="-1"
+    />
+    <label for="hp-email">Email Address</label>
+    <input
+      type="email"
+      id="hp-email"
+      name="contact_email_address"
+      autocomplete="off"
+      tabindex="-1"
+    />
+  </form>
+</div>
+
+<style>
+  /* Hide honeypot from real users using multiple techniques */
+  .hp-trap {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Additional hiding for screen readers */
+  .hp-trap * {
+    visibility: hidden;
+  }
+</style>

@@ -162,3 +162,47 @@
   }
 
 }
+
+/* ================================
+   ANTI-SCRAPING PROTECTION
+   ================================ */
+
+/* Prevent text selection on sensitive data */
+.no-select,
+.protected-data {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide content from print */
+@media print {
+  .no-print,
+  .protected-data {
+    display: none !important;
+  }
+}
+
+/* Disable right-click context menu styling hint */
+.protected-area {
+  -webkit-touch-callout: none;
+}
+
+/* Make email links require JS interaction */
+.obfuscated-email .email-placeholder {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Decoded email styling */
+.obfuscated-email .decoded-email {
+  color: rgb(var(--color-primary));
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.obfuscated-email .decoded-email:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}

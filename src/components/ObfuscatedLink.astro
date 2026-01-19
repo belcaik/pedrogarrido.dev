@@ -1,0 +1,42 @@
+---
+/**
+ * Obfuscated Link Component
+ * Protects email links from scrapers by encoding the href and decoding client-side
+ */
+interface Props {
+  email: string;
+  class?: string;
+}
+
+const { email, class: className = '' } = Astro.props;
+
+// Encode the entire email
+const encodedEmail = Buffer.from(email).toString('base64');
+const uniqueId = `link-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<a
+  href="#contact"
+  class={`obfuscated-link ${className}`}
+  data-e={encodedEmail}
+  id={uniqueId}
+>
+  <slot />
+</a>
+
+<script define:vars={{ uniqueId, encodedEmail }}>
+  (function() {
+    const el = document.getElementById(uniqueId);
+    if (!el) return;
+
+    // Decode and set proper mailto href
+    const email = atob(encodedEmail);
+    el.href = 'mailto:' + email;
+  })();
+</script>
+
+<style>
+  .obfuscated-link {
+    cursor: pointer;
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import ThemeSwitch from "../components/ThemeSwitch.astro";
+import Honeypot from "../components/Honeypot.astro";
 import { useTranslations, type Lang, languages } from "../i18n";
 import "../styles/global.css";
 
@@ -36,6 +37,9 @@ const alternateLinks = Object.keys(languages).map((l) => {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <!-- Anti-scraping measures -->
+    <meta name="robots" content="noai, noimageai" />
+    <meta name="googlebot" content="notranslate" />
     <title>{pageTitle}</title>
     {
       alternateLinks.map((link) => (
@@ -56,6 +60,8 @@ const alternateLinks = Object.keys(languages).map((l) => {
     </script>
   </head>
   <body>
+    <!-- Honeypot trap for bots -->
+    <Honeypot />
     <div class="fixed inset-0 z-0 background-gradient"></div>
     <div class="min-h-screen w-full relative">
       <nav class="main-nav">

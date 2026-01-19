@@ -1,13 +1,16 @@
 ---
-import { useTranslations, type Lang, getLocalizedPath } from "../i18n";
 import { GithubIcon, LinkedinIcon, MailIcon } from "../assets/icons";
+import { getContactData } from "../utils/contact";
+import ObfuscatedLink from "./ObfuscatedLink.astro";
+import type { Lang } from "../i18n";
+
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const t = useTranslations(lang);
+const { t, contactInfo } = getContactData(lang);
 ---
 
 <section id="hero" class="hero flex flex-col">
@@ -24,22 +27,19 @@ const t = useTranslations(lang);
   <h2>
     {t("hero.experience")}
     <span>{t("hero.title")}</span>
-    {t("hero.subtitle")}
-    <br />
-    {t("hero.location")}
+    {t("hero.subtitle")} {t("hero.location")}
   </h2>
 
   <div class="hero-contact flex flex-col md:flex-row gap-4 mt-6 lg:flex-row">
-    <a class="cta-button">
+    <ObfuscatedLink email={contactInfo.email.value} class="cta-button">
       <MailIcon class="hero-icon" />
-
       {t("hero.cta")}
-    </a>
-    <a class="cta-button">
+    </ObfuscatedLink>
+    <a class="cta-button" href={contactInfo.linkedin.url} target="_blank" rel="noopener noreferrer">
       <LinkedinIcon class="hero-icon" />
       {t("hero.linkedin")}
     </a>
-    <a class="cta-button">
+    <a class="cta-button" href={contactInfo.github?.url} target="_blank" rel="noopener noreferrer">
       <GithubIcon class="hero-icon" />
       {t("hero.github")}
     </a>

@@ -23,25 +23,6 @@ const t = useTranslations(lang);
       ))
     }
   </div>
-
-  <div class="about-links">
-    <a href="mailto:pedrogarrido.dev@gmail.com" class="about-link" target="_blank" rel="noopener noreferrer">
-      <MailIcon />
-      <span>pedrogarrido.dev@gmail.com</span>
-    </a>
-    <a href="https://linkedin.com/in/pedrogarridodev" class="about-link" target="_blank" rel="noopener noreferrer">
-      <LinkedinIcon />
-      <span>LinkedIn</span>
-    </a>
-    <a href="https://github.com/belcaik" class="about-link" target="_blank" rel="noopener noreferrer">
-      <GithubIcon />
-      <span>GitHub</span>
-    </a>
-    <a href="/resume.pdf" class="about-link download-link" download>
-      <DownloadIcon />
-      <span>{t("about.downloadResume")}</span>
-    </a>
-  </div>
 </section>
 
 <style>
@@ -83,28 +64,6 @@ const t = useTranslations(lang);
     line-height: 1.7;
     color: var(--text-secondary);
     margin: 0;
-  }
-
-  .about-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
-  }
-
-  .about-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1rem;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9375rem;
-    transition: all 0.2s ease;
   }
 
   .about-link:hover {

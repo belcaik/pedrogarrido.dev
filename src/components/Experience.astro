@@ -1,10 +1,10 @@
 ---
-import { useTranslations, type Lang } from '../i18n';
-import { TimelineIcon } from '../assets/icons';
-import TimelineEntry from './TimelineEntry.astro';
-import en from '../assets/translations/en.json';
-import es from '../assets/translations/es.json';
-import { createTimelineContext, type Job, type School } from '../utils';
+import { useTranslations, type Lang } from "../i18n";
+import { DownloadIcon, TimelineIcon } from "../assets/icons";
+import TimelineEntry from "./TimelineEntry.astro";
+import en from "../assets/translations/en.json";
+import es from "../assets/translations/es.json";
+import { createTimelineContext, type Job, type School } from "../utils";
 
 interface Props {
   lang: Lang;
@@ -16,31 +16,49 @@ const translations = { en, es } as const;
 const jobs = translations[lang].experience.jobs as Job[];
 const schools = translations[lang].education.items as School[];
 
-const { allEntries, slots, totalRows } = createTimelineContext(jobs, schools, lang);
+const { allEntries, slots, totalRows } = createTimelineContext(
+  jobs,
+  schools,
+  lang,
+);
 ---
 
 <section id="experience" class="experience">
   <h3 class="experience-title">
-    <TimelineIcon class="experience-icon" /> {t("experience.title")} & {t("education.title")}
+    <TimelineIcon class="experience-icon" />
+    {t("experience.title")} & {t("education.title")}
   </h3>
 
+  <a href="/assets/cv/fullstack.pdf" class="cv-button download-link" rel="nofollow noindex" download>
+    <DownloadIcon class="cv-btn-icon" />
+    <span>{t("about.downloadResume")}</span>
+  </a>
   <!-- Desktop: Bifurcated timeline with temporal alignment -->
+  <br />
   <div class="timeline-desktop" style={`--total-rows: ${totalRows}`}>
     <!-- Render entries with explicit grid-row assignments based on temporal slots -->
-    {slots.map((slot) => (
-      <>
-        {slot.left && (
-          <div class="entry-slot entry-slot--left" style={`grid-row: ${slot.row}`}>
-            <TimelineEntry entry={slot.left} position="left" lang={lang} />
-          </div>
-        )}
-        {slot.right && (
-          <div class="entry-slot entry-slot--right" style={`grid-row: ${slot.row}`}>
-            <TimelineEntry entry={slot.right} position="right" lang={lang} />
-          </div>
-        )}
-      </>
-    ))}
+    {
+      slots.map((slot) => (
+        <>
+          {slot.left && (
+            <div
+              class="entry-slot entry-slot--left"
+              style={`grid-row: ${slot.row}`}
+            >
+              <TimelineEntry entry={slot.left} position="left" lang={lang} />
+            </div>
+          )}
+          {slot.right && (
+            <div
+              class="entry-slot entry-slot--right"
+              style={`grid-row: ${slot.row}`}
+            >
+              <TimelineEntry entry={slot.right} position="right" lang={lang} />
+            </div>
+          )}
+        </>
+      ))
+    }
 
     <!-- Center spine: spans all rows -->
     <div class="timeline-spine"></div>
@@ -50,14 +68,23 @@ const { allEntries, slots, totalRows } = createTimelineContext(jobs, schools, la
   <div class="timeline-mobile">
     <div class="timeline-spine"></div>
     <div class="timeline-column">
-      {allEntries.map((entry) => (
-        <TimelineEntry entry={entry} position="right" lang={lang} />
-      ))}
+      {
+        allEntries.map((entry) => (
+          <TimelineEntry entry={entry} position="right" lang={lang} />
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style>
+  .cv-button {
+    @apply flex justify-center border border-[rgb(var(--color-border))] dark:border-[rgb(var(--color-border))]  rounded-3xl px-4 py-2 items-center gap-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition;
+  }
+
+  .cv-btn-icon {
+    @apply w-5 h-5;
+  }
   .experience {
     padding: 2rem 0;
   }

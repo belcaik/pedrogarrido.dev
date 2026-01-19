@@ -1,41 +1,24 @@
 ---
-import { useTranslations, type Lang } from '../i18n';
-import { MailIcon } from '../assets/icons';
+import { LinkedinIcon, MailIcon } from "../assets/icons";
+import { getContactData } from "../utils/contact";
+import ObfuscatedEmail from "./ObfuscatedEmail.astro";
+import type { Lang } from "../i18n";
+import ObfuscatedLink from "./ObfuscatedLink.astro";
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const t = useTranslations(lang);
-
-interface ContactInfo {
-  label: string;
-  value: string;
-}
-
-const contactInfo = {
-  email: t('contact.info.email') as unknown as ContactInfo,
-  location: t('contact.info.location') as unknown as ContactInfo,
-  response: t('contact.info.response') as unknown as ContactInfo,
-};
-
-interface SubjectOptions {
-  project: string;
-  job: string;
-  collaboration: string;
-  general: string;
-}
-
-const subjectOptions = t('contact.form.subject.options') as unknown as SubjectOptions;
+const { t, contactInfo } = getContactData(lang);
 ---
 
 <section id="contact" class="contact">
   <div class="contact-container">
     <div class="contact-header">
-      <h2 class="contact-title">{t('contact.title')}</h2>
-      <p class="contact-headline">{t('contact.headline')}</p>
-      <p class="contact-description">{t('contact.description')}</p>
+      <h2 class="contact-title">{t("contact.title")}</h2>
+      <p class="contact-headline">{t("contact.headline")}</p>
+      <p class="contact-description">{t("contact.description")}</p>
     </div>
 
     <div class="contact-content">
@@ -47,82 +30,24 @@ const subjectOptions = t('contact.form.subject.options') as unknown as SubjectOp
             <MailIcon />
             <div class="info-details">
               <span class="info-label">{contactInfo.email.label}</span>
-              <a href={`mailto:${contactInfo.email.value}`} class="info-value email-link">
-                {contactInfo.email.value}
-              </a>
+              <ObfuscatedEmail email={contactInfo.email.value} class="info-value" />
             </div>
           </div>
 
           <div class="info-item">
-            <div class="info-icon">📍</div>
+            <LinkedinIcon />
             <div class="info-details">
-              <span class="info-label">{contactInfo.location.label}</span>
-              <span class="info-value">{contactInfo.location.value}</span>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">⏱️</div>
-            <div class="info-details">
-              <span class="info-label">{contactInfo.response.label}</span>
-              <span class="info-value">{contactInfo.response.value}</span>
+              <span class="info-label">{contactInfo.linkedin.label}</span>
+              <!-- <a class="info-value" href={contactInfo.linkedin.url} target="_blank" rel="noopener noreferrer"
+              >{contactInfo.linkedin.value}</a> -->
+              <ObfuscatedLink 
+                url={contactInfo.linkedin.url}
+                class="info-value"
+              />
             </div>
           </div>
         </div>
       </div>
-
-      <form class="contact-form" action="https://formspree.io/f/xanyzbpd" method="POST">
-        <div class="form-group">
-          <label for="name" class="form-label">{t('contact.form.name')}</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            class="form-input"
-            required
-            placeholder="John Doe"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="email" class="form-label">{t('contact.form.email')}</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-input"
-            required
-            placeholder="john@example.com"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="subject" class="form-label">{t('contact.form.subject.label')}</label>
-          <select id="subject" name="subject" class="form-input form-select" required>
-            <option value="">{t('contact.form.subject.label')}</option>
-            <option value="project">{subjectOptions.project}</option>
-            <option value="job">{subjectOptions.job}</option>
-            <option value="collaboration">{subjectOptions.collaboration}</option>
-            <option value="general">{subjectOptions.general}</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="message" class="form-label">{t('contact.form.message')}</label>
-          <textarea
-            id="message"
-            name="message"
-            class="form-input form-textarea"
-            required
-            rows="5"
-            placeholder="Tell me about your project or opportunity..."
-          ></textarea>
-        </div>
-
-        <button type="submit" class="submit-button">
-          <span>{t('contact.form.submit')}</span>
-        </button>
-      </form>
     </div>
   </div>
 </section>
@@ -271,7 +196,9 @@ const subjectOptions = t('contact.form.subject.options') as unknown as SubjectOp
     color: var(--text-primary);
     font-size: 1rem;
     font-family: inherit;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .form-input:focus {

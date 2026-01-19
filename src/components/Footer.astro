@@ -1,6 +1,7 @@
 ---
 import { useTranslations, type Lang } from '../i18n';
 import { GithubIcon, LinkedinIcon, MailIcon } from '../assets/icons';
+import { getContactData } from '../utils/contact';
 
 interface Props {
   lang: Lang;
@@ -8,6 +9,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { contactInfo } = getContactData(lang);
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
@@ -18,10 +20,13 @@ const navLinks = [
   { href: '#contact', label: t('nav.contact') },
 ];
 
+// Encode email for obfuscation - will be decoded client-side
+const encodedEmail = Buffer.from(contactInfo.email.value).toString('base64');
+
 const socialLinks = [
-  { href: 'https://github.com/belcaik', icon: GithubIcon, label: 'GitHub' },
-  { href: 'https://linkedin.com/in/pedrogarridodev', icon: LinkedinIcon, label: 'LinkedIn' },
-  { href: 'mailto:pedrogarrido.dev@gmail.com', icon: MailIcon, label: 'Email' },
+  { href: contactInfo.github?.url || 'https://github.com/belcaik', icon: GithubIcon, label: 'GitHub', isEmail: false },
+  { href: contactInfo.linkedin.url, icon: LinkedinIcon, label: 'LinkedIn', isEmail: false },
+  { href: '#contact', icon: MailIcon, label: 'Email', isEmail: true, encodedEmail },
 ];
 ---
 
@@ -50,15 +55,26 @@ const socialLinks = [
         <h4 class="footer-heading">Connect</h4>
         <div class="social-links">
           {socialLinks.map((social) => (
-            <a
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label={social.label}
-            >
-              <social.icon />
-            </a>
+            social.isEmail ? (
+              <a
+                href={social.href}
+                class="social-link email-social-link"
+                aria-label={social.label}
+                data-e={social.encodedEmail}
+              >
+                <social.icon />
+              </a>
+            ) : (
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label={social.label}
+              >
+                <social.icon />
+              </a>
+            )
           ))}
         </div>
       </div>
@@ -66,7 +82,7 @@ const socialLinks = [
 
     <div class="footer-bottom">
       <p class="copyright">
-        © {currentYear} Pedro Garrido. All rights reserved.
+        © {currentYear} {t('footer.copyright')}
       </p>
       <p class="built-with">
         {t('footer.builtWith')}
@@ -74,6 +90,18 @@ const socialLinks = [
     </div>
   </div>
 </footer>
+
+<script>
+  // Decode obfuscated email links
+  document.querySelectorAll('.email-social-link').forEach((el) => {
+    const encodedEmail = el.getAttribute('data-e');
+    if (encodedEmail) {
+      const email = atob(encodedEmail);
+      el.setAttribute('href', 'mailto:' + email);
+      el.removeAttribute('data-e');
+    }
+  });
+</script>
 
 <style>
   .footer {

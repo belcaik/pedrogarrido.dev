@@ -1,0 +1,73 @@
+---
+/**
+ * Obfuscated Email Component
+ * Protects email from scrapers by encoding it and decoding client-side
+ */
+interface Props {
+  email: string;
+  class?: string;
+  showIcon?: boolean;
+}
+
+const { email, class: className = '', showIcon = false } = Astro.props;
+
+// Split and encode email parts
+const [user, domain] = email.split('@');
+const encodedUser = Buffer.from(user).toString('base64');
+const encodedDomain = Buffer.from(domain).toString('base64');
+const uniqueId = `email-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<span
+  class={`obfuscated-email ${className}`}
+  data-u={encodedUser}
+  data-d={encodedDomain}
+  id={uniqueId}
+>
+  <noscript>Enable JavaScript to view email</noscript>
+  <span class="email-placeholder">[email protected]</span>
+</span>
+
+<script define:vars={{ uniqueId, encodedUser, encodedDomain }}>
+  (function() {
+    const el = document.getElementById(uniqueId);
+    if (!el) return;
+
+    // Decode the email
+    const user = atob(encodedUser);
+    const domain = atob(encodedDomain);
+    const email = user + '@' + domain;
+
+    // Create the mailto link
+    const link = document.createElement('a');
+    link.href = 'mailto:' + email;
+    link.textContent = email;
+    link.className = 'email-link decoded-email';
+
+    // Replace placeholder
+    el.innerHTML = '';
+    el.appendChild(link);
+  })();
+</script>
+
+<style>
+  .obfuscated-email {
+    display: inline;
+  }
+
+  .email-placeholder {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .decoded-email {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .decoded-email:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+</style>

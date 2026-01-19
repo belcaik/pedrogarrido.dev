@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Pedro Garrido | Software Developer",
-    "description": "Software Developer specializing in backend systems, DevOps automation, and legacy modernization. 3+ years building scalable solutions for financial institutions."
+    "description": "Software Developer specializing in backend systems, DevOps automation, and legacy modernization. 3+ years building scalable solutions."
   },
   "nav": {
     "experience": "Experience",
@@ -16,8 +16,8 @@
     "name": "Pedro Garrido",
     "experience": "3+ years of experience as",
     "title": "Software Engineer & DevOps Enthusiast",
-    "subtitle": "building scalable backend systems and automating infrastructure for financial institutions.",
-    "location":"Based in Chile 🇨🇱 — Open to remote & relocation.",
+    "subtitle": "building scalable backend systems and automating infrastructure.",
+    "location":"Based in Chile 🇨🇱",
     "cta": "Get in touch",
     "linkedin": "LinkedIn",
     "github": "GitHub"
@@ -269,34 +269,20 @@
         "label": "Email",
         "value": "pedrogarrido.dev@gmail.com"
       },
-      "location": {
-        "label": "Location",
-        "value": "Chile (Open to Relocation)"
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/pedrogarridodev",
+        "url": "https://www.linkedin.com/in/pedrogarridodev"
       },
-      "response": {
-        "label": "Response Time",
-        "value": "Within 24 hours"
+      "github": {
+        "label": "GitHub",
+        "value": "github.com/belcaik",
+        "url": "https://github.com/belcaik"
       }
-    },
-    "form": {
-      "name": "Name",
-      "email": "Email",
-      "subject": {
-        "label": "Subject",
-        "options": {
-          "project": "Project Inquiry",
-          "job": "Job Opportunity",
-          "collaboration": "Collaboration",
-          "general": "General Message"
-        }
-      },
-      "message": "Message",
-      "submit": "Send Message",
-      "sending": "Sending..."
     }
   },
   "footer": {
-    "copyright": "© 2025 Pedro Garrido. All rights reserved.",
+    "copyright": "Pedro Garrido. All rights reserved.",
     "builtWith": "Built with Astro"
   },
   "common": {

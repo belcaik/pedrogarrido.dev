@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Pedro Garrido | Desarrollador de Software",
-    "description": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. 3+ años construyendo soluciones escalables para instituciones financieras."
+    "description": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. 3+ años construyendo soluciones escalables."
   },
   "nav": {
     "experience": "Experiencia",
@@ -16,8 +16,8 @@
     "name": "Pedro Garrido",
     "experience": "3+ años de experiencia como",
     "title": "Ingeniero de Software",
-    "subtitle": "Construyendo sistemas backend escalables y automatizando infraestructura para instituciones financieras.",
-    "location": "Desde Chile 🇨🇱 — Abierto a remoto y relocalización.",
+    "subtitle": "Construyendo sistemas backend escalables y automatizando infraestructura.",
+    "location": "Desde Chile 🇨🇱.",
     "cta": "Contáctame",
     "linkedin": "LinkedIn",
     "github": "GitHub"
@@ -168,43 +168,27 @@
     },
     "viewProfile": "Ver Perfil Completo"
   },
-  "contact": {
-    "title": "Contacto",
-    "headline": "Construyamos algo juntos",
-    "description": "Actualmente estoy abierto a nuevas oportunidades — remoto, híbrido o relocalización. Ya sea que tengas un proyecto en mente, una oportunidad laboral, o simplemente quieras conectar, no dudes en contactarme.",
+   "contact": {
+    "title": "Get In Touch",
+    "headline": "Let's build something together",
+    "description": "I'm currently open to new opportunities — remote, hybrid, or relocation. Whether you have a project in mind, a job opportunity, or just want to connect, feel free to reach out.",
     "info": {
       "email": {
         "label": "Email",
         "value": "pedrogarrido.dev@gmail.com"
       },
-      "location": {
-        "label": "Ubicación",
-        "value": "Chile (Abierto a relocalización)"
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/pedrogarridodev"
       },
-      "response": {
-        "label": "Tiempo de respuesta",
-        "value": "Dentro de 24 horas"
+      "github": {
+        "label": "GitHub",
+        "value": "github.com/belcaik"
       }
-    },
-    "form": {
-      "name": "Nombre",
-      "email": "Email",
-      "subject": {
-        "label": "Asunto",
-        "options": {
-          "project": "Consulta de Proyecto",
-          "job": "Oportunidad Laboral",
-          "collaboration": "Colaboración",
-          "general": "Mensaje General"
-        }
-      },
-      "message": "Mensaje",
-      "submit": "Enviar Mensaje",
-      "sending": "Enviando..."
     }
   },
   "footer": {
-    "copyright": "© 2025 Pedro Garrido. Todos los derechos reservados.",
+    "copyright": "Pedro Garrido. Todos los derechos reservados.",
     "builtWith": "Hecho con Astro"
   },
   "common": {
