@@ -4,9 +4,8 @@ import { getContactData } from "../utils/contact";
 import ObfuscatedLink from "./ObfuscatedLink.astro";
 import type { Lang } from "../i18n";
 
-
 interface Props {
-  lang: Lang;
+    lang: Lang;
 }
 
 const { lang } = Astro.props;
@@ -14,40 +13,54 @@ const { t, contactInfo } = getContactData(lang);
 ---
 
 <section id="hero" class="section-container section-padding flex flex-col">
-  <h1 data-animate-hero>
-    <span class="block mb-4 md:inline md:mb-0 mr-4">
-      {t("hero.greeting")}
-    </span>
-    <span class="font-bold">
-      {t("hero.name")}
-    </span>
-  </h1>
-  <h2 data-animate-hero="delay-1">
-    {t("hero.experience")}
-    <span>{t("hero.title")}</span>
-    {t("hero.subtitle")} {t("hero.location")}
-  </h2>
+    <h1 data-animate-hero>
+        <span class="greeting-3d block mb-4 md:inline md:mb-0 mr-4">
+            {t("hero.greeting")}
+        </span>
+        <span class="font-bold">
+            {t("hero.name")}
+        </span>
+    </h1>
+    <h2 data-animate-hero="delay-1">
+        {t("hero.experience")}
+        <span>{t("hero.title")}</span>
+        {t("hero.subtitle")}
+        {t("hero.location")}
+    </h2>
 
-  <div class="flex flex-col md:flex-row gap-4 mt-6" data-animate-hero="delay-2">
-    <ObfuscatedLink email={contactInfo.email.value} class="btn-cta">
-      <Mail class="btn-icon" />
-      {t("hero.cta")}
-    </ObfuscatedLink>
-    <a class="btn-cta" href={contactInfo.linkedin.url} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-      <Linkedin class="btn-icon" />
-      {t("hero.linkedin")}
-    </a>
-    <a class="btn-cta" href={contactInfo.github?.url} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-      <Github class="btn-icon" />
-      {t("hero.github")}
-    </a>
-  </div>
+    <div
+        class="flex flex-col md:flex-row gap-4 mt-6"
+        data-animate-hero="delay-2"
+    >
+        <ObfuscatedLink email={contactInfo.email.value} class="btn-cta">
+            <Mail class="btn-icon" />
+            {t("hero.cta")}
+        </ObfuscatedLink>
+        <a
+            class="btn-cta"
+            href={contactInfo.linkedin.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+        >
+            <Linkedin class="btn-icon" />
+            {t("hero.linkedin")}
+        </a>
+        <a
+            class="btn-cta"
+            href={contactInfo.github?.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
+        >
+            <Github class="btn-icon" />
+            {t("hero.github")}
+        </a>
+    </div>
 </section>
 
 <style>
-  
     #hero h2 {
         display: inline-block;
     }
-  
 </style>

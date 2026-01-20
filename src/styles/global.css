@@ -183,6 +183,13 @@
         /* #b47814 */
         --color-error: 180 50 70;
         /* #b43246 */
+
+        /* Greeting 3D shadow animation - purple gradient (light to dark) */
+        --greeting-shadow-1: #9b4dca;
+        --greeting-shadow-2: #8839b8;
+        --greeting-shadow-3: #7b2cbf;
+        --greeting-shadow-4: #6a1fa8;
+        --greeting-shadow-5: #5a1690;
     }
 
     .dark {
@@ -235,6 +242,13 @@
         /* #e6aa32 */
         --color-error: 220 70 90;
         /* #dc465a */
+
+        /* Greeting 3D shadow animation - purple gradient (brighter for dark mode) */
+        --greeting-shadow-1: #b366e0;
+        --greeting-shadow-2: #a347d4;
+        --greeting-shadow-3: #933cdc;
+        --greeting-shadow-4: #7b2cbf;
+        --greeting-shadow-5: #6622aa;
     }
 
     /* Background gradient effect */
@@ -373,4 +387,90 @@
 
 .dark .tooltip-tech {
     background: rgb(var(--color-primary) / 0.25);
+}
+
+/* ============================================
+   Greeting 3D Text Shadow Animation
+   ============================================ */
+
+.greeting-3d {
+    display: inline-block;
+    color: var(--greeting-shadow-1);
+    text-shadow:
+        3px 3px 0 var(--greeting-shadow-2),
+        6px 6px 0 var(--greeting-shadow-3),
+        9px 9px 0 var(--greeting-shadow-4),
+        12px 12px 0 var(--greeting-shadow-5);
+    animation: greeting-shadows 1.2s ease-in infinite;
+    letter-spacing: 0.1em;
+}
+
+@keyframes greeting-shadows {
+    0% {
+        text-shadow: none;
+    }
+    10% {
+        transform: translate(-3px, -3px);
+        text-shadow: 3px 3px 0 var(--greeting-shadow-2);
+    }
+    20% {
+        transform: translate(-6px, -6px);
+        text-shadow:
+            3px 3px 0 var(--greeting-shadow-2),
+            6px 6px 0 var(--greeting-shadow-3);
+    }
+    30% {
+        transform: translate(-9px, -9px);
+        text-shadow:
+            3px 3px 0 var(--greeting-shadow-2),
+            6px 6px 0 var(--greeting-shadow-3),
+            9px 9px 0 var(--greeting-shadow-4);
+    }
+    40%,
+    50% {
+        transform: translate(-12px, -12px);
+        text-shadow:
+            3px 3px 0 var(--greeting-shadow-2),
+            6px 6px 0 var(--greeting-shadow-3),
+            9px 9px 0 var(--greeting-shadow-4),
+            12px 12px 0 var(--greeting-shadow-5);
+    }
+    60% {
+        transform: translate(0, 0);
+        text-shadow:
+            3px 3px 0 var(--greeting-shadow-2),
+            6px 6px 0 var(--greeting-shadow-3),
+            9px 9px 0 var(--greeting-shadow-4),
+            12px 12px 0 var(--greeting-shadow-5);
+    }
+    70% {
+        text-shadow:
+            3px 3px 0 var(--greeting-shadow-2),
+            6px 6px 0 var(--greeting-shadow-3),
+            9px 9px 0 var(--greeting-shadow-4);
+    }
+    80% {
+        text-shadow:
+            3px 3px 0 var(--greeting-shadow-2),
+            6px 6px 0 var(--greeting-shadow-3);
+    }
+    90% {
+        text-shadow: 3px 3px 0 var(--greeting-shadow-2);
+    }
+    100% {
+        text-shadow: none;
+    }
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .greeting-3d {
+        animation: none;
+        transform: none;
+        text-shadow:
+            3px 3px 0 var(--greeting-shadow-2),
+            6px 6px 0 var(--greeting-shadow-3),
+            9px 9px 0 var(--greeting-shadow-4),
+            12px 12px 0 var(--greeting-shadow-5);
+    }
 }
