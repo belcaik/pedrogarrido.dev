@@ -4,6 +4,7 @@ import ThemeSwitch from "../components/ThemeSwitch.astro";
 import Honeypot from "../components/Honeypot.astro";
 import { useTranslations, type Lang, languages } from "../i18n";
 import "../styles/global.css";
+import "../styles/animations.css";
 
 interface Props {
   lang: Lang;
@@ -85,6 +86,7 @@ const alternateLinks = Object.keys(languages).map((l) => {
       </nav>
       <slot />
     </div>
+    <script src="../scripts/scroll-animations.ts"></script>
   </body>
 </html>
 

@@ -1,47 +1,121 @@
 ---
-import { useTranslations, type Lang } from '../i18n';
-import { ToolCase } from '@lucide/astro';
+import { useTranslations, type Lang } from "../i18n";
+import { ToolCase } from "@lucide/astro";
+import SkillBadge from "./SkillBadge.astro";
+import type { SkillCategory, FlatSkill } from "../utils/skills";
 
 interface Props {
-  lang: Lang;
+    lang: Lang;
 }
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const categories = ['languages', 'backend', 'frontend', 'databases', 'devops', 'tools'];
+const categoryKeys: SkillCategory[] = [
+    "languages",
+    "backend",
+    "frontend",
+    "databases",
+    "devops",
+    "tools",
+    "ai",
+];
+
+const allSkills: FlatSkill[] = categoryKeys.flatMap((category) => {
+    const items = t(`skills.categories.${category}.items`) as string[];
+    return items.map((name) => ({ name, category }));
+});
+
+const midpoint = Math.ceil(allSkills.length / 2);
+const firstRow = allSkills.slice(0, midpoint);
+const secondRow = allSkills.slice(midpoint);
 ---
 
 <section id="skills" class="section-container section-padding">
-  <h2 class="section-title">
-    <ToolCase class="section-title-icon" size={24} />
-    {t('skills.title')}
-  </h2>
+    <h2 class="section-title" data-animate="fade-up">
+        <ToolCase class="section-title-icon" size={24} />
+        {t("skills.title")}
+    </h2>
 
-  <div class="grid-skills">
-    {categories.map((category) => {
-      const items = t(`skills.categories.${category}.items`) as string[];
-      return (
-        <div class="card card-hover">
-          <h3 class="category-title">{t(`skills.categories.${category}.title`)}</h3>
-          <div class="flex flex-wrap gap-2">
-            {items.map((item: string) => (
-              <span class="tech-tag tech-tag-hover">{item}</span>
-            ))}
-          </div>
+    <div class="marquee-container" data-animate="fade-up">
+        <!-- Row 1: scrolls right -->
+        <div class="marquee marquee--right">
+            <div class="marquee__content">
+                {
+                    firstRow.map((skill) => (
+                        <SkillBadge
+                            name={skill.name}
+                            category={skill.category}
+                        />
+                    ))
+                }
+            </div>
+            <div class="marquee__content" aria-hidden="true">
+                {
+                    firstRow.map((skill) => (
+                        <SkillBadge
+                            name={skill.name}
+                            category={skill.category}
+                        />
+                    ))
+                }
+            </div>
         </div>
-      );
-    })}
-  </div>
+
+        <!-- Row 2: scrolls left -->
+        <div class="marquee marquee--left">
+            <div class="marquee__content">
+                {
+                    secondRow.map((skill) => (
+                        <SkillBadge
+                            name={skill.name}
+                            category={skill.category}
+                        />
+                    ))
+                }
+            </div>
+            <div class="marquee__content" aria-hidden="true">
+                {
+                    secondRow.map((skill) => (
+                        <SkillBadge
+                            name={skill.name}
+                            category={skill.category}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </div>
 </section>
 
 <style>
-  .category-title {
-    @apply text-lg font-semibold mb-4 text-text flex items-center gap-2;
-  }
+    .marquee-container {
+        @apply w-full flex flex-col gap-4 overflow-hidden;
+    }
 
-  .category-title::before {
-    content: '';
-    @apply inline-block w-1 h-[1.125rem] bg-primary rounded-sm;
-  }
+    .marquee {
+        @apply flex gap-4;
+    }
+
+    .marquee__content {
+        @apply flex gap-4 shrink-0;
+        animation: marquee-scroll 40s linear infinite;
+    }
+
+    /* Right-scrolling row (default direction) */
+    .marquee--right .marquee__content {
+        animation-direction: normal;
+    }
+
+    /* Left-scrolling row (reversed) */
+    .marquee--left .marquee__content {
+        animation-direction: reverse;
+    }
+
+    /* Pause on hover */
+    .marquee:hover .marquee__content {
+        animation-play-state: paused;
+    }
+
+    /* Reduced motion handled in animations.css */
 </style>
