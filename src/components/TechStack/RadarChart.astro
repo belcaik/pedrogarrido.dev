@@ -1,0 +1,312 @@
+---
+import type { SkillRadar } from "../../types/skills";
+
+interface Props {
+    data: SkillRadar;
+    size?: number;
+}
+
+const { data, size = 280 } = Astro.props;
+const center = size / 2;
+const radius = size * 0.35;
+const angleStep = (2 * Math.PI) / data.categories.length;
+const labelOffset = 45;
+
+// Calculate point position for a given category index and level
+function getPoint(index: number, level: number) {
+    const angle = angleStep * index - Math.PI / 2; // Start from top
+    const r = (level / 5) * radius;
+    return {
+        x: center + r * Math.cos(angle),
+        y: center + r * Math.sin(angle),
+    };
+}
+
+// Generate polygon points string for the skill shape
+const polygonPoints = data.categories
+    .map((cat, i) => {
+        const p = getPoint(i, cat.level);
+        return `${p.x},${p.y}`;
+    })
+    .join(" ");
+
+// Generate axis data with endpoints and label positions
+const axes = data.categories.map((cat, i) => {
+    const angle = angleStep * i - Math.PI / 2;
+    const point = getPoint(i, cat.level);
+    return {
+        name: cat.name,
+        level: cat.level,
+        technologies: cat.technologies,
+        lineEnd: {
+            x: center + radius * Math.cos(angle),
+            y: center + radius * Math.sin(angle),
+        },
+        labelPos: {
+            x: center + (radius + labelOffset) * Math.cos(angle),
+            y: center + (radius + labelOffset) * Math.sin(angle),
+        },
+        point,
+    };
+});
+
+// Unique ID for this chart instance
+const chartId = `radar-${data.title.toLowerCase().replace(/\s+/g, "-")}`;
+const strokeColor = data.color.replace("0.6", "1");
+---
+
+<div class="radar-container" data-chart-id={chartId}>
+    <h3 class="radar-title">{data.title}</h3>
+
+    <div class="radar-wrapper">
+        <svg
+            width={size}
+            height={size}
+            viewBox={`0 0 ${size} ${size}`}
+            role="img"
+            aria-label={`${data.title} skills radar chart showing proficiency levels`}
+            class="radar-svg"
+        >
+            <!-- Background circles (levels 1-5) -->
+            {
+                [1, 2, 3, 4, 5].map((level) => (
+                    <circle
+                        cx={center}
+                        cy={center}
+                        r={(level / 5) * radius}
+                        fill="none"
+                        class="radar-grid-circle"
+                        stroke-width="1"
+                    />
+                ))
+            }
+
+            <!-- Axis lines -->
+            {
+                axes.map((axis) => (
+                    <line
+                        x1={center}
+                        y1={center}
+                        x2={axis.lineEnd.x}
+                        y2={axis.lineEnd.y}
+                        class="radar-axis-line"
+                        stroke-width="1"
+                    />
+                ))
+            }
+
+            <!-- Skill polygon (filled shape) -->
+            <polygon
+                points={polygonPoints}
+                fill={data.color}
+                stroke={strokeColor}
+                stroke-width="2"
+                class="radar-polygon"></polygon>
+
+            <!-- Data points (interactive circles at each vertex) -->
+            {
+                axes.map((axis) => (
+                    <circle
+                        cx={axis.point.x}
+                        cy={axis.point.y}
+                        r="5"
+                        fill={strokeColor}
+                        class="radar-point"
+                        data-name={axis.name}
+                        data-level={axis.level}
+                        data-techs={JSON.stringify(axis.technologies)}
+                        tabindex="0"
+                        role="button"
+                        aria-label={`${axis.name}: Level ${axis.level} of 5. Technologies: ${axis.technologies.join(", ")}`}
+                    />
+                ))
+            }
+        </svg>
+
+        <!-- Labels positioned outside SVG -->
+        <div class="radar-labels" style={`--size: ${size}px;`}>
+            {
+                axes.map((axis) => (
+                    <button
+                        type="button"
+                        class="radar-label"
+                        style={`--x: ${axis.labelPos.x}px; --y: ${axis.labelPos.y}px;`}
+                        data-name={axis.name}
+                        data-level={axis.level}
+                        data-techs={JSON.stringify(axis.technologies)}
+                    >
+                        {axis.name}
+                    </button>
+                ))
+            }
+        </div>
+    </div>
+
+    <!-- Screen reader accessible list -->
+    <details class="sr-details">
+        <summary>View {data.title.toLowerCase()} skills as text</summary>
+        <ul>
+            {
+                data.categories.map((cat) => (
+                    <li>
+                        <strong>{cat.name}</strong> (Level {cat.level}/5):{" "}
+                        {cat.technologies.join(", ")}
+                    </li>
+                ))
+            }
+        </ul>
+    </details>
+</div>
+
+<style>
+    .radar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .radar-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: rgb(var(--color-text));
+        margin: 0;
+    }
+
+    .radar-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .radar-svg {
+        display: block;
+    }
+
+    .radar-grid-circle {
+        stroke: rgb(var(--color-border));
+    }
+
+    .radar-axis-line {
+        stroke: rgb(var(--color-border));
+    }
+
+    .radar-polygon {
+        transform-origin: center;
+        transition: fill-opacity 300ms ease-out;
+    }
+
+    .radar-container:hover .radar-polygon {
+        fill-opacity: 0.8;
+    }
+
+    /* Animation on scroll */
+    .radar-polygon {
+        animation: radar-grow 600ms ease-out forwards;
+    }
+
+    @keyframes radar-grow {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .radar-polygon {
+            animation: none;
+        }
+    }
+
+    .radar-point {
+        cursor: pointer;
+        transition:
+            r 150ms ease-out,
+            filter 150ms ease-out;
+        outline: none;
+    }
+
+    .radar-point:hover,
+    .radar-point:focus-visible {
+        r: 8;
+        filter: drop-shadow(0 0 6px currentColor);
+    }
+
+    .radar-labels {
+        position: absolute;
+        width: var(--size);
+        height: var(--size);
+        pointer-events: none;
+    }
+
+    .radar-label {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        transform: translate(-50%, -50%);
+        font-size: 0.75rem;
+        color: rgb(var(--color-text-muted));
+        white-space: nowrap;
+        pointer-events: auto;
+        cursor: pointer;
+        transition: color 150ms ease-out;
+        background: none;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+    }
+
+    .radar-label:hover,
+    .radar-label:focus-visible {
+        color: rgb(var(--color-text));
+        outline: none;
+    }
+
+    .radar-label:focus-visible {
+        box-shadow: 0 0 0 2px rgb(var(--color-primary) / 0.5);
+    }
+
+    .sr-details {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .sr-details:focus-within {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 1rem 0 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+        font-size: 0.875rem;
+        color: rgb(var(--color-text-muted));
+    }
+
+    .sr-details summary {
+        cursor: pointer;
+        color: rgb(var(--color-primary));
+    }
+
+    .sr-details ul {
+        margin-top: 0.5rem;
+        padding-left: 1.25rem;
+        list-style: disc;
+    }
+
+    .sr-details li {
+        margin-bottom: 0.25rem;
+    }
+</style>
