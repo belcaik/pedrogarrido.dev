@@ -474,3 +474,170 @@
             12px 12px 0 var(--greeting-shadow-5);
     }
 }
+
+/* ============================================
+   CV Download Button - 3D Shadow Animation
+   Coherent with greeting-3d animation
+   ============================================ */
+
+.btn-cv-download {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: rgb(var(--color-surface));
+    color: var(--greeting-shadow-1);
+    border: 2px solid var(--greeting-shadow-2);
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+
+    /* Initial shadow state - subtle depth */
+    box-shadow:
+        2px 2px 0 var(--greeting-shadow-2),
+        4px 4px 0 var(--greeting-shadow-3);
+
+    /* Smooth transitions for interactive states */
+    transition:
+        transform 0.2s ease-out,
+        box-shadow 0.2s ease-out,
+        border-color 0.2s ease-out,
+        color 0.2s ease-out;
+
+    /* Subtle idle animation - less intense than greeting */
+    animation: btn-depth-pulse 3s ease-in-out infinite;
+}
+
+/* Idle animation - gentle "breathing" effect */
+@keyframes btn-depth-pulse {
+    0%,
+    100% {
+        transform: translate(0, 0);
+        box-shadow:
+            2px 2px 0 var(--greeting-shadow-2),
+            4px 4px 0 var(--greeting-shadow-3);
+    }
+    50% {
+        transform: translate(-2px, -2px);
+        box-shadow:
+            4px 4px 0 var(--greeting-shadow-2),
+            8px 8px 0 var(--greeting-shadow-3),
+            12px 12px 0 var(--greeting-shadow-4);
+    }
+}
+
+/* Hover state - expand depth, pause idle animation */
+.btn-cv-download:hover {
+    color: var(--greeting-shadow-1);
+    border-color: var(--greeting-shadow-1);
+    transform: translate(-6px, -6px);
+    box-shadow:
+        6px 6px 0 var(--greeting-shadow-2),
+        12px 12px 0 var(--greeting-shadow-3),
+        18px 18px 0 var(--greeting-shadow-4),
+        24px 24px 0 var(--greeting-shadow-5);
+    animation-play-state: paused;
+}
+
+/* Focus state - accessibility */
+.btn-cv-download:focus-visible {
+    outline: 3px solid var(--greeting-shadow-3);
+    outline-offset: 4px;
+    animation-play-state: paused;
+}
+
+/* Active/Pressed state - tactile feedback */
+.btn-cv-download:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--greeting-shadow-2);
+    transition-duration: 0.05s;
+}
+
+/* Scan line effect - subtle tech aesthetic */
+.btn-cv-download::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--greeting-shadow-1),
+        transparent
+    );
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+    animation: btn-scan-line 3s linear infinite;
+}
+
+@keyframes btn-scan-line {
+    0% {
+        top: 0;
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        top: calc(100% - 2px);
+        opacity: 0.4;
+    }
+}
+
+/* Pause scan line on hover for clear feedback */
+.btn-cv-download:hover::after {
+    animation-play-state: paused;
+    opacity: 0.8;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--greeting-shadow-2),
+        transparent
+    );
+}
+
+/* Icon styling */
+.btn-cv-download svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.2s ease-out;
+}
+
+.btn-cv-download:hover svg {
+    transform: translateY(2px);
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .btn-cv-download {
+        animation: none;
+        transform: none;
+        box-shadow:
+            2px 2px 0 var(--greeting-shadow-2),
+            4px 4px 0 var(--greeting-shadow-3);
+    }
+
+    .btn-cv-download::after {
+        animation: none;
+        opacity: 0;
+    }
+
+    .btn-cv-download:hover {
+        transform: none;
+        box-shadow: 0 0 0 3px var(--greeting-shadow-2);
+    }
+
+    .btn-cv-download:active {
+        transform: none;
+        box-shadow: 0 0 0 2px var(--greeting-shadow-3);
+    }
+
+    .btn-cv-download:hover svg {
+        transform: none;
+    }
+}

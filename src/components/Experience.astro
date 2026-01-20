@@ -7,7 +7,7 @@ import es from "../assets/translations/es.json";
 import { createTimelineContext, type Job, type School } from "../utils";
 
 interface Props {
-  lang: Lang;
+    lang: Lang;
 }
 
 const { lang } = Astro.props;
@@ -20,77 +20,90 @@ const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
 ---
 
 <section id="experience" class="section-container py-8">
-  <h3 class="section-title" data-animate="fade-up">
-    <CalendarDays class="section-title-icon" size={32} />
-    {t("experience.title")} & {t("education.title")}
-  </h3>
+    <h3 class="section-title" data-animate="fade-up">
+        <CalendarDays class="section-title-icon" size={32} />
+        {t("experience.title")} & {t("education.title")}
+    </h3>
 
-  <a href="/assets/cv/fullstack.pdf" class="btn-cta w-full" rel="nofollow noindex" download aria-label="Download resume" data-animate="fade-up">
-    <Download class="btn-icon" size={20} />
-    <span>{t("about.downloadResume")}</span>
-  </a>
-
-  <!-- Single-column timeline (spine on right) -->
-  <div class="timeline" style={`--total-rows: ${totalRows}`}>
-    <div class="timeline-spine"></div>
-
-    {slots.map((slot) => (
-      <div
-        class="timeline-slot"
-        style={`grid-row: ${slot.row}`}
+    <a
+        href="/assets/cv/fullstack.pdf"
+        class="btn-cv-download w-full"
+        rel="nofollow noindex"
+        download
+        aria-label="Download resume"
         data-animate="fade-up"
-      >
-        <TimelineEntry entry={slot.entry} position="right" lang={lang} />
-      </div>
-    ))}
-  </div>
+    >
+        <Download size={20} />
+        <span>{t("about.downloadResume")}</span>
+    </a>
+
+    <!-- Single-column timeline (spine on right) -->
+    <div class="timeline" style={`--total-rows: ${totalRows}`}>
+        <div class="timeline-spine"></div>
+
+        {
+            slots.map((slot) => (
+                <div
+                    class="timeline-slot"
+                    style={`grid-row: ${slot.row}`}
+                    data-animate="fade-up"
+                >
+                    <TimelineEntry
+                        entry={slot.entry}
+                        position="right"
+                        lang={lang}
+                    />
+                </div>
+            ))
+        }
+    </div>
 </section>
 
 <style>
-  /* Single-column timeline (content on left, spine on right) */
-  .timeline {
-    display: grid;
-    grid-template-columns: 1fr 4px;
-    grid-template-rows: repeat(var(--total-rows), auto);
-    gap: 2rem 0;
-    position: relative;
-    margin-top: 2rem;
-  }
-
-  /* Right-side spine */
-  .timeline .timeline-spine {
-    grid-column: 2;
-    grid-row: 1 / -1;
-    @apply w-1 justify-self-center relative;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--color-border)) 2%,
-      rgb(var(--color-border)) 98%,
-      transparent 100%
-    );
-  }
-
-  /* All slots on the left (content column) */
-  .timeline-slot {
-    grid-column: 1;
-    @apply flex items-start pr-6;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
+    /* Single-column timeline (content on left, spine on right) */
     .timeline {
-      grid-template-columns: 4px 1fr;
-      @apply gap-x-4 mt-8 pl-2;
+        display: grid;
+        grid-template-columns: 1fr 4px;
+        grid-template-rows: repeat(var(--total-rows), auto);
+        gap: 2rem 0;
+        position: relative;
+        margin-top: 2rem;
     }
 
+    /* Right-side spine */
     .timeline .timeline-spine {
-      grid-column: 1;
+        grid-column: 2;
+        grid-row: 1 / -1;
+        @apply w-1 justify-self-center relative;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgb(var(--color-border)) 2%,
+            rgb(var(--color-border)) 98%,
+            transparent 100%
+        );
     }
 
+    /* All slots on the left (content column) */
     .timeline-slot {
-      grid-column: 2;
-      @apply pr-0 pl-0;
+        grid-column: 1;
+        @apply flex items-start pr-6;
     }
-  }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .timeline {
+            grid-template-columns: 4px 1fr;
+            @apply gap-x-4 mt-8 pl-2;
+        }
+
+        .timeline .timeline-spine {
+            grid-column: 1;
+        }
+
+        .timeline-slot {
+            grid-column: 2;
+            @apply pr-0 pl-0;
+        }
+    }
 </style>
