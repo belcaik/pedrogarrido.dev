@@ -13,8 +13,8 @@ const { entry, position } = Astro.props;
 const isPosition = entry.type === 'position';
 ---
 
-<article class={`entry entry--${position} entry--${entry.type}`}>
-  <!-- Icon circle on the card border (spine side) -->
+<article class={`entry entry--${entry.type}`}>
+  <!-- Icon circle on the right side (spine side) -->
   <div class="entry-icon-wrapper">
     {isPosition ? (
       <Briefcase class="w-5 h-5 text-primary" size={20} />
@@ -61,23 +61,15 @@ const isPosition = entry.type === 'position';
     @apply relative flex w-full;
   }
 
-  /* Icon wrapper (circle on card border) */
+  /* Icon wrapper on right side (next to spine) */
   .entry-icon-wrapper {
     @apply absolute top-6 w-10 h-10 rounded-full bg-surface border-[3px] border-primary flex items-center justify-center z-10;
-  }
-
-  /* Position-specific icon placement */
-  .entry--left .entry-icon-wrapper {
     right: -1.25rem;
   }
 
-  .entry--right .entry-icon-wrapper {
-    left: -1.25rem;
-  }
-
-  /* Card styles */
+  /* Card styles - always left-aligned */
   .entry-card {
-    @apply w-full p-5 bg-surface border border-border rounded-card transition-all duration-200;
+    @apply w-full p-5 bg-surface border border-border rounded-card transition-all duration-200 text-left mr-6;
   }
 
   .entry-card:hover {
@@ -85,24 +77,8 @@ const isPosition = entry.type === 'position';
     box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
   }
 
-  .entry--left .entry-card {
-    @apply text-right mr-6;
-  }
-
-  .entry--right .entry-card {
-    @apply text-left ml-6;
-  }
-
   .entry-meta {
-    @apply flex items-center gap-2 mb-2 flex-wrap;
-  }
-
-  .entry--left .entry-meta {
-    @apply justify-end;
-  }
-
-  .entry--right .entry-meta {
-    @apply justify-start;
+    @apply flex items-center gap-2 mb-2 flex-wrap justify-start;
   }
 
   .entry-status {
@@ -110,15 +86,7 @@ const isPosition = entry.type === 'position';
   }
 
   .entry-description {
-    @apply text-sm text-text-muted my-3 leading-relaxed;
-  }
-
-  .entry--left .entry-description {
-    @apply pl-0 pr-4 list-inside;
-  }
-
-  .entry--right .entry-description {
-    @apply pl-4 pr-0;
+    @apply text-sm text-text-muted my-3 leading-relaxed pl-4 pr-0;
   }
 
   .entry-description li {
@@ -126,44 +94,18 @@ const isPosition = entry.type === 'position';
   }
 
   .entry-tech {
-    @apply flex flex-wrap gap-1.5 mt-3;
+    @apply flex flex-wrap gap-1.5 mt-3 justify-start;
   }
 
-  .entry--left .entry-tech {
-    @apply justify-end;
-  }
-
-  .entry--right .entry-tech {
-    @apply justify-start;
-  }
-
-  /* Mobile overrides */
+  /* Mobile: spine moves to left, icon on left */
   @media (max-width: 768px) {
-    .entry--left .entry-card,
-    .entry--right .entry-card {
-      @apply text-left ml-6 mr-0;
-    }
-
-    .entry--left .entry-icon-wrapper,
-    .entry--right .entry-icon-wrapper {
-      left: -1.25rem;
+    .entry-icon-wrapper {
       right: auto;
+      left: -1.25rem;
     }
 
-    .entry--left .entry-meta,
-    .entry--right .entry-meta {
-      @apply justify-start;
-    }
-
-    .entry--left .entry-description,
-    .entry--right .entry-description {
-      @apply pl-4 pr-0;
-      list-style-position: outside;
-    }
-
-    .entry--left .entry-tech,
-    .entry--right .entry-tech {
-      @apply justify-start;
+    .entry-card {
+      @apply ml-6 mr-0;
     }
   }
 </style>

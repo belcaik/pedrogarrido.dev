@@ -20,57 +20,44 @@ const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
 ---
 
 <section id="experience" class="section-container py-8">
-  <h3 class="section-title">
+  <h3 class="section-title" data-animate="fade-up">
     <CalendarDays class="section-title-icon" size={32} />
     {t("experience.title")} & {t("education.title")}
   </h3>
 
-  <a href="/assets/cv/fullstack.pdf" class="btn-cta w-fit" rel="nofollow noindex" download aria-label="Download resume">
+  <a href="/assets/cv/fullstack.pdf" class="btn-cta w-full" rel="nofollow noindex" download aria-label="Download resume" data-animate="fade-up">
     <Download class="btn-icon" size={20} />
     <span>{t("about.downloadResume")}</span>
   </a>
 
-  <!-- Desktop: Alternating timeline -->
+  <!-- Single-column timeline (spine on right) -->
   <div class="timeline" style={`--total-rows: ${totalRows}`}>
     <div class="timeline-spine"></div>
 
     {slots.map((slot) => (
       <div
-        class={`timeline-slot timeline-slot--${slot.position}`}
+        class="timeline-slot"
         style={`grid-row: ${slot.row}`}
+        data-animate="fade-up"
       >
-        <TimelineEntry entry={slot.entry} position={slot.position} lang={lang} />
+        <TimelineEntry entry={slot.entry} position="right" lang={lang} />
       </div>
     ))}
-  </div>
-
-  <!-- Mobile: Linear timeline -->
-  <div class="timeline-mobile">
-    <div class="timeline-spine"></div>
-    <div class="timeline-entries">
-      {slots.map((slot) => (
-        <TimelineEntry entry={slot.entry} position="right" lang={lang} />
-      ))}
-    </div>
   </div>
 </section>
 
 <style>
-  /* Desktop: Alternating timeline */
+  /* Single-column timeline (content on left, spine on right) */
   .timeline {
     display: grid;
-    grid-template-columns: 1fr 4px 1fr;
+    grid-template-columns: 1fr 4px;
     grid-template-rows: repeat(var(--total-rows), auto);
     gap: 2rem 0;
     position: relative;
     margin-top: 2rem;
   }
 
-  .timeline-mobile {
-    display: none;
-  }
-
-  /* Central spine */
+  /* Right-side spine */
   .timeline .timeline-spine {
     grid-column: 2;
     grid-row: 1 / -1;
@@ -84,50 +71,26 @@ const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
     );
   }
 
-  /* Slot positioning */
+  /* All slots on the left (content column) */
   .timeline-slot {
-    @apply flex items-start;
-  }
-
-  .timeline-slot--left {
     grid-column: 1;
-    @apply justify-end pr-6;
+    @apply flex items-start pr-6;
   }
 
-  .timeline-slot--right {
-    grid-column: 3;
-    @apply justify-start pl-6;
-  }
-
-  /* Mobile: Linear timeline */
+  /* Mobile adjustments */
   @media (max-width: 768px) {
     .timeline {
-      display: none;
-    }
-
-    .timeline-mobile {
-      display: grid;
       grid-template-columns: 4px 1fr;
       @apply gap-x-4 mt-8 pl-2;
     }
 
-    .timeline-mobile .timeline-spine {
+    .timeline .timeline-spine {
       grid-column: 1;
-      grid-row: 1;
-      @apply w-1;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgb(var(--color-border)) 1%,
-        rgb(var(--color-border)) 99%,
-        transparent 100%
-      );
     }
 
-    .timeline-mobile .timeline-entries {
+    .timeline-slot {
       grid-column: 2;
-      grid-row: 1;
-      @apply flex flex-col gap-6;
+      @apply pr-0 pl-0;
     }
   }
 </style>

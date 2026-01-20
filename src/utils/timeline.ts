@@ -103,11 +103,11 @@ export function createTimelineContext(jobs: Job[], schools: School[], lang: Lang
   // Sort all entries by startDate DESC (newest first)
   const allEntries = sortTimelineEntries([...positionEntries, ...degreeEntries]);
 
-  // Create slots with alternating positions (index-based, not type-based)
+  // Create slots - all entries use 'right' position (single-column layout)
   const slots: TimelineSlot[] = allEntries.map((entry, index) => ({
     row: index + 1,
     entry,
-    position: index % 2 === 0 ? 'left' : 'right',
+    position: 'right',
   }));
 
   return {
