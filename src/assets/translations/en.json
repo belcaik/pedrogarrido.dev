@@ -17,7 +17,7 @@
     "experience": "3+ years of experience as",
     "title": "Software Engineer & DevOps Enthusiast",
     "subtitle": "building scalable backend systems and automating infrastructure.",
-    "location":"Based in Chile 🇨🇱",
+    "location": "Based in Chile 🇨🇱",
     "cta": "Get in touch",
     "linkedin": "LinkedIn",
     "github": "GitHub"
@@ -26,7 +26,7 @@
     "title": "About Me",
     "paragraphs": [
       "I'm a Software Engineer specializing in backend systems, DevOps automation, and legacy modernization. Currently pursuing my Bachelor's in Software Engineering at Universidad Andrés Bello.",
-      "I've helped financial institutions like Citi Bank modernize critical payment systems, achieving 6x performance improvements and saving $36K+ in annual licensing costs through smart automation.",
+      "I thrive on solving complex problems and staying up-to-date with emerging technologies. I've helped financial institutions like Citi Bank modernize critical payment systems, achieving 6x performance improvements and saving $36K+ in annual licensing costs through smart automation.",
       "My toolkit spans .NET Core, Node.js, Python, React, and a deep understanding of CI/CD pipelines with Jenkins, OpenShift, and AWS. I'm passionate about clean architecture, Domain-Driven Design, and building systems that scale."
     ],
     "downloadResume": "Download Resume"
@@ -91,12 +91,7 @@
           "Participated in code reviews and learned best practices for software development",
           "Contributed to documentation and testing of existing applications"
         ],
-        "tech": [
-          "JavaScript",
-          "Vue.js",
-          "Node.js",
-          "Git"
-        ]
+        "tech": ["JavaScript", "Vue.js", "Node.js", "Git"]
       }
     ]
   },
@@ -122,42 +117,19 @@
     "categories": {
       "languages": {
         "title": "Languages",
-        "items": [
-          "C#",
-          "TypeScript",
-          "JavaScript",
-          "Python",
-          "Java",
-          "SQL"
-        ]
+        "items": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL"]
       },
       "backend": {
         "title": "Backend",
-        "items": [
-          ".NET Core",
-          "NestJS",
-          "Node.js",
-          "Express.js"
-        ]
+        "items": [".NET Core", "NestJS", "Node.js", "Express.js"]
       },
       "frontend": {
         "title": "Frontend",
-        "items": [
-          "React",
-          "Angular",
-          "Vue.js",
-          "HTML5",
-          "CSS3"
-        ]
+        "items": ["React", "Angular", "Vue.js", "HTML5", "CSS3"]
       },
       "databases": {
         "title": "Databases & Messaging",
-        "items": [
-          "PostgreSQL",
-          "SQL Server",
-          "MongoDB",
-          "RabbitMQ"
-        ]
+        "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"]
       },
       "devops": {
         "title": "DevOps & Cloud",
@@ -184,6 +156,10 @@
           "TDD",
           "Microservices"
         ]
+      },
+      "ai": {
+        "title": "AI Tools",
+        "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"]
       }
     }
   },
@@ -191,59 +167,35 @@
     "title": "Projects",
     "items": [
       {
-        "name": "",
-        "role": "",
-        "year": "",
-        "description": "",
-        "tech": [
-          "Vue.js",
-          "React Native",
-          "NestJS",
-          "Python",
-          "OpenCV",
-          "YOLOv5",
-          "PostgreSQL",
-          "RabbitMQ",
-          "AWS ECS"
-        ],
-        "github": "",
+        "name": "UNAB Sync Content",
+        "role": "Developer",
+        "year": "2025",
+        "description": "CLI tool written in Rust that automatically downloads and syncs university course materials from UNAB's learning platform. Uses headless browser automation to navigate the portal and fetch all course content.",
+        "tech": ["Rust", "Headless Browser", "Web Scraping", "CLI"],
+        "github": "https://github.com/belcaik/unab-sync-content",
         "demo": "",
         "private": false
       },
       {
-        "name": "Enterprise Payment System Modernization",
-        "role": "Software Developer",
+        "name": "OCR Temperature Extractor",
+        "role": "Developer",
         "year": "2024",
-        "description": "Led modernization of legacy .NET desktop applications into micro-frontend architecture for Citi Bank's payment processing systems. Achieved 6x performance improvement by migrating batch processing from client-side to server-side execution.",
-        "tech": [
-          "React",
-          "NestJS",
-          ".NET Core",
-          "OpenShift",
-          "Helm",
-          "Harness",
-          "Jenkins"
-        ],
-        "github": "",
+        "description": "Python script that extracts temperature readings from video recordings of thermometers or digital displays and exports them to CSV. Built to automate tedious data collection for a physics lab assignment — while classmates manually noted readings every 5 seconds, this tool did it automatically.",
+        "tech": ["Python", "OpenCV", "Tesseract OCR", "FFmpeg"],
+        "github": "https://github.com/belcaik/ocr_temp_extractor",
         "demo": "",
-        "private": true
+        "private": false
       },
       {
-        "name": "CI/CD Infrastructure Automation",
-        "role": "DevOps Engineer",
-        "year": "2024",
-        "description": "Automated deployment infrastructure for 9 legacy applications, eliminating manual processes. Replaced $36K+ in annual PKWARE licenses with PowerShell automation and integrated security scanning with SonarQube, BlackDuck, and Snyk.",
-        "tech": [
-          "Jenkins",
-          "TeamCity",
-          "PowerShell",
-          "Windows Server",
-          "SonarQube",
-          "BlackDuck"
-        ],
-        "github": "",
+        "name": "ToneDial",
+        "role": "Developer",
+        "year": "2023",
+        "description": "Discord music bot for playing audio in voice channels. Currently a work in progress.",
+        "tech": ["JavaScript", "Discord.js", "Node.js"],
+        "github": "https://github.com/belcaik/tonedial",
         "demo": "",
-        "private": true
+        "private": false,
+        "wip": true
       }
     ],
     "privateLabel": "Enterprise Project",
