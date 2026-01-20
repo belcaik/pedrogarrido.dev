@@ -11,12 +11,12 @@ const t = useTranslations(lang);
 ---
 
 <section id="about" class="section-container section-padding ">
-  <h2 class="section-title">
+  <h2 class="section-title" data-animate="fade-up">
     <UserCircle class="section-title-icon" size={32} />
     {t("about.title")}
   </h2>
 
-  <div class="">
+  <div class="" data-animate="fade-up">
     {
       (t("about.paragraphs") as string[]).map((paragraph) => (
         <p class="text-[1.125rem] md:text-base leading-relaxed text-text-muted m-0">{paragraph}</p>
