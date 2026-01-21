@@ -12,7 +12,7 @@
   },
   "hero": {
     "badge": "Open to Work",
-    "greeting": "Hi, I'm",
+    "greeting": "Hey, I'm ",
     "name": "Pedro Garrido",
     "experience": "3+ years of experience as",
     "title": "Software Engineer & DevOps Enthusiast",
@@ -87,9 +87,9 @@
         "date": "2022",
         "location": "Remote, Chile",
         "description": [
+          "Built internal automation tools to generate client specification documents from iceScrum API, eliminating manual documentation work and including time-tracking KPIs for improved delivery transparency",
           "Assisted in developing web applications using modern JavaScript frameworks",
-          "Participated in code reviews and learned best practices for software development",
-          "Contributed to documentation and testing of existing applications"
+          "Participated in code reviews and learned best practices for software development"
         ],
         "tech": ["JavaScript", "Vue.js", "Node.js", "Git"]
       }
