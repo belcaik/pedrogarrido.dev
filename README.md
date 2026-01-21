@@ -1,49 +1,86 @@
-# Astro Starter Kit: Basics
+# pedrogarrido.dev
 
-```sh
-pnpm create astro@latest -- --template basics
+Personal portfolio website built with Astro.
+
+## Tech Stack
+
+- [Astro](https://astro.build/) - Static site generator
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+
+## Commands
+
+| Command        | Action                                      |
+| :------------- | :------------------------------------------ |
+| `pnpm install` | Install dependencies                        |
+| `pnpm dev`     | Start local dev server at `localhost:4321`  |
+| `pnpm build`   | Build production site to `./dist/`          |
+| `pnpm preview` | Preview build locally before deploying      |
+
+## Deployment
+
+This project is deployed to GitHub Pages using GitHub Actions. On every push to `main`, the site is automatically built and deployed.
+
+### DNS Configuration for Custom Domain
+
+To configure `pedrogarrido.dev` to point to GitHub Pages, add the following DNS records in your domain provider:
+
+#### Option A: Apex domain only (pedrogarrido.dev)
+
+Add these **A records** pointing to GitHub's IPs:
+
+| Type | Name | Value           |
+|------|------|-----------------|
+| A    | @    | 185.199.108.153 |
+| A    | @    | 185.199.109.153 |
+| A    | @    | 185.199.110.153 |
+| A    | @    | 185.199.111.153 |
+
+#### Option B: With www subdomain (recommended)
+
+Add the A records above, plus a **CNAME record** for www:
+
+| Type  | Name | Value                    |
+|-------|------|--------------------------|
+| A     | @    | 185.199.108.153          |
+| A     | @    | 185.199.109.153          |
+| A     | @    | 185.199.110.153          |
+| A     | @    | 185.199.111.153          |
+| CNAME | www  | belcaik.github.io.       |
+
+> Note: The trailing dot in `belcaik.github.io.` is required by some DNS providers.
+
+#### IPv6 Support (optional)
+
+Add these **AAAA records** for IPv6:
+
+| Type | Name | Value                  |
+|------|------|------------------------|
+| AAAA | @    | 2606:50c0:8000::153    |
+| AAAA | @    | 2606:50c0:8001::153    |
+| AAAA | @    | 2606:50c0:8002::153    |
+| AAAA | @    | 2606:50c0:8003::153    |
+
+### GitHub Repository Settings
+
+After configuring DNS:
+
+1. Go to repository **Settings** > **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. Under **Custom domain**, enter `pedrogarrido.dev`
+4. Check **Enforce HTTPS** (wait for DNS propagation and certificate generation)
+
+### Verify DNS Configuration
+
+```bash
+# Check A records
+dig pedrogarrido.dev +short
+
+# Check CNAME for www
+dig www.pedrogarrido.dev +short
+
+# Check HTTPS certificate (after propagation)
+curl -I https://pedrogarrido.dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-
-MingCute Iconby MingCute Design
+DNS propagation can take up to 24-48 hours, but usually completes within minutes.
