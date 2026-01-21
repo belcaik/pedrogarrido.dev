@@ -7,8 +7,8 @@ import "../styles/global.css";
 import "../styles/animations.css";
 
 interface Props {
-  lang: Lang;
-  title?: string;
+    lang: Lang;
+    title?: string;
 }
 
 const { lang, title } = Astro.props;
@@ -18,93 +18,108 @@ const description = t("meta.description");
 
 const currentPath = Astro.url.pathname;
 const alternateLinks = Object.keys(languages).map((l) => {
-  const pathParts = currentPath.split("/").filter(Boolean);
-  if (pathParts.length > 0 && pathParts[0] in languages) {
-    pathParts[0] = l;
-  }
-  return {
-    lang: l,
-    href: new URL("/" + pathParts.join("/"), Astro.site || Astro.url.origin)
-      .href,
-  };
+    const pathParts = currentPath.split("/").filter(Boolean);
+    if (pathParts.length > 0 && pathParts[0] in languages) {
+        pathParts[0] = l;
+    }
+    return {
+        lang: l,
+        href: new URL("/" + pathParts.join("/"), Astro.site || Astro.url.origin)
+            .href,
+    };
 });
 ---
 
 <!doctype html>
 <html lang={lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <!-- Anti-scraping measures -->
-    <meta name="robots" content="noai, noimageai" />
-    <meta name="googlebot" content="notranslate" />
-    <title>{pageTitle}</title>
-    {
-      alternateLinks.map((link) => (
-        <link rel="alternate" hreflang={link.lang} href={link.href} />
-      ))
-    }
-    <script is:inline>
-      (function () {
-        const theme =
-          localStorage.getItem("theme") ||
-          (window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-        if (theme === "dark") {
-          document.documentElement.classList.add("dark");
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+        <!-- Anti-scraping measures -->
+        <meta name="robots" content="noai, noimageai" />
+        <meta name="googlebot" content="notranslate" />
+        <title>{pageTitle}</title>
+        {
+            alternateLinks.map((link) => (
+                <link rel="alternate" hreflang={link.lang} href={link.href} />
+            ))
         }
-      })();
-    </script>
-  </head>
-  <body>
-    <!-- Honeypot trap for bots -->
-    <Honeypot />
-    <div class="fixed inset-0 z-0 background-gradient"></div>
-    <div class="min-h-screen w-full relative">
-      <nav class="sticky top-0 z-[1000] bg-background/80 backdrop-blur-glass border-b border-border py-4">
-        <div class="section-container flex items-center justify-between gap-8 md:gap-4">
-          <a href={`/${lang}`} class="text-xl font-bold text-text no-underline transition-colors hover:text-primary">
-            Pedro Garrido
-          </a>
+        <script is:inline>
+            (function () {
+                const theme =
+                    localStorage.getItem("theme") ||
+                    (window.matchMedia("(prefers-color-scheme: dark)").matches
+                        ? "dark"
+                        : "light");
+                if (theme === "dark") {
+                    document.documentElement.classList.add("dark");
+                }
+            })();
+        </script>
+    </head>
+    <body>
+        <!-- Honeypot trap for bots -->
+        <Honeypot />
+        <div class="fixed inset-0 z-0 background-gradient"></div>
+        <div class="min-h-screen w-full relative">
+            <nav
+                class="sticky top-0 z-[1000] bg-background/80 backdrop-blur-glass border-b border-border py-4"
+            >
+                <div
+                    class="section-container flex items-center justify-between gap-8 md:gap-4"
+                >
+                    <a
+                        href={`/${lang}`}
+                        class="text-xl font-bold text-text no-underline transition-colors hover:text-primary"
+                    >
+                        Pedro Garrido
+                    </a>
 
-          <div class="hidden md:flex items-center gap-8 flex-1 justify-center">
-            <a href="#about" class="nav-link">{t("nav.about")}</a>
-            <a href="#experience" class="nav-link">{t("nav.experience")}</a>
-            <a href="#projects" class="nav-link">{t("nav.projects")}</a>
-            <a href="#contact" class="nav-link">{t("nav.contact")}</a>
-          </div>
+                    <div
+                        class="hidden md:flex items-center gap-8 flex-1 justify-center"
+                    >
+                        <a href="#experience" class="nav-link"
+                            >{t("nav.experience")}</a
+                        >
+                        <a href="#projects" class="nav-link"
+                            >{t("nav.projects")}</a
+                        >
+                        <a href="#about" class="nav-link">{t("nav.about")}</a>
+                        <a href="#contact" class="nav-link"
+                            >{t("nav.contact")}</a
+                        >
+                    </div>
 
-          <div class="flex items-center gap-2">
-            <ThemeSwitch />
-            <LanguageSwitcher lang={lang} />
-          </div>
+                    <div class="flex items-center gap-2">
+                        <ThemeSwitch />
+                        <LanguageSwitcher lang={lang} />
+                    </div>
+                </div>
+            </nav>
+            <slot />
         </div>
-      </nav>
-      <slot />
-    </div>
-    <script src="../scripts/scroll-animations.ts"></script>
-  </body>
+        <script src="../scripts/scroll-animations.ts"></script>
+    </body>
 </html>
 
 <style>
-  .nav-link {
-    @apply text-text-muted no-underline text-[0.9375rem] font-medium transition-colors relative;
-  }
+    .nav-link {
+        @apply text-text-muted no-underline text-[0.9375rem] font-medium transition-colors relative;
+    }
 
-  .nav-link:hover {
-    @apply text-primary;
-  }
+    .nav-link:hover {
+        @apply text-primary;
+    }
 
-  .nav-link::after {
-    content: "";
-    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200;
-  }
+    .nav-link::after {
+        content: "";
+        @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200;
+    }
 
-  .nav-link:hover::after {
-    @apply w-full;
-  }
+    .nav-link:hover::after {
+        @apply w-full;
+    }
 </style>
