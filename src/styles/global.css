@@ -641,3 +641,195 @@
         transform: none;
     }
 }
+
+/* ============================================
+   Open to Work Badge - Animated Green Glow
+   ============================================ */
+
+.open-to-work-badge {
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem 0.375rem 0.375rem;
+    background: rgb(var(--color-surface) / 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    text-decoration: none;
+    position: relative;
+    isolation: isolate;
+    flex-shrink: 0;
+    transition:
+        transform 0.2s ease-out,
+        background 0.2s ease-out;
+}
+
+/* Animated gradient border */
+.open-to-work-badge::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 9999px;
+    padding: 2px;
+    background: linear-gradient(
+        90deg,
+        #22c55e,
+        #4ade80,
+        #86efac,
+        #4ade80,
+        #22c55e
+    );
+    background-size: 200% 100%;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: badge-border-flow 3s linear infinite;
+    z-index: -1;
+}
+
+/* Outer glow effect */
+.open-to-work-badge::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    background: linear-gradient(
+        90deg,
+        #22c55e,
+        #4ade80,
+        #86efac,
+        #4ade80,
+        #22c55e
+    );
+    background-size: 200% 100%;
+    opacity: 0.4;
+    filter: blur(8px);
+    /*animation: badge-border-flow 3s linear infinite;*/
+    z-index: -2;
+}
+
+@keyframes badge-border-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* Pulse glow animation */
+.open-to-work-badge::after {
+    animation: badge-border-flow 3s linear infinite;
+    /*badge-glow-pulse 2s ease-in-out infinite;*/
+}
+
+@keyframes badge-glow-pulse {
+    0%,
+    100% {
+        opacity: 0.3;
+        filter: blur(8px);
+    }
+    50% {
+        opacity: 0.6;
+        filter: blur(12px);
+    }
+}
+
+/* Avatar circle */
+.badge-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    border: 2px solid rgb(var(--color-surface));
+    box-shadow: 0 0 0 2px #22c55e;
+}
+
+/* Badge text */
+.badge-text {
+    color: rgb(var(--color-text));
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Responsive scaling - larger on desktop to match title */
+@media (min-width: 768px) {
+    .open-to-work-badge {
+        gap: 0.625rem;
+        padding: 0.5rem 1rem 0.5rem 0.5rem;
+    }
+
+    .badge-avatar {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.75rem;
+    }
+
+    .badge-text {
+        font-size: 0.9375rem;
+    }
+}
+
+/* Hover effects */
+.open-to-work-badge:hover {
+    transform: translateY(-2px);
+    background: rgb(var(--color-surface) / 0.95);
+}
+
+.open-to-work-badge:hover::after {
+    opacity: 0.7;
+    filter: blur(14px);
+}
+
+/* Focus state for accessibility */
+.open-to-work-badge:focus-visible {
+    outline: 2px solid #22c55e;
+    outline-offset: 4px;
+}
+
+/* Dark mode adjustments */
+.dark .open-to-work-badge {
+    background: rgb(var(--color-surface-elevated) / 0.8);
+}
+
+.dark .badge-avatar {
+    border-color: rgb(var(--color-surface-elevated));
+}
+
+.dark .open-to-work-badge:hover {
+    background: rgb(var(--color-surface-elevated) / 0.95);
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .open-to-work-badge::before,
+    .open-to-work-badge::after {
+        animation: none;
+        background-position: 0% 50%;
+    }
+
+    .open-to-work-badge::after {
+        opacity: 0.4;
+        filter: blur(8px);
+    }
+
+    .open-to-work-badge:hover {
+        transform: none;
+    }
+}
