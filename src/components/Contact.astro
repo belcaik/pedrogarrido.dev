@@ -5,7 +5,7 @@ import ObfuscatedEmail from "./ObfuscatedEmail.astro";
 import type { Lang } from "../i18n";
 
 interface Props {
-  lang: Lang;
+    lang: Lang;
 }
 
 const { lang } = Astro.props;
@@ -13,58 +13,78 @@ const { t, contactInfo } = getContactData(lang);
 ---
 
 <section id="contact" class="section-container section-padding">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-    <div class="text-left max-w-[700px] mx-auto md:grid-col-1" data-animate="fade-right">
-      <h2 class="section-title">{t("contact.title")}</h2>
-      <p class="text-2xl md:text-xl font-semibold mb-4 text-primary">
-        {t("contact.headline")}
-      </p>
-      <p
-        class="text-base md:text-[0.9375rem] leading-relaxed text-text-muted m-0"
-      >
-        {t("contact.description")}
-      </p>
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+        <div
+            class="text-left max-w-[700px] mx-auto md:grid-col-1"
+            data-animate="fade-right"
+        >
+            <h2 class="section-title">
+                {t("contact.title")}
 
-    <div class="flex flex-col gap-6 max-w-[700px] mx-auto md:grid-col-2" data-animate="fade-left">
-      <h3 class="text-xl md:text-lg font-semibold text-text mb-2">
-        Contact Information
-      </h3>
+                <a
+                    href={contactInfo.linkedin.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${t("hero.badge")} - LinkedIn`}
+                    class="open-to-work-badge"
+                    data-animate-hero
+                >
+                    <span class="badge-text">{t("hero.badge")}</span>
+                </a>
+            </h2>
 
-      <div class="flex flex-col gap-6">
-        <div class="flex gap-4 items-start">
-          <Mail class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" size={24} />
-          <div class="flex flex-col gap-1">
-            <span
-              class="text-sm font-semibold text-text-muted uppercase tracking-wide"
-              >{contactInfo.email.label}</span
+            <p class="text-2xl md:text-xl font-semibold mb-4 text-primary">
+                {t("contact.headline")}
+            </p>
+            <p
+                class="text-base md:text-[0.9375rem] leading-relaxed text-text-muted m-0"
             >
-            <ObfuscatedEmail
-              email={contactInfo.email.value}
-              class="text-base text-text"
-            />
-          </div>
+                {t("contact.description")}
+            </p>
         </div>
 
-        <div class="flex gap-4 items-start">
-          <Linkedin
-            class="w-6 h-6 text-primary flex-shrink-0 mt-0.5"
-            size={24}
-          />
-          <div class="flex flex-col gap-1">
-            <span
-              class="text-sm font-semibold text-text-muted uppercase tracking-wide"
-              >{contactInfo.linkedin.label}</span
-            >
-            <a
-              class="link-primary text-base"
-              href={contactInfo.linkedin.url}
-              target="_blank"
-              rel="noopener noreferrer">{contactInfo.linkedin.value}</a
-            >
-          </div>
+        <div
+            class="flex flex-col gap-6 max-w-[700px] mx-auto md:grid-col-2 py-12"
+            data-animate="fade-left"
+        >
+            <div class="flex flex-col gap-6">
+                <div class="flex gap-4 items-start">
+                    <Mail
+                        class="w-6 h-6 text-primary flex-shrink-0 mt-0.5"
+                        size={24}
+                    />
+                    <div class="flex flex-col gap-1">
+                        <span
+                            class="text-sm font-semibold text-text-muted uppercase tracking-wide"
+                            >{contactInfo.email.label}</span
+                        >
+                        <ObfuscatedEmail
+                            email={contactInfo.email.value}
+                            class="text-base text-text"
+                        />
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start">
+                    <Linkedin
+                        class="w-6 h-6 text-primary flex-shrink-0 mt-0.5"
+                        size={24}
+                    />
+                    <div class="flex flex-col gap-1">
+                        <span
+                            class="text-sm font-semibold text-text-muted uppercase tracking-wide"
+                            >{contactInfo.linkedin.label}</span
+                        >
+                        <a
+                            class="link-primary text-base"
+                            href={contactInfo.linkedin.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >{contactInfo.linkedin.value}</a
+                        >
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
