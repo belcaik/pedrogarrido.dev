@@ -1,12 +1,16 @@
-# Portfolio Security - Block aggressive crawlers and scrapers
-# Last updated: 2026-01-18
+# Portfolio - Robots.txt
+# Last updated: 2026-01-21
 
+# Sitemap location
+Sitemap: https://pedrogarrido.dev/sitemap-index.xml
+
+# Default rules for all bots
 User-agent: *
 Allow: /
 Disallow: /assets/cv/
 Disallow: /*?*
 
-# Block known aggressive scrapers and AI crawlers
+# Block AI training crawlers (not social media preview bots)
 User-agent: GPTBot
 Disallow: /
 
@@ -22,19 +26,10 @@ Disallow: /
 User-agent: Claude-Web
 Disallow: /
 
-User-agent: Bytespider
-Disallow: /
-
-User-agent: Amazonbot
-Disallow: /
-
 User-agent: ClaudeBot
 Disallow: /
 
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: Meta-ExternalAgent
+User-agent: Bytespider
 Disallow: /
 
 User-agent: PerplexityBot
@@ -46,6 +41,7 @@ Disallow: /
 User-agent: Diffbot
 Disallow: /
 
+# Block aggressive SEO crawlers
 User-agent: PetalBot
 Disallow: /
 
@@ -73,7 +69,29 @@ Disallow: /
 User-agent: Seekport Crawler
 Disallow: /
 
-# Crawl delay for respectful bots
+# Allow social media preview bots (needed for link previews)
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+# Crawl delay for search engines
 User-agent: Googlebot
 Crawl-delay: 10
 
