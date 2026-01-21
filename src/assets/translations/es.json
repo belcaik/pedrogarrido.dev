@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Pedro Garrido | Desarrollador de Software",
-    "description": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. 3+ años construyendo soluciones escalables."
+    "description": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Más de 3 años construyendo soluciones escalables."
   },
   "nav": {
     "experience": "Experiencia",
@@ -12,12 +12,12 @@
   },
   "hero": {
     "badge": "Disponible para trabajar",
-    "greeting": "Hola, soy",
+    "greeting": "Hola, soy ",
     "name": "Pedro Garrido",
-    "experience": "3+ años de experiencia como",
-    "title": "Ingeniero de Software",
-    "subtitle": "Construyendo sistemas backend escalables y automatizando infraestructura.",
-    "location": "Desde Chile 🇨🇱.",
+    "experience": "Más de 3 años de experiencia como",
+    "title": "Ingeniero de Software y Entusiasta DevOps",
+    "subtitle": "construyendo sistemas backend escalables y automatizando infraestructura.",
+    "location": "Desde Chile 🇨🇱",
     "cta": "Contáctame",
     "linkedin": "LinkedIn",
     "github": "GitHub"
@@ -25,9 +25,9 @@
   "about": {
     "title": "Sobre mí",
     "paragraphs": [
-      "Soy Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Actualmente cursando Ingeniería en Software en la Universidad Andrés Bello.",
-      "He ayudado a instituciones financieras como Citi Bank a modernizar sistemas críticos de pagos, logrando mejoras de rendimiento de 6x y ahorrando más de $36K anuales en costos de licencias mediante automatización inteligente.",
-      "Mi stack incluye .NET Core, Node.js, Python, React, y un profundo conocimiento de pipelines CI/CD con Jenkins, OpenShift y AWS. Me apasiona la arquitectura limpia, Domain-Driven Design y construir sistemas que escalen."
+      "Soy Ingeniero de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Actualmente cursando Ingeniería en Software en la Universidad Andrés Bello.",
+      "Disfruto resolver problemas complejos y mantenerme al día con tecnologías emergentes. He ayudado a instituciones financieras como Citi Bank a modernizar sistemas críticos de pagos, logrando mejoras de rendimiento de 6x y ahorrando más de $36K USD anuales en costos de licencias mediante automatización.",
+      "Mi stack incluye .NET Core, Node.js, Python, React, y un conocimiento profundo de pipelines CI/CD con Jenkins, OpenShift y AWS. Me apasiona la arquitectura limpia, Domain-Driven Design y construir sistemas que escalen."
     ],
     "downloadResume": "Descargar CV"
   },
@@ -38,15 +38,25 @@
         "company": "Citi Bank",
         "via": "vía Kibernum",
         "position": "Desarrollador de Software",
-        "date": "Marzo 2024 - Presente",
+        "date": "Marzo 2024 - Febrero 2026",
         "location": "Remoto, Chile",
         "description": [
-          "Lideré la reescritura de aplicaciones legacy .NET Framework a arquitectura micro-frontend (React + NestJS), logrando mejora de rendimiento de 6x (30s → 5s)",
+          "Lideré la reescritura de aplicaciones legacy .NET Framework a arquitectura micro-frontend (React + NestJS), logrando una mejora de rendimiento de 6x (30s → 5s)",
           "Construí pipelines CI/CD desde cero para 9 aplicaciones usando Jenkins, TeamCity, Harness y OpenShift",
-          "Eliminé más de $36K anuales en costos de licencias reemplazando PKWARE con herramientas nativas de Windows",
+          "Eliminé más de $36K USD anuales en costos de licencias reemplazando PKWARE con herramientas nativas de Windows",
           "Implementé framework de testing logrando 80% de cobertura de código para sistemas críticos de pagos (FlexCube ↔ BankCard)"
         ],
-        "tech": [".NET Core", "NestJS", "React", "Jenkins", "TeamCity", "OpenShift", "Helm", "PowerShell", "SonarQube"]
+        "tech": [
+          ".NET Core",
+          "NestJS",
+          "React",
+          "Jenkins",
+          "TeamCity",
+          "OpenShift",
+          "Helm",
+          "PowerShell",
+          "SonarQube"
+        ]
       },
       {
         "company": "Tutelkan",
@@ -54,21 +64,32 @@
         "date": "Enero 2023 - Marzo 2024",
         "location": "Remoto, Chile",
         "description": [
-          "Construí plataforma agrícola full-stack: dashboard Vue.js, app móvil React Native, API NestJS y servicios ML en Python",
+          "Construí plataforma agrícola full-stack: dashboard en Vue.js, app móvil en React Native, API en NestJS y servicios de ML en Python",
           "Desplegué infraestructura de microservicios en AWS ECS (6 contenedores incluyendo PostgreSQL, RabbitMQ y workers de inferencia ML)",
           "Desarrollé pipeline de visión computacional con OpenCV + YOLOv5 para clasificación automatizada de calidad de fruta"
         ],
-        "tech": ["NestJS", "Vue.js", "React Native", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS", "Docker"]
+        "tech": [
+          "NestJS",
+          "Vue.js",
+          "React Native",
+          "Python",
+          "OpenCV",
+          "YOLOv5",
+          "PostgreSQL",
+          "RabbitMQ",
+          "AWS ECS",
+          "Docker"
+        ]
       },
       {
         "company": "Tutelkan",
         "position": "Practicante de Desarrollo de Software",
-        "date": "2022 - 2023",
+        "date": "2022",
         "location": "Remoto, Chile",
         "description": [
+          "Desarrollé herramientas internas de automatización para generar documentos de especificación a clientes desde la API de iceScrum, eliminando trabajo manual de documentación e incluyendo KPIs de seguimiento de tiempo para mayor transparencia en las entregas",
           "Asistí en el desarrollo de aplicaciones web usando frameworks JavaScript modernos",
-          "Participé en revisiones de código y aprendí mejores prácticas de desarrollo de software",
-          "Contribuí a la documentación y testing de aplicaciones existentes"
+          "Participé en revisiones de código y aprendí buenas prácticas de desarrollo de software"
         ],
         "tech": ["JavaScript", "Vue.js", "Node.js", "Git"]
       }
@@ -112,11 +133,33 @@
       },
       "devops": {
         "title": "DevOps y Cloud",
-        "items": ["Docker", "OpenShift", "Kubernetes", "AWS ECS", "Jenkins", "TeamCity", "Harness", "Helm"]
+        "items": [
+          "Docker",
+          "OpenShift",
+          "Kubernetes",
+          "AWS ECS",
+          "Jenkins",
+          "TeamCity",
+          "Harness",
+          "Helm"
+        ]
       },
       "tools": {
         "title": "Herramientas y Prácticas",
-        "items": ["Git", "SonarQube", "BlackDuck", "Snyk", "CI/CD", "DDD", "TDD", "Microservicios"]
+        "items": [
+          "Git",
+          "SonarQube",
+          "BlackDuck",
+          "Snyk",
+          "CI/CD",
+          "DDD",
+          "TDD",
+          "Microservicios"
+        ]
+      },
+      "ai": {
+        "title": "Herramientas de IA",
+        "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"]
       }
     }
   },
@@ -124,34 +167,35 @@
     "title": "Proyectos",
     "items": [
       {
-        "name": "Plataforma de Análisis de Calidad Agrícola",
-        "role": "Desarrollador Full-Stack",
-        "year": "2023",
-        "description": "Plataforma tecnológica agrícola end-to-end para clasificación automatizada de calidad de fruta usando visión computacional. Dashboard Vue.js, app móvil React Native, orquestación API con NestJS y servicios ML en Python con OpenCV + YOLOv5.",
-        "tech": ["Vue.js", "React Native", "NestJS", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS"],
-        "github": "",
+        "name": "UNAB Sync Content",
+        "role": "Desarrollador",
+        "year": "2025",
+        "description": "Herramienta CLI escrita en Rust que descarga y sincroniza automáticamente los materiales de cursos universitarios desde la plataforma de aprendizaje de la UNAB. Usa automatización de navegador headless para navegar el portal y obtener todo el contenido.",
+        "tech": ["Rust", "Headless Browser", "Web Scraping", "CLI"],
+        "github": "https://github.com/belcaik/unab-sync-content",
         "demo": "",
         "private": false
       },
       {
-        "name": "Modernización de Sistema de Pagos Empresarial",
-        "role": "Desarrollador de Software",
+        "name": "OCR Temperature Extractor",
+        "role": "Desarrollador",
         "year": "2024",
-        "description": "Lideré la modernización de aplicaciones de escritorio legacy .NET a arquitectura micro-frontend para sistemas de procesamiento de pagos de Citi Bank. Logré mejora de rendimiento de 6x migrando procesamiento batch del cliente al servidor.",
-        "tech": ["React", "NestJS", ".NET Core", "OpenShift", "Helm", "Harness", "Jenkins"],
-        "github": "",
+        "description": "Script en Python que extrae lecturas de temperatura de grabaciones de video de termómetros o pantallas digitales y las exporta a CSV. Construido para automatizar la recolección de datos de un laboratorio de física — mientras mis compañeros anotaban manualmente las lecturas cada 5 segundos, esta herramienta lo hacía automáticamente.",
+        "tech": ["Python", "OpenCV", "Tesseract OCR", "FFmpeg"],
+        "github": "https://github.com/belcaik/ocr_temp_extractor",
         "demo": "",
-        "private": true
+        "private": false
       },
       {
-        "name": "Automatización de Infraestructura CI/CD",
-        "role": "Ingeniero DevOps",
-        "year": "2024",
-        "description": "Automaticé infraestructura de despliegue para 9 aplicaciones legacy, eliminando procesos manuales. Reemplacé más de $36K anuales en licencias PKWARE con automatización PowerShell e integré escaneo de seguridad con SonarQube, BlackDuck y Snyk.",
-        "tech": ["Jenkins", "TeamCity", "PowerShell", "Windows Server", "SonarQube", "BlackDuck"],
-        "github": "",
+        "name": "ToneDial",
+        "role": "Desarrollador",
+        "year": "2023",
+        "description": "Bot de música para Discord para reproducir audio en canales de voz. Actualmente en desarrollo.",
+        "tech": ["JavaScript", "Discord.js", "Node.js"],
+        "github": "https://github.com/belcaik/tonedial",
         "demo": "",
-        "private": true
+        "private": false,
+        "wip": true
       }
     ],
     "privateLabel": "Proyecto Empresarial",
@@ -162,16 +206,16 @@
     "title": "Actividad en GitHub",
     "stats": {
       "repos": "Repos Públicos",
-      "stars": "Estrellas",
+      "stars": "Estrellas Totales",
       "contributions": "Contribuciones",
       "followers": "Seguidores"
     },
     "viewProfile": "Ver Perfil Completo"
   },
-   "contact": {
-    "title": "Get In Touch",
-    "headline": "Let's build something together",
-    "description": "I'm currently open to new opportunities — remote, hybrid, or relocation. Whether you have a project in mind, a job opportunity, or just want to connect, feel free to reach out.",
+  "contact": {
+    "title": "Contacto",
+    "headline": "Construyamos algo juntos",
+    "description": "Actualmente estoy abierto a nuevas oportunidades — remoto, híbrido o reubicación. Ya sea que tengas un proyecto en mente, una oportunidad laboral, o simplemente quieras conectar, no dudes en escribirme.",
     "info": {
       "email": {
         "label": "Email",
@@ -179,11 +223,13 @@
       },
       "linkedin": {
         "label": "LinkedIn",
-        "value": "linkedin.com/in/pedrogarridodev"
+        "value": "linkedin.com/in/pedrogarridodev",
+        "url": "https://www.linkedin.com/in/pedrogarridodev"
       },
       "github": {
         "label": "GitHub",
-        "value": "github.com/belcaik"
+        "value": "github.com/belcaik",
+        "url": "https://github.com/belcaik"
       }
     }
   },
