@@ -1,5 +1,51 @@
 ---
-import { defaultLang } from '../i18n';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Experience from "../components/Experience.astro";
+import TechStackSection from "../components/TechStack/TechStackSection.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import { defaultLang, type Lang } from "../i18n";
 
-return Astro.redirect(`/${defaultLang}/`);
+// Root page uses defaultLang (English) as the content language
+// This ensures crawlers and social media previews get proper content
+const lang: Lang = defaultLang;
 ---
+
+<Layout lang={lang} isRoot={true}>
+    <main>
+        <Hero lang={lang} />
+        <Experience lang={lang} />
+        <Projects lang={lang} />
+        <TechStackSection lang={lang} />
+        <AboutMe lang={lang} />
+        <Contact lang={lang} />
+    </main>
+    <Footer lang={lang} />
+</Layout>
+
+<script>
+    // Client-side redirect based on browser language preference
+    // This runs after the page loads, so crawlers see the full content first
+    (function() {
+        const browserLang = navigator.language?.split('-')[0];
+        const supportedLangs = ['en', 'es'];
+        const targetLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
+
+        // Only redirect if we're on the exact root path
+        if (window.location.pathname === '/' || window.location.pathname === '') {
+            // Use replaceState + navigate to avoid adding to history
+            window.location.replace('/' + targetLang + '/');
+        }
+    })();
+</script>
+
+<style>
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+</style>
