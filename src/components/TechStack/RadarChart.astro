@@ -103,9 +103,9 @@ const strokeColor = data.color.replace("0.6", "1");
                 stroke-width="2"
                 class="radar-polygon"></polygon>
 
-            <!-- Data points (interactive circles at each vertex) -->
+            <!-- Data points (visual indicators, accessibility via labels) -->
             {
-                axes.map((axis) => (
+                axes.map((axis, index) => (
                     <circle
                         cx={axis.point.x}
                         cy={axis.point.y}
@@ -115,9 +115,8 @@ const strokeColor = data.color.replace("0.6", "1");
                         data-name={axis.name}
                         data-level={axis.level}
                         data-techs={JSON.stringify(axis.technologies)}
-                        tabindex="0"
-                        role="button"
-                        aria-label={`${axis.name}: Level ${axis.level} of 5. Technologies: ${axis.technologies.join(", ")}`}
+                        aria-hidden="true"
+                        style={`--point-index: ${index}`}
                     />
                 ))
             }
@@ -221,20 +220,50 @@ const strokeColor = data.color.replace("0.6", "1");
         .radar-polygon {
             animation: none;
         }
+        .radar-point {
+            animation: none;
+        }
+        .radar-point:hover,
+        .radar-point.active {
+            r: 8;
+            filter: drop-shadow(0 0 4px currentColor);
+        }
     }
 
     .radar-point {
         cursor: pointer;
         transition:
-            r 150ms ease-out,
-            filter 150ms ease-out;
+            r 200ms ease-out,
+            filter 200ms ease-out,
+            opacity 200ms ease-out;
         outline: none;
+        /* Staggered pulse animation based on point index */
+        animation: point-pulse 2.5s ease-in-out infinite;
+        animation-delay: calc(var(--point-index, 0) * 0.3s);
     }
 
-    .radar-point:hover,
-    .radar-point:focus-visible {
-        r: 8;
-        filter: drop-shadow(0 0 6px currentColor);
+    @keyframes point-pulse {
+        0%, 100% {
+            r: 5;
+            filter: drop-shadow(0 0 0 transparent);
+        }
+        50% {
+            r: 7;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+    }
+
+    .radar-point:hover {
+        r: 10;
+        filter: drop-shadow(0 0 12px currentColor);
+        animation-play-state: paused;
+    }
+
+    /* Highlight point when corresponding label is hovered/focused */
+    .radar-point.active {
+        r: 10;
+        filter: drop-shadow(0 0 12px currentColor);
+        animation-play-state: paused;
     }
 
     .radar-labels {
