@@ -178,18 +178,34 @@ const t = useTranslations(lang);
             hideTooltip();
         });
 
-        // Attach events to each point and label
-        const allInteractive = [...points, ...labels];
+        // Helper to find matching point for a label (by data-name)
+        function getMatchingPoint(label: HTMLElement): SVGCircleElement | null {
+            const name = label.getAttribute("data-name");
+            if (!name) return null;
+            const container = label.closest(".radar-container");
+            if (!container) return null;
+            return container.querySelector(
+                `.radar-point[data-name="${name}"]`
+            ) as SVGCircleElement | null;
+        }
 
-        allInteractive.forEach((el) => {
+        // Helper to activate/deactivate point
+        function activatePoint(point: SVGCircleElement | null) {
+            if (point) point.classList.add("active");
+        }
+
+        function deactivatePoint(point: SVGCircleElement | null) {
+            if (point) point.classList.remove("active");
+        }
+
+        // Attach events to points
+        points.forEach((el) => {
             const element = el as HTMLElement;
 
             if (isMobile) {
-                // Mobile: tap to show, tap elsewhere to hide
                 element.addEventListener("click", (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-
                     if (currentElement === element) {
                         forceHideTooltip();
                     } else {
@@ -197,23 +213,54 @@ const t = useTranslations(lang);
                     }
                 });
             } else {
-                // Desktop: hover behavior
                 element.addEventListener("mouseenter", () => {
                     showTooltip(element);
                 });
-
                 element.addEventListener("mouseleave", () => {
                     hideTooltip();
+                });
+            }
+        });
+
+        // Attach events to labels with point synchronization
+        labels.forEach((el) => {
+            const element = el as HTMLElement;
+            const matchingPoint = getMatchingPoint(element);
+
+            if (isMobile) {
+                element.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (currentElement === element) {
+                        forceHideTooltip();
+                        deactivatePoint(matchingPoint);
+                    } else {
+                        // Deactivate all points first
+                        points.forEach((p) => p.classList.remove("active"));
+                        showTooltip(element);
+                        activatePoint(matchingPoint);
+                    }
+                });
+            } else {
+                element.addEventListener("mouseenter", () => {
+                    showTooltip(element);
+                    activatePoint(matchingPoint);
+                });
+                element.addEventListener("mouseleave", () => {
+                    hideTooltip();
+                    deactivatePoint(matchingPoint);
                 });
             }
 
             // Keyboard accessibility
             element.addEventListener("focus", () => {
                 showTooltip(element);
+                activatePoint(matchingPoint);
             });
 
             element.addEventListener("blur", () => {
                 hideTooltip();
+                deactivatePoint(matchingPoint);
             });
         });
 
@@ -227,6 +274,8 @@ const t = useTranslations(lang);
                     !target.closest(".skill-tooltip")
                 ) {
                     forceHideTooltip();
+                    // Deactivate all points
+                    points.forEach((p) => p.classList.remove("active"));
                 }
             });
         }
