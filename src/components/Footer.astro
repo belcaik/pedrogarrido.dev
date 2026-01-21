@@ -13,10 +13,10 @@ const { contactInfo } = getContactData(lang);
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
+    { href: "#about", label: t("nav.about") },
     { href: "#experience", label: t("nav.experience") },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: t("nav.projects") },
-    { href: "#about", label: t("nav.about") },
     { href: "#contact", label: t("nav.contact") },
 ];
 
@@ -28,7 +28,7 @@ const encodedEmail = Buffer.from(contactInfo.email.value).toString("base64");
     class="bg-surface border-t border-border py-12 md:py-10 px-4 mt-24 md:mt-16"
 >
     <div class="section-container flex flex-col gap-10">
-        <div class="md:grid grid-cols-[2fr_1fr_1fr] gap-12 md:gap-8">
+        <div class="flex flex-col gap-8 md:grid md:grid-cols-[2fr_1fr_1fr] md:gap-8">
             <div class="flex flex-col gap-4">
                 <h3 class="text-2xl font-bold text-text m-0">Pedro Garrido</h3>
                 <p
@@ -98,14 +98,12 @@ const encodedEmail = Buffer.from(contactInfo.email.value).toString("base64");
             </div>
         </div>
 
-        <div class="sm:flex-col md:grid lg:grid-cols-2">
-            <p class="text-text-muted text-sm m-0 md:grid-col-1 lg:grid-col-1">
+        <div class="flex flex-col items-center gap-2 md:flex-row md:justify-between">
+            <p class="text-text-muted text-sm m-0">
                 © {currentYear}
                 {t("footer.copyright")}
             </p>
-            <p
-                class="text-text-muted text-sm m-0 flex items-center gap-2 md:grid-col-2 lg:grid-col-2 justify-end"
-            >
+            <p class="text-text-muted text-sm m-0 flex items-center gap-2">
                 {t("footer.builtWith")}
             </p>
         </div>
