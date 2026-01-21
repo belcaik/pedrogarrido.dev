@@ -1,10 +1,10 @@
 ---
-import { useTranslations, type Lang } from '../i18n';
-import { Github, Linkedin, Mail } from '@lucide/astro';
-import { getContactData } from '../utils/contact';
+import { useTranslations, type Lang } from "../i18n";
+import { Github, Linkedin, Mail } from "@lucide/astro";
+import { getContactData } from "../utils/contact";
 
 interface Props {
-  lang: Lang;
+    lang: Lang;
 }
 
 const { lang } = Astro.props;
@@ -13,93 +13,113 @@ const { contactInfo } = getContactData(lang);
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-  { href: '#about', label: t('nav.about') },
-  { href: '#experience', label: t('nav.experience') },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: t('nav.projects') },
-  { href: '#contact', label: t('nav.contact') },
+    { href: "#experience", label: t("nav.experience") },
+    { href: "#skills", label: "Skills" },
+    { href: "#projects", label: t("nav.projects") },
+    { href: "#about", label: t("nav.about") },
+    { href: "#contact", label: t("nav.contact") },
 ];
 
 // Encode email for obfuscation - will be decoded client-side
-const encodedEmail = Buffer.from(contactInfo.email.value).toString('base64');
+const encodedEmail = Buffer.from(contactInfo.email.value).toString("base64");
 ---
 
-<footer class="bg-surface border-t border-border py-12 md:py-10 px-4 mt-24 md:mt-16">
-  <div class="section-container flex flex-col gap-10">
-    <div class="md:grid grid-cols-[2fr_1fr_1fr] gap-12 md:gap-8">
-      
-      <div class="flex flex-col gap-4">
-        <h3 class="text-2xl font-bold text-text m-0">Pedro Garrido</h3>
-        <p class="text-text-muted text-[0.9375rem] m-0 max-w-[300px] md:max-w-full">
-          Software Engineer & DevOps Enthusiast
-        </p>
-      </div>
+<footer
+    class="bg-surface border-t border-border py-12 md:py-10 px-4 mt-24 md:mt-16"
+>
+    <div class="section-container flex flex-col gap-10">
+        <div class="md:grid grid-cols-[2fr_1fr_1fr] gap-12 md:gap-8">
+            <div class="flex flex-col gap-4">
+                <h3 class="text-2xl font-bold text-text m-0">Pedro Garrido</h3>
+                <p
+                    class="text-text-muted text-[0.9375rem] m-0 max-w-[300px] md:max-w-full"
+                >
+                    Software Engineer & DevOps Enthusiast
+                </p>
+            </div>
 
-      <nav class="flex flex-col gap-4" aria-label="Footer Navigation">
-        <h4 class="text-base font-semibold text-text m-0 uppercase tracking-wide">Navigation</h4>
-        <ul class="list-none p-0 m-0 flex flex-col gap-3">
-          {navLinks.map((link) => (
-            <li>
-              <a href={link.href} class="link-muted text-[0.9375rem]">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+            <nav class="flex flex-col gap-4" aria-label="Footer Navigation">
+                <h4
+                    class="text-base font-semibold text-text m-0 uppercase tracking-wide"
+                >
+                    Navigation
+                </h4>
+                <ul class="list-none p-0 m-0 flex flex-col gap-3">
+                    {
+                        navLinks.map((link) => (
+                            <li>
+                                <a
+                                    href={link.href}
+                                    class="link-muted text-[0.9375rem]"
+                                >
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </nav>
 
-      <div class="flex flex-col gap-4">
-        <h4 class="text-base font-semibold text-text m-0 uppercase tracking-wide">Connect</h4>
-        <div class="flex gap-4">
-          <a
-            href={contactInfo.github?.url || 'https://github.com/belcaik'}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-btn"
-            aria-label="GitHub"
-          >
-            <Github size={20} />
-          </a>
-          <a
-            href={contactInfo.linkedin.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-btn"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={20} />
-          </a>
-          <a
-            href="#contact"
-            class="social-btn email-social-link"
-            aria-label="Email"
-            data-e={encodedEmail}
-          >
-            <Mail size={20} />
-          </a>
+            <div class="flex flex-col gap-4">
+                <h4
+                    class="text-base font-semibold text-text m-0 uppercase tracking-wide"
+                >
+                    Connect
+                </h4>
+                <div class="flex gap-4">
+                    <a
+                        href={contactInfo.github?.url ||
+                            "https://github.com/belcaik"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-btn"
+                        aria-label="GitHub"
+                    >
+                        <Github size={20} />
+                    </a>
+                    <a
+                        href={contactInfo.linkedin.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-btn"
+                        aria-label="LinkedIn"
+                    >
+                        <Linkedin size={20} />
+                    </a>
+                    <a
+                        href="#contact"
+                        class="social-btn email-social-link"
+                        aria-label="Email"
+                        data-e={encodedEmail}
+                    >
+                        <Mail size={20} />
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="sm:flex-col md:grid lg:grid-cols-2">
-      <p class="text-text-muted text-sm m-0 md:grid-col-1 lg:grid-col-1">
-        © {currentYear} {t('footer.copyright')}
-      </p>
-      <p class="text-text-muted text-sm m-0 flex items-center gap-2 md:grid-col-2 lg:grid-col-2 justify-end">
-        {t('footer.builtWith')}
-      </p>
+        <div class="sm:flex-col md:grid lg:grid-cols-2">
+            <p class="text-text-muted text-sm m-0 md:grid-col-1 lg:grid-col-1">
+                © {currentYear}
+                {t("footer.copyright")}
+            </p>
+            <p
+                class="text-text-muted text-sm m-0 flex items-center gap-2 md:grid-col-2 lg:grid-col-2 justify-end"
+            >
+                {t("footer.builtWith")}
+            </p>
+        </div>
     </div>
-  </div>
 </footer>
 
 <script>
-  // Decode obfuscated email links
-  document.querySelectorAll('.email-social-link').forEach((el) => {
-    const encodedEmail = el.getAttribute('data-e');
-    if (encodedEmail) {
-      const email = atob(encodedEmail);
-      el.setAttribute('href', 'mailto:' + email);
-      el.removeAttribute('data-e');
-    }
-  });
+    // Decode obfuscated email links
+    document.querySelectorAll(".email-social-link").forEach((el) => {
+        const encodedEmail = el.getAttribute("data-e");
+        if (encodedEmail) {
+            const email = atob(encodedEmail);
+            el.setAttribute("href", "mailto:" + email);
+            el.removeAttribute("data-e");
+        }
+    });
 </script>
