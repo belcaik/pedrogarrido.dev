@@ -401,7 +401,7 @@
         6px 6px 0 var(--greeting-shadow-3),
         9px 9px 0 var(--greeting-shadow-4),
         12px 12px 0 var(--greeting-shadow-5);
-    animation: greeting-shadows 1.2s ease-in infinite;
+    animation: greeting-shadows 1.8s ease-in infinite;
     letter-spacing: 0.1em;
 }
 
@@ -440,8 +440,8 @@
         text-shadow:
             3px 3px 0 var(--greeting-shadow-2),
             6px 6px 0 var(--greeting-shadow-3),
-            9px 9px 0 var(--greeting-shadow-4),
-            12px 12px 0 var(--greeting-shadow-5);
+            9px 9px 0 var(--greeting-shadow-4);
+        /*12px 12px 0 var(--greeting-shadow-5);*/
     }
     70% {
         text-shadow:
