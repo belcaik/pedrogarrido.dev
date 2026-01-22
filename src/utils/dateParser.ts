@@ -82,3 +82,37 @@ export function parseDateRange(dateStr: string, lang: Lang): ParsedDateRange {
 
   return { startDate, endDate, isOngoing };
 }
+
+export function getSemanticDuration(parsedDates: ParsedDateRange, lang: Lang): string {
+  const { startDate, endDate, isOngoing } = parsedDates;
+  const end = isOngoing ? new Date() : (endDate ?? new Date());
+
+  let months = (end.getFullYear() - startDate.getFullYear()) * 12;
+  months += end.getMonth() - startDate.getMonth();
+
+  // Include partial month if we're past the start day
+  if (end.getDate() >= startDate.getDate()) {
+    months += 1;
+  }
+
+  if (months < 1) months = 1;
+
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+
+  const labels = lang === 'es'
+    ? { year: 'año', years: 'años', month: 'mes', months: 'meses' }
+    : { year: 'year', years: 'years', month: 'month', months: 'months' };
+
+  const parts: string[] = [];
+
+  if (years > 0) {
+    parts.push(`${years} ${years === 1 ? labels.year : labels.years}`);
+  }
+
+  if (remainingMonths > 0) {
+    parts.push(`${remainingMonths} ${remainingMonths === 1 ? labels.month : labels.months}`);
+  }
+
+  return parts.join(', ');
+}
