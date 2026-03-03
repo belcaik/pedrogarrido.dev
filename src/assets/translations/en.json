@@ -6,6 +6,7 @@
   "nav": {
     "experience": "Experience",
     "projects": "Projects",
+    "skills": "Tech Stack",
     "about": "About",
     "contact": "Contact",
     "resume": "Resume"
@@ -101,7 +102,7 @@
       {
         "institution": "Universidad Andrés Bello",
         "degree": "Bachelor's Degree in Computer Software Engineering",
-        "date": "2025 - 2027",
+        "date": "2025 - Present",
         "status": "In Progress"
       },
       {
@@ -161,7 +162,8 @@
         "title": "AI Tools",
         "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"]
       }
-    }
+    },
+    "hint": "Hover on any axis to see specific technologies"
   },
   "projects": {
     "title": "Projects",
@@ -234,6 +236,9 @@
     }
   },
   "footer": {
+    "tagline": "Software Engineer & DevOps Enthusiast",
+    "navigation": "Navigation",
+    "connect": "Connect",
     "copyright": "Pedro Garrido. All rights reserved.",
     "builtWith": "Built with Astro"
   },

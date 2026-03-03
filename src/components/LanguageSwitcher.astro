@@ -26,7 +26,6 @@ function getLocalizedPath(targetLang: Lang): string {
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label={`Select language, current: ${lang.toUpperCase()}`}
-    onclick=""
   >
     <Globe size={18} />
     <span class="text-sm font-semibold">{lang.toUpperCase()}</span>
@@ -82,8 +81,6 @@ function getLocalizedPath(targetLang: Lang): string {
   // Run on initial page load
   initLanguageSelector();
 
-  // Run on subsequent navigations (View Transitions)
-  document.addEventListener("astro:page-load", initLanguageSelector);
 </script>
 
 <style>
@@ -112,6 +109,6 @@ function getLocalizedPath(targetLang: Lang): string {
   }
 
   .dropdown-item.active {
-    @apply bg-primary text-white;
+    @apply bg-primary/15 text-primary;
   }
 </style>

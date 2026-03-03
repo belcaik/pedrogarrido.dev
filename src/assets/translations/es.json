@@ -6,6 +6,7 @@
   "nav": {
     "experience": "Experiencia",
     "projects": "Proyectos",
+    "skills": "Stack Tecnológico",
     "about": "Sobre mí",
     "contact": "Contacto",
     "resume": "Currículum"
@@ -101,7 +102,7 @@
       {
         "institution": "Universidad Andrés Bello",
         "degree": "Ingeniería en Software",
-        "date": "2025 - 2027",
+        "date": "2025 - Presente",
         "status": "En curso"
       },
       {
@@ -161,7 +162,8 @@
         "title": "Herramientas de IA",
         "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"]
       }
-    }
+    },
+    "hint": "Pasa el cursor sobre cualquier eje para ver las tecnologías"
   },
   "projects": {
     "title": "Proyectos",
@@ -234,6 +236,9 @@
     }
   },
   "footer": {
+    "tagline": "Ingeniero de Software y Entusiasta DevOps",
+    "navigation": "Navegación",
+    "connect": "Conectar",
     "copyright": "Pedro Garrido. Todos los derechos reservados.",
     "builtWith": "Hecho con Astro"
   },

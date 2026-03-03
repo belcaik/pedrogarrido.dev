@@ -52,7 +52,8 @@ const axes = data.categories.map((cat, i) => {
 
 // Unique ID for this chart instance
 const chartId = `radar-${data.title.toLowerCase().replace(/\s+/g, "-")}`;
-const strokeColor = data.color.replace("0.6", "1");
+// Derive solid stroke color from the fill (replace alpha with 1)
+const strokeColor = data.color.replace(/[\d.]+\)$/, "1)");
 ---
 
 <div class="radar-container" data-chart-id={chartId}>
@@ -167,9 +168,10 @@ const strokeColor = data.color.replace("0.6", "1");
 
     .radar-title {
         font-size: 1.25rem;
-        font-weight: 600;
+        font-weight: 700;
         color: rgb(var(--color-text));
         margin: 0;
+        font-family: var(--font-display);
     }
 
     .radar-wrapper {
@@ -279,6 +281,7 @@ const strokeColor = data.color.replace("0.6", "1");
         top: var(--y);
         transform: translate(-50%, -50%);
         font-size: 0.75rem;
+        font-family: var(--font-display);
         color: rgb(var(--color-text-muted));
         white-space: nowrap;
         pointer-events: auto;

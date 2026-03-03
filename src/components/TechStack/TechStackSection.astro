@@ -24,7 +24,7 @@ const t = useTranslations(lang);
     </div>
 
     <p class="skills-hint" data-animate="fade-up">
-        Hover on any axis to see specific technologies
+        {t("skills.hint")}
     </p>
 
     <!-- Tooltip element -->
@@ -284,6 +284,4 @@ const t = useTranslations(lang);
     // Initialize on load
     initTooltips();
 
-    // Re-initialize on Astro page navigation
-    document.addEventListener("astro:page-load", initTooltips);
 </script>

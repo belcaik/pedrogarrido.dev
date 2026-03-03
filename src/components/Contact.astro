@@ -15,7 +15,7 @@ const { t, contactInfo } = getContactData(lang);
 <section id="contact" class="section-container section-padding">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
         <div
-            class="text-left max-w-[700px] mx-auto md:grid-col-1"
+            class="text-left max-w-[700px] mx-auto md:col-span-1"
             data-animate="fade-right"
         >
             <h2 class="section-title">
@@ -27,7 +27,7 @@ const { t, contactInfo } = getContactData(lang);
                     rel="noopener noreferrer"
                     aria-label={`${t("hero.badge")} - LinkedIn`}
                     class="open-to-work-badge"
-                    data-animate-hero
+                    data-animate="fade-up"
                 >
                     <span class="badge-text">{t("hero.badge")}</span>
                 </a>
@@ -44,7 +44,7 @@ const { t, contactInfo } = getContactData(lang);
         </div>
 
         <div
-            class="flex flex-col gap-6 max-w-[700px] mx-auto md:grid-col-2 py-12"
+            class="flex flex-col gap-6 max-w-[700px] mx-auto md:col-span-1 py-12"
             data-animate="fade-left"
         >
             <div class="flex flex-col gap-6">

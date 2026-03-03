@@ -12,42 +12,45 @@ export type Lang = keyof typeof languages;
 
 const translations = { en, es } as const;
 
-export function getLangFromUrl(url: URL): Lang {
-  const [, lang] = url.pathname.split('/');
-  if (lang in languages) return lang as Lang;
-  return defaultLang;
-}
-
 type TranslationValue = string | unknown[];
 
 export function useTranslations(lang: Lang) {
   return function t(key: string): TranslationValue {
     const keys = key.split('.');
+
+    // Try the requested language first
     let value: unknown = translations[lang];
+    let found = true;
 
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = (value as Record<string, unknown>)[k];
       } else {
-        // Fallback to English
-        value = translations[defaultLang];
-        for (const fallbackKey of keys) {
-          if (value && typeof value === 'object' && fallbackKey in value) {
-            value = (value as Record<string, unknown>)[fallbackKey];
-          } else {
-            return key;
-          }
-        }
+        found = false;
         break;
       }
     }
 
-    if (typeof value === 'string') return value;
-    if (Array.isArray(value)) return value;
+    if (found) {
+      if (typeof value === 'string') return value;
+      if (Array.isArray(value)) return value;
+    }
+
+    // Fallback to default language (English)
+    if (lang !== defaultLang) {
+      value = translations[defaultLang];
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = (value as Record<string, unknown>)[k];
+        } else {
+          return key;
+        }
+      }
+      if (typeof value === 'string') return value;
+      if (Array.isArray(value)) return value;
+    }
+
     return key;
   };
 }
 
-export function getLocalizedPath(path: string, lang: Lang): string {
-  return `/${lang}${path.startsWith('/') ? path : '/' + path}`;
-}

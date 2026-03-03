@@ -6,11 +6,10 @@ import { Briefcase, GraduationCap } from "@lucide/astro";
 
 interface Props {
     entry: TimelineEntry;
-    position: "left" | "right";
     lang: Lang;
 }
 
-const { entry, position, lang } = Astro.props;
+const { entry, lang } = Astro.props;
 const isPosition = entry.type === "position";
 const duration = getSemanticDuration(entry.parsedDates, lang);
 ---

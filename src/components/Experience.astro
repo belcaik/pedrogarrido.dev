@@ -19,7 +19,7 @@ const schools = translations[lang].education.items as School[];
 const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
 ---
 
-<section id="experience" class="section-container py-8">
+<section id="experience" class="section-container section-padding">
     <h3 class="section-title" data-animate="fade-up">
         <CalendarDays class="section-title-icon" size={32} />
         {t("experience.title")} & {t("education.title")}
@@ -50,7 +50,6 @@ const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
                 >
                     <TimelineEntry
                         entry={slot.entry}
-                        position="right"
                         lang={lang}
                     />
                 </div>

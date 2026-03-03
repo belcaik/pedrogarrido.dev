@@ -64,8 +64,6 @@ import { Sun, Moon } from "@lucide/astro";
     // Run on initial page load
     initThemeToggle();
 
-    // Handle Astro page transitions
-    document.addEventListener("astro:page-load", initThemeToggle);
 </script>
 
 <style>
@@ -74,12 +72,12 @@ import { Sun, Moon } from "@lucide/astro";
     }
 
     .sun-icon {
-        color: #f59e0b;
+        color: #fbbf24;
     }
 
     .moon-icon {
         @apply absolute;
-        color: #6366f1;
+        color: #58a6ff;
     }
 
     /* Light mode: show sun, hide moon */

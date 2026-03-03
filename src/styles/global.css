@@ -27,7 +27,7 @@
 
     /* Section titles with icon support */
     .section-title {
-        @apply text-section-title text-text flex items-center gap-2 mb-8;
+        @apply text-section-title text-text font-display font-bold flex items-center gap-2 mb-8;
     }
 
     .section-title-icon {
@@ -70,11 +70,11 @@
 
     /* CTA / Action buttons */
     .btn-cta {
-        @apply flex items-center justify-center gap-2 px-4 py-2 rounded-btn border border-border text-text transition-all duration-200;
+        @apply flex items-center justify-center gap-2 px-4 py-2 rounded-btn border border-border text-text font-body transition-all duration-200;
     }
 
     .btn-cta:hover {
-        @apply bg-surface-elevated;
+        @apply bg-surface-elevated border-primary text-primary;
         transform: scale(1.02) translateY(-2px);
     }
 
@@ -137,118 +137,75 @@
 }
 
 @layer base {
+    /* ================================
+       BRAND TOKENS - Dark-only palette
+       pedrogarrido.dev Brand Guidelines v1.0
+       ================================ */
     :root {
-        /* Fondos */
-        --color-background: 250 248 252;
-        /* #faf8fc - blanco cálido con tinte */
-        --color-surface: 255 255 255;
-        /* #ffffff - cards */
-        --color-surface-elevated: 245 242 250;
-        /* #f5f2fa - elevación sutil */
+        /* Backgrounds */
+        --color-background: 10 10 15;
+        /* #0a0a0f - Void */
+        --color-surface: 17 17 24;
+        /* #111118 */
+        --color-surface-elevated: 22 22 31;
+        /* #16161f */
 
-        /* Textos */
-        --color-text: 26 20 40;
-        /* #1a1428 - casi negro, con tinte */
-        --color-text-muted: 90 80 110;
-        /* #5a506e - texto secundario */
-        --color-text-subtle: 140 130 160;
-        /* #8c82a0 - placeholders */
+        /* Text */
+        --color-text: 234 237 240;
+        /* #eaedf0 - Cloud */
+        --color-text-muted: 156 163 175;
+        /* #9ca3af */
+        --color-text-subtle: 107 107 128;
+        /* #6b6b80 - Slate (adjusted for WCAG AA-large on surface) */
 
-        /* Acentos */
-        --color-primary: 98 35 153;
-        /* #622399 - violeta más oscuro para contraste */
-        --color-primary-hover: 123 44 191;
-        /* #7b2cbf */
-        --color-primary-muted: 98 35 153 / 0.1;
+        /* Primary - Cyber Teal */
+        --color-primary: 0 212 170;
+        /* #00d4aa */
+        --color-primary-hover: 0 168 138;
+        /* #00a88a */
+        --color-primary-muted: 0 212 170 / 0.15;
 
-        /* Gradiente */
-        --gradient-color: 230 220 245;
-        /* #e6dcf5 - lavanda suave */
+        /* Secondary - Sky Blue */
+        --color-secondary: 88 166 255;
+        /* #58a6ff */
 
-        /* UI Elements */
-        --color-border: 0 0 0 / 0.1;
-        --color-border-focus: 98 35 153 / 0.4;
-        --shadow-color: 26 10 46 / 0.08;
-        /* sombra con tinte de marca */
+        /* Accent - Soft Violet (sparingly) */
+        --color-accent: 192 132 252;
+        /* #c084fc */
 
-        /* Tags/badges */
-        --color-tag-bg: 98 35 153 / 0.12;
-        --color-tag-text: 74 14 78;
-        /* #4a0e4e */
-
-        /* Estados */
-        --color-success: 30 140 90;
-        /* #1e8c5a */
-        --color-warning: 180 120 20;
-        /* #b47814 */
-        --color-error: 180 50 70;
-        /* #b43246 */
-
-        /* Greeting 3D shadow animation - purple gradient (light to dark) */
-        --greeting-shadow-1: #9b4dca;
-        --greeting-shadow-2: #8839b8;
-        --greeting-shadow-3: #7b2cbf;
-        --greeting-shadow-4: #6a1fa8;
-        --greeting-shadow-5: #5a1690;
-    }
-
-    .dark {
-        /* Fondos */
-        --color-background: 10 10 10;
-        /* #0a0a0a - negro profundo, no puro */
-        --color-surface: 18 14 28;
-        /* #120e1c - superficie con tinte púrpura */
-        --color-surface-elevated: 26 20 40;
-        /* #1a1428 - cards, modales */
-
-        /* Textos */
-        --color-text: 235 235 240;
-        /* #ebebf0 - blanco suave, no puro */
-        --color-text-muted: 160 155 170;
-        /* #a09baa - texto secundario */
-        --color-text-subtle: 100 95 110;
-        /* #645f6e - placeholders, hints */
-
-        /* Acentos */
-        --color-primary: 123 44 191;
-        /* #7b2cbf - violeta eléctrico */
-        --color-primary-hover: 147 60 220;
-        /* #933cdc - hover state */
-        --color-primary-muted: 123 44 191 / 0.15;
-        /* para backgrounds sutiles */
-
-        /* Gradiente */
-        --gradient-color: 26 10 46;
-        /* #1a0a2e - púrpura oscuro */
+        /* Gradient */
+        --gradient-color: 0 30 25;
+        /* teal-tinted dark */
 
         /* UI Elements */
-        --color-border: 255 255 255 / 0.12;
-        /* bordes sutiles */
-        --color-border-focus: 123 44 191 / 0.5;
-        /* focus states */
-        --shadow-color: 0 0 0 / 0.4;
-        /* sombras */
+        --color-border: 30 30 46;
+        /* #1e1e2e */
+        --color-border-focus: 0 212 170 / 0.5;
+        /* teal focus ring */
 
         /* Tags/badges */
-        --color-tag-bg: 74 14 78 / 0.4;
-        /* #4a0e4e con transparencia */
-        --color-tag-text: 200 180 220;
-        /* #c8b4dc - legible sobre tag */
+        --color-tag-bg: 0 212 170 / 0.1;
+        --color-tag-text: 234 237 240;
+        /* Cloud */
 
-        /* Estados */
-        --color-success: 45 180 120;
-        /* #2db478 */
-        --color-warning: 230 170 50;
-        /* #e6aa32 */
-        --color-error: 220 70 90;
-        /* #dc465a */
+        /* Status */
+        --color-success: 34 197 94;
+        /* #22c55e */
+        --color-warning: 251 191 36;
+        /* #fbbf24 - Signal Amber */
+        --color-error: 248 113 113;
+        /* #f87171 */
 
-        /* Greeting 3D shadow animation - purple gradient (brighter for dark mode) */
-        --greeting-shadow-1: #b366e0;
-        --greeting-shadow-2: #a347d4;
-        --greeting-shadow-3: #933cdc;
-        --greeting-shadow-4: #7b2cbf;
-        --greeting-shadow-5: #6622aa;
+        /* Greeting 3D shadow - Cyber Teal gradient (bright to deep) */
+        --greeting-shadow-1: #00d4aa;
+        --greeting-shadow-2: #00b894;
+        --greeting-shadow-3: #009e80;
+        --greeting-shadow-4: #00856c;
+        --greeting-shadow-5: #006b58;
+
+        /* Fonts */
+        --font-display: 'JetBrains Mono', monospace;
+        --font-body: 'DM Sans', sans-serif;
     }
 
     /* Background gradient effect */
@@ -262,20 +219,18 @@
 
     html {
         @apply bg-background text-text;
-        transition:
-            background-color 0.3s ease,
-            color 0.3s ease;
     }
 
     body {
-        @apply bg-background;
+        @apply bg-background font-body;
     }
 
-    /* Typography defaults */
+    /* Typography - Brand Guidelines */
     h1,
     h2,
     h3 {
-        @apply flex items-center;
+        font-family: var(--font-display);
+        font-weight: 700;
     }
 
     h1 {
@@ -292,6 +247,22 @@
 
     h3 svg {
         @apply mr-2.5 w-10 h-10;
+    }
+
+    /* Body text */
+    p,
+    li,
+    span,
+    a {
+        font-family: var(--font-body);
+    }
+
+    /* Monospace / code */
+    code,
+    pre,
+    .mono {
+        font-family: var(--font-display);
+        font-weight: 400;
     }
 }
 
@@ -337,7 +308,7 @@
         transform 150ms ease-out;
     z-index: 1000;
     max-width: 320px;
-    box-shadow: 0 8px 24px rgb(var(--shadow-color));
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .skill-tooltip.visible {
@@ -360,6 +331,7 @@
     color: rgb(var(--color-text));
     font-size: 0.9375rem;
     font-weight: 600;
+    font-family: var(--font-display);
 }
 
 .tooltip-level {
@@ -383,10 +355,7 @@
     background: rgb(var(--color-primary) / 0.15);
     border-radius: 4px;
     color: rgb(var(--color-text));
-}
-
-.dark .tooltip-tech {
-    background: rgb(var(--color-primary) / 0.25);
+    font-family: var(--font-display);
 }
 
 /* ============================================
@@ -441,7 +410,6 @@
             3px 3px 0 var(--greeting-shadow-2),
             6px 6px 0 var(--greeting-shadow-3),
             9px 9px 0 var(--greeting-shadow-4);
-        /*12px 12px 0 var(--greeting-shadow-5);*/
     }
     70% {
         text-shadow:
@@ -487,6 +455,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.875rem 1.75rem;
+    font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: 0.05em;
     background: rgb(var(--color-surface));
@@ -711,7 +680,7 @@
     background-size: 200% 100%;
     opacity: 0.4;
     filter: blur(8px);
-    /*animation: badge-border-flow 3s linear infinite;*/
+    animation: badge-border-flow 3s linear infinite;
     z-index: -2;
 }
 
@@ -721,24 +690,6 @@
     }
     100% {
         background-position: 200% 50%;
-    }
-}
-
-/* Pulse glow animation */
-.open-to-work-badge::after {
-    animation: badge-border-flow 3s linear infinite;
-    /*badge-glow-pulse 2s ease-in-out infinite;*/
-}
-
-@keyframes badge-glow-pulse {
-    0%,
-    100% {
-        opacity: 0.3;
-        filter: blur(8px);
-    }
-    50% {
-        opacity: 0.6;
-        filter: blur(12px);
     }
 }
 
@@ -766,6 +717,7 @@
     font-size: 0.8125rem;
     font-weight: 500;
     white-space: nowrap;
+    font-family: var(--font-body);
 }
 
 /* Responsive scaling - larger on desktop to match title */
@@ -789,7 +741,7 @@
 /* Hover effects */
 .open-to-work-badge:hover {
     transform: translateY(-2px);
-    background: rgb(var(--color-surface) / 0.95);
+    background: rgb(var(--color-surface-elevated) / 0.95);
 }
 
 .open-to-work-badge:hover::after {
@@ -801,19 +753,6 @@
 .open-to-work-badge:focus-visible {
     outline: 2px solid #22c55e;
     outline-offset: 4px;
-}
-
-/* Dark mode adjustments */
-.dark .open-to-work-badge {
-    background: rgb(var(--color-surface-elevated) / 0.8);
-}
-
-.dark .badge-avatar {
-    border-color: rgb(var(--color-surface-elevated));
-}
-
-.dark .open-to-work-badge:hover {
-    background: rgb(var(--color-surface-elevated) / 0.95);
 }
 
 /* Accessibility: respect reduced motion preference */

@@ -1,44 +1,65 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: 'class',
   theme: {
     extend: {
-      // Design tokens mapped from CSS custom properties
+      // Brand palette (direct hex for reference/one-off use)
       colors: {
-        // Backgrounds
+        brand: {
+          bg: '#0a0a0f',
+          surface: '#111118',
+          'surface-hover': '#16161f',
+          border: '#1e1e2e',
+          'border-active': '#2a2a3a',
+          primary: '#00d4aa',
+          'primary-dim': '#00a88a',
+          secondary: '#58a6ff',
+          accent: '#c084fc',
+          warning: '#fbbf24',
+          error: '#f87171',
+          text: '#eaedf0',
+          'text-secondary': '#9ca3af',
+          muted: '#4a4a5a',
+        },
+
+        // Design tokens mapped from CSS custom properties
         background: 'rgb(var(--color-background) / <alpha-value>)',
         surface: 'rgb(var(--color-surface) / <alpha-value>)',
         'surface-elevated': 'rgb(var(--color-surface-elevated) / <alpha-value>)',
 
-        // Text colors
         text: {
           DEFAULT: 'rgb(var(--color-text) / <alpha-value>)',
           muted: 'rgb(var(--color-text-muted) / <alpha-value>)',
           subtle: 'rgb(var(--color-text-subtle) / <alpha-value>)',
         },
 
-        // Primary accent
         primary: {
           DEFAULT: 'rgb(var(--color-primary) / <alpha-value>)',
           hover: 'rgb(var(--color-primary-hover) / <alpha-value>)',
           muted: 'rgb(var(--color-primary-muted))',
         },
 
-        // UI Elements
+        secondary: {
+          DEFAULT: 'rgb(var(--color-secondary) / <alpha-value>)',
+        },
+
         border: 'rgb(var(--color-border))',
         'border-focus': 'rgb(var(--color-border-focus))',
 
-        // Tags
         tag: {
           bg: 'rgb(var(--color-tag-bg))',
           text: 'rgb(var(--color-tag-text) / <alpha-value>)',
         },
 
-        // Status colors
         success: 'rgb(var(--color-success) / <alpha-value>)',
         warning: 'rgb(var(--color-warning) / <alpha-value>)',
         error: 'rgb(var(--color-error) / <alpha-value>)',
+      },
+
+      fontFamily: {
+        display: ["'JetBrains Mono'", 'monospace'],
+        body: ["'DM Sans'", 'sans-serif'],
+        mono: ["'JetBrains Mono'", 'monospace'],
       },
 
       // Container widths
@@ -72,10 +93,10 @@ export default {
 
       // Box shadows
       boxShadow: {
-        card: '0 8px 24px rgba(0, 0, 0, 0.1)',
-        'card-hover': '0 12px 32px rgba(0, 0, 0, 0.12)',
-        glass: '0 2px 8px rgba(var(--shadow-color), 0.1)',
-        'glass-hover': '0 4px 12px rgba(var(--shadow-color), 0.15)',
+        card: '0 8px 24px rgba(0, 0, 0, 0.3)',
+        'card-hover': '0 12px 32px rgba(0, 0, 0, 0.4)',
+        glass: '0 2px 8px rgba(0, 0, 0, 0.3)',
+        'glass-hover': '0 4px 12px rgba(0, 0, 0, 0.4)',
       },
 
       // Transitions

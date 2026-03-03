@@ -1,6 +1,5 @@
 ---
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
-import ThemeSwitch from "../components/ThemeSwitch.astro";
 import Honeypot from "../components/Honeypot.astro";
 import { useTranslations, type Lang, languages, defaultLang } from "../i18n";
 import "../styles/global.css";
@@ -58,6 +57,12 @@ const xDefaultHref = siteUrl;
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description} />
 
+        <!-- Fonts - JetBrains Mono (display/headings) + DM Sans (body) -->
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
         <!-- Canonical URL -->
         <link rel="canonical" href={canonicalUrl} />
 
@@ -74,7 +79,6 @@ const xDefaultHref = siteUrl;
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
@@ -92,19 +96,6 @@ const xDefaultHref = siteUrl;
             ))
         }
         <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
-
-        <script is:inline>
-            (function () {
-                const theme =
-                    localStorage.getItem("theme") ||
-                    (window.matchMedia("(prefers-color-scheme: dark)").matches
-                        ? "dark"
-                        : "light");
-                if (theme === "dark") {
-                    document.documentElement.classList.add("dark");
-                }
-            })();
-        </script>
     </head>
     <body>
         <!-- Honeypot trap for bots -->
@@ -119,7 +110,7 @@ const xDefaultHref = siteUrl;
                 >
                     <a
                         href={`/${lang}`}
-                        class="text-xl font-bold text-text no-underline transition-colors hover:text-primary"
+                        class="text-xl font-display font-bold text-text no-underline transition-colors hover:text-primary"
                     >
                         Pedro Garrido
                     </a>
@@ -140,7 +131,6 @@ const xDefaultHref = siteUrl;
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <ThemeSwitch />
                         <LanguageSwitcher lang={lang} />
                     </div>
                 </div>
@@ -153,7 +143,7 @@ const xDefaultHref = siteUrl;
 
 <style>
     .nav-link {
-        @apply text-text-muted no-underline text-[0.9375rem] font-medium transition-colors relative;
+        @apply text-text-muted no-underline text-[0.9375rem] font-display font-medium transition-colors relative;
     }
 
     .nav-link:hover {

@@ -20,7 +20,8 @@ interface Project {
   private: boolean;
 }
 
-const allProjects = t('projects.items') as unknown as Project[];
+const raw = t('projects.items');
+const allProjects: Project[] = Array.isArray(raw) ? (raw as unknown as Project[]) : [];
 const projects = allProjects.filter(
   (project) => project.name && project.description
 );

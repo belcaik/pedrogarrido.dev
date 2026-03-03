@@ -88,5 +88,3 @@ if (document.readyState === 'loading') {
   initScrollAnimations();
 }
 
-// Re-initialize on Astro page transitions (if using View Transitions)
-document.addEventListener('astro:page-load', initScrollAnimations);
