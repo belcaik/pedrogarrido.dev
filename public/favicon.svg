@@ -1,20 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="520" height="600" version="1.1">
-  <!-- Rotated 90 degrees right and recolored with Tokyo Night palette -->
-  <g transform="rotate(90, 260, 260)">
-    <use transform="translate(-206.91 358.24)" xlink:href="#a"/>
-    <use transform="translate(-137.83 238.85)" xlink:href="#a"/>
-    <use transform="translate(-68.787 119.49)" xlink:href="#a"/>
-    <g id="a">
-      <path d="m299.93 80.782-46.01-79.638h92.02l46.01 79.638z" fill="#bb9af7"/>
-      <path d="m299.93 80.782h92.02l-46.01 79.703-91.955 0.0652z" fill="#9d7cd8"/>
-      <path d="m299.93 80.782-45.945 79.768-46.075-79.768 46.01-79.638z" fill="#f7768e"/>
-    </g>
-    <use transform="translate(69.043 119.52)" xlink:href="#a"/>
-    <use transform="translate(138.03 238.91)" xlink:href="#a"/>
-    <use transform="translate(206.91 358.3)" xlink:href="#a"/>
-    <use transform="translate(68.95 358.3)" xlink:href="#a"/>
-    <path d="m231.12 359.48-23.006 39.852h-0.04493l22.986 39.785h92.02l-46.01-79.637h-45.945z" fill="#bb9af7"/>
-    <path d="m231.05 439.12h92.02l-46.01 79.703-91.955 0.0652z" fill="#9d7cd8"/>
-    <path d="m208.06 399.33-45.973 0.03321 22.949 39.721-23.008 39.855 23.072 39.945 45.945-79.77-22.986-39.785z" fill="#f7768e"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Background rounded rectangle -->
+  <rect x="2" y="2" width="96" height="96" rx="20" ry="20"
+    fill="#111118" stroke="#00d4aa" stroke-width="2" />
+  <!-- PG monogram text -->
+  <text x="50" y="58" text-anchor="middle" dominant-baseline="middle"
+    font-family="'JetBrains Mono', monospace" font-size="36" font-weight="700"
+    fill="#eaedf0">PG</text>
+  <!-- Corner bracket accent (bottom-left) -->
+  <polyline points="20,65 20,80 35,80"
+    fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
