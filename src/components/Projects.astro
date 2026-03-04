@@ -21,10 +21,16 @@ interface Project {
 }
 
 const raw = t('projects.items');
-const allProjects: Project[] = Array.isArray(raw) ? (raw as unknown as Project[]) : [];
-const projects = allProjects.filter(
-  (project) => project.name && project.description
-);
+const projects: Project[] = Array.isArray(raw)
+  ? (raw as unknown[]).filter((item): item is Project => {
+      const p = item as Record<string, unknown>;
+      return (
+        typeof p?.name === 'string' &&
+        typeof p?.description === 'string' &&
+        Array.isArray(p?.tech)
+      );
+    })
+  : [];
 ---
 
 <section id="projects" class="section-container section-padding">

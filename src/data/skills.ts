@@ -3,6 +3,7 @@ import type { SkillRadar } from "../types/skills";
 export const engineeringSkills: SkillRadar = {
   title: "Engineering",
   color: "rgba(0, 212, 170, 0.6)", // Cyber Teal
+  strokeColor: "rgba(0, 212, 170, 1)",
   categories: [
     {
       name: "Backend",
@@ -55,6 +56,7 @@ export const engineeringSkills: SkillRadar = {
 export const practicesSkills: SkillRadar = {
   title: "Practices",
   color: "rgba(88, 166, 255, 0.6)", // Sky Blue
+  strokeColor: "rgba(88, 166, 255, 1)",
   categories: [
     {
       name: "CI/CD",

@@ -8,4 +8,5 @@ export interface SkillRadar {
   title: string;
   categories: SkillCategory[];
   color: string; // Primary fill color (rgba format)
+  strokeColor: string; // Solid stroke color (same hue, alpha 1)
 }

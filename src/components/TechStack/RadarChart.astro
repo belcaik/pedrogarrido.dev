@@ -52,8 +52,7 @@ const axes = data.categories.map((cat, i) => {
 
 // Unique ID for this chart instance
 const chartId = `radar-${data.title.toLowerCase().replace(/\s+/g, "-")}`;
-// Derive solid stroke color from the fill (replace alpha with 1)
-const strokeColor = data.color.replace(/[\d.]+\)$/, "1)");
+const strokeColor = data.strokeColor;
 ---
 
 <div class="radar-container" data-chart-id={chartId}>
@@ -239,9 +238,14 @@ const strokeColor = data.color.replace(/[\d.]+\)$/, "1)");
             filter 200ms ease-out,
             opacity 200ms ease-out;
         outline: none;
-        /* Staggered pulse animation based on point index */
+        /* Staggered pulse animation - only when in viewport */
         animation: point-pulse 2.5s ease-in-out infinite;
         animation-delay: calc(var(--point-index, 0) * 0.3s);
+        animation-play-state: paused;
+    }
+
+    .radar-container.in-view .radar-point {
+        animation-play-state: running;
     }
 
     @keyframes point-pulse {
@@ -342,3 +346,23 @@ const strokeColor = data.color.replace(/[\d.]+\)$/, "1)");
         margin-bottom: 0.25rem;
     }
 </style>
+
+<script>
+    function initRadarVisibility() {
+        const containers = document.querySelectorAll(".radar-container");
+        if (!containers.length) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    entry.target.classList.toggle("in-view", entry.isIntersecting);
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        containers.forEach((container) => observer.observe(container));
+    }
+
+    initRadarVisibility();
+</script>
