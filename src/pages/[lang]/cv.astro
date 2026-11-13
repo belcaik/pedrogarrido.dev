@@ -1,0 +1,349 @@
+---
+import { languages, type Lang } from "../../i18n";
+import { getProfile } from "../../data/profile";
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const profile = getProfile(lang);
+const experience = profile.experience.filter((item) => item.cv);
+const projects = profile.projects.filter((item) => item.cv);
+
+const labels = lang === "es"
+  ? {
+      summary: "Perfil profesional",
+      experience: "Experiencia",
+      achievements: "Logros principales",
+      projects: "Proyectos destacados",
+      education: "Educación",
+      skills: "Habilidades técnicas",
+      links: "Enlaces",
+      certifications: "Certificaciones",
+      stack: "Stack",
+    }
+  : {
+      summary: "Summary",
+      experience: "Experience",
+      achievements: "Key Achievements",
+      projects: "Highlighted Projects",
+      education: "Education",
+      skills: "Technical Skills",
+      links: "Links",
+      certifications: "Certifications",
+      stack: "Stack",
+    };
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{profile.identity.name} — CV</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>{profile.identity.name}</h1>
+        <p class="headline">{profile.identity.cvHeadline}</p>
+        <p class="contact-line">
+          <a href={`mailto:${profile.identity.email}`}>{profile.identity.email}</a>
+          <span aria-hidden="true">•</span>
+          <span>{profile.identity.cvLocation}</span>
+          <span aria-hidden="true">•</span>
+          <a href={profile.links.portfolio.url}>{profile.links.portfolio.display}</a>
+        </p>
+      </header>
+
+      <section aria-labelledby="summary-heading">
+        <h2 id="summary-heading">{labels.summary}</h2>
+        {profile.summary.cv.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+
+      <section aria-labelledby="experience-heading">
+        <h2 id="experience-heading">{labels.experience}</h2>
+        {experience.map((job) => (
+          <article>
+            <div class="entry-heading">
+              <div>
+                <h3>
+                  {job.company}{job.via && <span class="muted"> ({job.via})</span>}
+                  <span class="muted"> — <time>{job.date}</time></span>
+                </h3>
+                <p class="role">{job.position}</p>
+              </div>
+              <div class="entry-meta">
+                <span>{job.location}</span>
+              </div>
+            </div>
+            <h4>{labels.achievements}</h4>
+            <ul>
+              {job.achievements.filter((achievement) => achievement.cv).map((achievement) => (
+                <li>{achievement.text}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </section>
+
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading">{labels.projects}</h2>
+        {projects.map((project) => (
+          <article>
+            <div class="entry-heading compact">
+              <h3>{project.name}</h3>
+              <time>{project.year}</time>
+            </div>
+            <p>{project.description}</p>
+            <p class="stack"><strong>{labels.stack}:</strong> {project.tech.join(", ")}</p>
+          </article>
+        ))}
+      </section>
+
+      <section aria-labelledby="education-heading">
+        <h2 id="education-heading">{labels.education}</h2>
+        {profile.education.map((item) => (
+          <article class="entry-heading compact">
+            <div>
+              <h3>{item.institution}</h3>
+              <p class="role">{item.degree}</p>
+              {item.honors && <p>{item.honors}</p>}
+            </div>
+            <div class="entry-meta">
+              <time>{item.date}</time>
+              {item.status && <span>{item.status}</span>}
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section aria-labelledby="skills-heading">
+        <h2 id="skills-heading">{labels.skills}</h2>
+        <dl class="skills">
+          {profile.skills.cvCategories.map((category) => (
+            <div>
+              <dt>{category.title}</dt>
+              <dd>{category.items.join(", ")}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section aria-labelledby="links-heading">
+        <h2 id="links-heading">{labels.links}</h2>
+        <ul class="plain-list links">
+          {[profile.links.portfolio, profile.links.linkedin, profile.links.github].map((link) => (
+            <li><strong>{link.label}:</strong> <a href={link.url}>{link.url}</a></li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="certifications-heading">
+        <h2 id="certifications-heading">{labels.certifications}</h2>
+        <ul class="plain-list certifications">
+          {profile.certifications.map((certification) => (
+            <li><strong>{certification.name}</strong> — {certification.issuer}</li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  @page {
+    size: A4;
+    margin: 11mm 13mm;
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    background: #fff;
+    color: #172033;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.32;
+  }
+
+  :global(body) {
+    margin: 0;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  header {
+    border-bottom: 2px solid #172033;
+    margin-bottom: 4mm;
+    padding-bottom: 3mm;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 22pt;
+    letter-spacing: 0.02em;
+    margin: 0 0 1mm;
+  }
+
+  .headline {
+    font-size: 10.5pt;
+    font-weight: 700;
+    margin: 0 0 1.5mm;
+  }
+
+  .contact-line {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5mm 3mm;
+    justify-content: center;
+    margin: 0;
+  }
+
+  section {
+    break-inside: auto;
+    margin-top: 3.5mm;
+  }
+
+  h2 {
+    border-bottom: 1px solid #5b6472;
+    font-size: 12pt;
+    letter-spacing: 0.08em;
+    margin: 0 0 2mm;
+    padding-bottom: 0.7mm;
+    text-transform: uppercase;
+  }
+
+  article {
+    break-inside: avoid;
+    margin: 0 0 3mm;
+  }
+
+  h3,
+  h4,
+  p {
+    margin-top: 0;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+    margin-bottom: 0.5mm;
+  }
+
+  h4 {
+    font-size: 9pt;
+    margin-bottom: 0.5mm;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 1.7mm;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .entry-heading {
+    align-items: flex-start;
+    display: flex;
+    gap: 5mm;
+    justify-content: space-between;
+  }
+
+  .entry-heading.compact {
+    margin-bottom: 1mm;
+  }
+
+  .entry-heading.compact h3 {
+    margin-bottom: 0;
+  }
+
+  .entry-meta {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+
+  .entry-meta span,
+  .entry-meta time {
+    display: block;
+  }
+
+  .role {
+    font-weight: 700;
+    margin-bottom: 1mm;
+  }
+
+  .muted {
+    color: #495365;
+    font-weight: 400;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 5mm;
+  }
+
+  li {
+    margin-bottom: 0.8mm;
+  }
+
+  .stack {
+    margin-bottom: 0;
+  }
+
+  .skills {
+    margin: 0;
+  }
+
+  .skills div {
+    display: grid;
+    grid-template-columns: 32mm 1fr;
+    margin-bottom: 1mm;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .plain-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2mm 5mm;
+  }
+
+  .links li {
+    overflow-wrap: anywhere;
+  }
+
+  .certifications {
+    columns: 2;
+    column-gap: 8mm;
+  }
+
+  @media screen {
+    :global(body) {
+      margin: 20px auto;
+      max-width: 210mm;
+      padding: 11mm 13mm;
+      box-shadow: 0 2px 14px rgb(0 0 0 / 15%);
+    }
+  }
+</style>

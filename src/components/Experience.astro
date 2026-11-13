@@ -25,7 +25,7 @@ const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
     </h3>
 
     <a
-        href="/assets/cv/public_cv.pdf"
+        href={lang === "es" ? "/assets/cv/public_cv_es.pdf" : "/assets/cv/public_cv.pdf"}
         class="btn-cv-download w-full"
         rel="nofollow noindex"
         download="cv_pedro_garrido_dev.pdf"

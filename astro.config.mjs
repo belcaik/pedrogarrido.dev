@@ -16,7 +16,7 @@ export default defineConfig({
           es: "es",
         },
       },
-      filter: (page) => !page.includes("/assets/"),
+      filter: (page) => !page.includes("/assets/") && !page.includes("/cv/"),
     }),
   ],
   i18n: {
