@@ -5,7 +5,7 @@ Personal portfolio website built with Astro.
 ## Tech Stack
 
 - [Astro](https://astro.build/) - Static site generator
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- Plain CSS with design tokens (`src/styles/global.css`) - Styling
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 
 ## Commands
@@ -15,7 +15,20 @@ Personal portfolio website built with Astro.
 | `pnpm install` | Install dependencies                        |
 | `pnpm dev`     | Start local dev server at `localhost:4321`  |
 | `pnpm build`   | Build production site to `./dist/`          |
+| `pnpm cv`      | Build and regenerate both downloadable CVs  |
 | `pnpm preview` | Preview build locally before deploying      |
+
+## Career profile and CVs
+
+All career content for the English and Spanish site and CVs lives in
+`src/data/profile.json`. Keep language-independent facts such as dates, URLs,
+and technology lists in their shared fields, and edit localized `en`/`es`
+values side by side.
+
+After changing the profile or CV template, run `pnpm cv`. It builds the site,
+prints `/en/cv/` and `/es/cv/` to the PDFs in `public/assets/cv/`, and updates
+their source hash. The `prebuild` guard rejects `pnpm build` when committed PDFs
+are stale.
 
 ## Deployment
 

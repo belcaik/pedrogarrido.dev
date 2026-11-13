@@ -1,0 +1,100 @@
+---
+import Diagram from "./Diagram.astro";
+import { useTranslations, type Lang } from "../i18n";
+import type { Diagram as DiagramData, ProfileExperience, ProfileSystem } from "../data/profile";
+
+interface Props {
+  lang: Lang;
+  system: ProfileSystem;
+  number: number;
+  // wide: intro split, full-width diagrams, then pairs. split: narrow text column beside one diagram.
+  layout: "wide" | "split";
+}
+
+const { lang, system, number, layout } = Astro.props;
+const t = useTranslations(lang);
+const [lead, ...earlier] = system.roles;
+const headingId = `${system.id}-h`;
+const label = `${t("systems.label") as string} ${String(number).padStart(2, "0")}`;
+const meta = (role: ProfileExperience) =>
+  `${role.position}${role.via ? `, ${role.via}` : ""} · ${role.date} · ${role.location}`;
+
+// Consecutive half-width diagrams share one row; full-width ones get their own block.
+const blocks: (DiagramData | DiagramData[])[] = [];
+for (const diagram of lead.diagrams) {
+  const last = blocks[blocks.length - 1];
+  if (diagram.width !== "half") {
+    blocks.push(diagram);
+  } else if (Array.isArray(last)) {
+    last.push(diagram);
+  } else {
+    blocks.push([diagram]);
+  }
+}
+---
+
+<section class="sys" id={system.id} aria-labelledby={headingId}>
+  {
+    layout === "wide" ? (
+      <>
+        <div class="citi-head">
+          <div>
+            <p class="sys-label mono">{label}</p>
+            <h2 id={headingId}>{system.company}</h2>
+            <p class="sys-meta">{meta(lead)}</p>
+          </div>
+          {lead.intro && <p>{lead.intro}</p>}
+        </div>
+        {blocks.map((block) =>
+          Array.isArray(block) ? (
+            <div class="block pair">
+              {block.map((diagram) => (
+                <div>
+                  <Diagram diagram={diagram} lang={lang} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="block">
+              <Diagram diagram={block} lang={lang} />
+            </div>
+          ),
+        )}
+        <p class="stackline mono">{lead.tech.join(" · ")}</p>
+      </>
+    ) : (
+      <div class="split">
+        <div>
+          <p class="sys-label mono">{label}</p>
+          <h2 id={headingId}>{system.company}</h2>
+          <p class="sys-meta">{meta(lead)}</p>
+          <ul>
+            {lead.description.map((text) => (
+              <li>{text}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          {lead.diagrams.map((diagram) => (
+            <Diagram diagram={diagram} lang={lang} />
+          ))}
+          <p class="stackline mono">{lead.tech.join(" · ")}</p>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    earlier.map((role) => (
+      <div class="intern">
+        <h3>
+          {t("systems.earlier") as string}: {role.position}, {role.date}
+        </h3>
+        {role.diagrams.map((diagram) => (
+          <Diagram diagram={diagram} lang={lang} />
+        ))}
+        <p class="stackline mono">{role.tech.join(" · ")}</p>
+      </div>
+    ))
+  }
+</section>

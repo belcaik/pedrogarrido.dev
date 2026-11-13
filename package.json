@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/check-cv.mjs",
     "build": "astro build",
+    "cv": "node scripts/build-cv.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -14,8 +16,7 @@
     "astro": "^5.16.11"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^6.0.2",
     "@types/node": "^25.0.9",
-    "tailwindcss": "^3.4.0"
+    "playwright-core": "^1.64.1"
   }
 }

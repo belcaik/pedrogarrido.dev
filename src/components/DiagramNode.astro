@@ -1,0 +1,22 @@
+---
+import { useTranslations, type Lang } from "../i18n";
+import type { DiagramNode as DiagramNodeData } from "../data/profile";
+
+interface Props {
+  node: DiagramNodeData;
+  lang: Lang;
+  as?: "li" | "div";
+}
+
+const { node, lang, as: Tag = "div" } = Astro.props;
+const t = useTranslations(lang);
+// A state node takes its tag from the UI strings; other nodes keep the tag from the profile.
+const tag = node.tag ?? (node.state ? (t(`diagram.${node.state}`) as string) : undefined);
+---
+
+<Tag class:list={["node", { old: node.state === "before", new: node.state === "after" }]}>
+  {tag && <span class="k mono">{tag}</span>}
+  <strong>{node.title}</strong>
+  {node.sub && <span class="sub">{node.sub}</span>}
+  {node.figure && <span class="num">{node.figure}</span>}
+</Tag>

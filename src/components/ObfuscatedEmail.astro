@@ -3,13 +3,17 @@
  * Obfuscated Email Component
  * Protects email from scrapers by encoding it and decoding client-side
  */
+import { useTranslations, type Lang } from '../i18n';
+
 interface Props {
   email: string;
+  lang: Lang;
   class?: string;
   showIcon?: boolean;
 }
 
-const { email, class: className = '', showIcon = false } = Astro.props;
+const { email, lang, class: className = '', showIcon = false } = Astro.props;
+const t = useTranslations(lang);
 
 // Split and encode email parts
 const [user, domain] = email.split('@');
@@ -19,13 +23,13 @@ const uniqueId = `email-${Math.random().toString(36).substring(2, 9)}`;
 ---
 
 <span
-  class={`obfuscated-email inline ${className}`}
+  class={`obfuscated-email ${className}`}
   data-u={encodedUser}
   data-d={encodedDomain}
   id={uniqueId}
 >
-  <noscript>Enable JavaScript to view email</noscript>
-  <span class="text-text-muted italic">[email protected]</span>
+  <noscript>{t("email.noscript") as string}</noscript>
+  <span class="placeholder">[email protected]</span>
 </span>
 
 <script define:vars={{ uniqueId, encodedUser, encodedDomain }}>

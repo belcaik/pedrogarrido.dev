@@ -1,251 +1,58 @@
 {
-  "meta": {
-    "title": "Pedro Garrido | Desarrollador de Software",
-    "description": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Más de 3 años construyendo soluciones escalables."
-  },
   "nav": {
-    "experience": "Experiencia",
+    "skip": "Saltar al contenido",
+    "systems": "Sistemas",
     "projects": "Proyectos",
-    "skills": "Stack Tecnológico",
-    "about": "Sobre mí",
     "contact": "Contacto",
-    "resume": "Currículum"
+    "themeDark": "Oscuro",
+    "themeLight": "Claro",
+    "themeToDark": "Cambiar a tema oscuro",
+    "themeToLight": "Cambiar a tema claro"
+  },
+  "language": {
+    "select": "Seleccionar idioma",
+    "current": "Seleccionar idioma, actual",
+    "switchTo": "Cambiar a"
+  },
+  "email": {
+    "noscript": "Activa JavaScript para ver el correo"
   },
   "hero": {
-    "badge": "Disponible para trabajar",
-    "greeting": "Hola, soy ",
-    "name": "Pedro Garrido",
-    "experience": "Más de 3 años de experiencia como",
-    "title": "Ingeniero de Software y Entusiasta DevOps",
-    "subtitle": "construyendo sistemas backend escalables y automatizando infraestructura.",
-    "location": "Desde Chile 🇨🇱",
-    "cta": "Contáctame",
-    "linkedin": "LinkedIn",
-    "github": "GitHub"
+    "emailLink": "Escríbeme",
+    "emailAria": "Enviar correo"
   },
-  "about": {
-    "title": "Sobre mí",
-    "paragraphs": [
-      "Soy Ingeniero de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Actualmente cursando Ingeniería en Software en la Universidad Andrés Bello.",
-      "Disfruto resolver problemas complejos y mantenerme al día con tecnologías emergentes. He ayudado a instituciones financieras como Citi Bank a modernizar sistemas críticos de pagos, logrando mejoras de rendimiento de 6x y ahorrando más de $36K USD anuales en costos de licencias mediante automatización.",
-      "Mi stack incluye .NET Core, Node.js, Python, React, y un conocimiento profundo de pipelines CI/CD con Jenkins, OpenShift y AWS. Me apasiona la arquitectura limpia, Domain-Driven Design y construir sistemas que escalen."
-    ],
-    "downloadResume": "Descargar CV"
+  "resume": {
+    "label": "Currículum (PDF)"
   },
-  "experience": {
-    "title": "Experiencia",
-    "jobs": [
-      {
-        "company": "Citi Bank",
-        "via": "vía Kibernum",
-        "position": "Desarrollador de Software",
-        "date": "Marzo 2024 - Febrero 2026",
-        "location": "Remoto, Chile",
-        "description": [
-          "Lideré la reescritura de aplicaciones legacy .NET Framework a arquitectura micro-frontend (React + NestJS), logrando una mejora de rendimiento de 6x (30s → 5s)",
-          "Construí pipelines CI/CD desde cero para 9 aplicaciones usando Jenkins, TeamCity, Harness y OpenShift",
-          "Eliminé más de $36K USD anuales en costos de licencias reemplazando PKWARE con herramientas nativas de Windows",
-          "Implementé framework de testing logrando 80% de cobertura de código para sistemas críticos de pagos (FlexCube ↔ BankCard)"
-        ],
-        "tech": [
-          ".NET Core",
-          "NestJS",
-          "React",
-          "Jenkins",
-          "TeamCity",
-          "OpenShift",
-          "Helm",
-          "PowerShell",
-          "SonarQube"
-        ]
-      },
-      {
-        "company": "Tutelkan",
-        "position": "Ingeniero de Software",
-        "date": "Enero 2023 - Marzo 2024",
-        "location": "Remoto, Chile",
-        "description": [
-          "Construí plataforma agrícola full-stack: dashboard en Vue.js, app móvil en React Native, API en NestJS y servicios de ML en Python",
-          "Desplegué infraestructura de microservicios en AWS ECS (6 contenedores incluyendo PostgreSQL, RabbitMQ y workers de inferencia ML)",
-          "Desarrollé pipeline de visión computacional con OpenCV + YOLOv5 para clasificación automatizada de calidad de fruta"
-        ],
-        "tech": [
-          "NestJS",
-          "Vue.js",
-          "React Native",
-          "Python",
-          "OpenCV",
-          "YOLOv5",
-          "PostgreSQL",
-          "RabbitMQ",
-          "AWS ECS",
-          "Docker"
-        ]
-      },
-      {
-        "company": "Tutelkan",
-        "position": "Practicante de Desarrollo de Software",
-        "date": "2022",
-        "location": "Remoto, Chile",
-        "description": [
-          "Desarrollé herramientas internas de automatización para generar documentos de especificación a clientes desde la API de iceScrum, eliminando trabajo manual de documentación e incluyendo KPIs de seguimiento de tiempo para mayor transparencia en las entregas",
-          "Asistí en el desarrollo de aplicaciones web usando frameworks JavaScript modernos",
-          "Participé en revisiones de código y aprendí buenas prácticas de desarrollo de software"
-        ],
-        "tech": ["JavaScript", "Vue.js", "Node.js", "Git"]
-      }
-    ]
+  "systems": {
+    "index": "Sistemas en esta página",
+    "label": "sistema",
+    "earlier": "Antes"
   },
-  "education": {
-    "title": "Educación",
-    "items": [
-      {
-        "institution": "Universidad Andrés Bello",
-        "degree": "Ingeniería en Software",
-        "date": "2025 - Presente",
-        "status": "En curso"
-      },
-      {
-        "institution": "CFT San Agustín",
-        "degree": "Analista Programador",
-        "date": "2021 - 2023",
-        "honors": "Egresado con honores — 6.3/7.0"
-      }
-    ]
-  },
-  "skills": {
-    "title": "Stack Tecnológico",
-    "categories": {
-      "languages": {
-        "title": "Lenguajes",
-        "items": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL"]
-      },
-      "backend": {
-        "title": "Backend",
-        "items": [".NET Core", "NestJS", "Node.js", "Express.js"]
-      },
-      "frontend": {
-        "title": "Frontend",
-        "items": ["React", "Angular", "Vue.js", "HTML5", "CSS3"]
-      },
-      "databases": {
-        "title": "Bases de Datos y Mensajería",
-        "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"]
-      },
-      "devops": {
-        "title": "DevOps y Cloud",
-        "items": [
-          "Docker",
-          "OpenShift",
-          "Kubernetes",
-          "AWS ECS",
-          "Jenkins",
-          "TeamCity",
-          "Harness",
-          "Helm"
-        ]
-      },
-      "tools": {
-        "title": "Herramientas y Prácticas",
-        "items": [
-          "Git",
-          "SonarQube",
-          "BlackDuck",
-          "Snyk",
-          "CI/CD",
-          "DDD",
-          "TDD",
-          "Microservicios"
-        ]
-      },
-      "ai": {
-        "title": "Herramientas de IA",
-        "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"]
-      }
-    },
-    "hint": "Pasa el cursor sobre cualquier eje para ver las tecnologías"
+  "diagram": {
+    "before": "antes",
+    "after": "después"
   },
   "projects": {
-    "title": "Proyectos",
-    "items": [
-      {
-        "name": "UNAB Sync Content",
-        "role": "Desarrollador",
-        "year": "2025",
-        "description": "Herramienta CLI escrita en Rust que descarga y sincroniza automáticamente los materiales de cursos universitarios desde la plataforma de aprendizaje de la UNAB. Usa automatización de navegador headless para navegar el portal y obtener todo el contenido.",
-        "tech": ["Rust", "Headless Browser", "Web Scraping", "CLI"],
-        "github": "https://github.com/belcaik/unab-sync-content",
-        "demo": "",
-        "private": false
-      },
-      {
-        "name": "OCR Temperature Extractor",
-        "role": "Desarrollador",
-        "year": "2024",
-        "description": "Script en Python que extrae lecturas de temperatura de grabaciones de video de termómetros o pantallas digitales y las exporta a CSV. Construido para automatizar la recolección de datos de un laboratorio de física — mientras mis compañeros anotaban manualmente las lecturas cada 5 segundos, esta herramienta lo hacía automáticamente.",
-        "tech": ["Python", "OpenCV", "Tesseract OCR", "FFmpeg"],
-        "github": "https://github.com/belcaik/ocr_temp_extractor",
-        "demo": "",
-        "private": false
-      },
-      {
-        "name": "ToneDial",
-        "role": "Desarrollador",
-        "year": "2023",
-        "description": "Bot de música para Discord para reproducir audio en canales de voz. Actualmente en desarrollo.",
-        "tech": ["JavaScript", "Discord.js", "Node.js"],
-        "github": "https://github.com/belcaik/tonedial",
-        "demo": "",
-        "private": false,
-        "wip": true
-      }
-    ],
-    "privateLabel": "Proyecto Empresarial",
-    "viewCode": "Código",
-    "viewDemo": "Demo"
+    "title": "Trabajo público",
+    "meta": "Cinco repositorios, cada uno dibujado como el sistema que es.",
+    "index": "Trabajo público",
+    "indexDetail": "Cinco repositorios",
+    "source": "Código",
+    "live": "Sitio",
+    "wip": "En progreso"
   },
-  "github": {
-    "title": "Actividad en GitHub",
-    "stats": {
-      "repos": "Repos Públicos",
-      "stars": "Estrellas Totales",
-      "contributions": "Contribuciones",
-      "followers": "Seguidores"
-    },
-    "viewProfile": "Ver Perfil Completo"
+  "toolbox": {
+    "title": "Herramientas que uso"
+  },
+  "education": {
+    "title": "Educación"
   },
   "contact": {
-    "title": "Contacto",
-    "headline": "Construyamos algo juntos",
-    "description": "Actualmente estoy abierto a nuevas oportunidades — remoto, híbrido o reubicación. Ya sea que tengas un proyecto en mente, una oportunidad laboral, o simplemente quieras conectar, no dudes en escribirme.",
-    "info": {
-      "email": {
-        "label": "Email",
-        "value": "hello@pedrogarrido.dev"
-      },
-      "linkedin": {
-        "label": "LinkedIn",
-        "value": "linkedin.com/in/pedrogarridodev",
-        "url": "https://www.linkedin.com/in/pedrogarridodev"
-      },
-      "github": {
-        "label": "GitHub",
-        "value": "github.com/belcaik",
-        "url": "https://github.com/belcaik"
-      }
-    }
+    "title": "Contacto"
   },
   "footer": {
-    "tagline": "Ingeniero de Software y Entusiasta DevOps",
-    "navigation": "Navegación",
-    "connect": "Conectar",
-    "copyright": "Pedro Garrido. Todos los derechos reservados.",
+    "copyright": "Todos los derechos reservados.",
     "builtWith": "Hecho con Astro"
-  },
-  "common": {
-    "present": "Presente",
-    "comingSoon": "Próximamente",
-    "learnMore": "Saber más",
-    "backToTop": "Volver arriba"
   }
 }

@@ -1,0 +1,17 @@
+---
+import type { DiagramLink as DiagramLinkData } from "../data/profile";
+
+interface Props {
+  link: DiagramLinkData;
+  index: number;
+  as?: "li" | "div";
+}
+
+// index drives the draw-in stagger: connectors animate in reading order
+const { link, index, as: Tag = "div" } = Astro.props;
+---
+
+<Tag class:list={["link", { both: link.both }]} style={`--i:${index}`} aria-hidden="true">
+  {link.both && <i></i>}
+  {link.label && <span>{link.label}</span>}
+</Tag>

@@ -1,0 +1,30 @@
+---
+import { getProfile } from "../data/profile";
+import { useTranslations, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const { catalog } = getProfile(lang).skills;
+---
+
+<section class="sys" id="toolbox" aria-labelledby="toolbox-h">
+  <h2 id="toolbox-h" class="toolbox-title">{t("toolbox.title")}</h2>
+  <div class="tools">
+    {
+      catalog.map((group) => (
+        <div>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
