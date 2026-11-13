@@ -2,7 +2,7 @@
 import { ToolCase } from "@lucide/astro";
 import { useTranslations, type Lang } from "../../i18n";
 import RadarChart from "./RadarChart.astro";
-import { engineeringSkills, practicesSkills } from "../../data/skills";
+import { getProfile } from "../../data/profile";
 
 interface Props {
     lang: Lang;
@@ -10,6 +10,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const radars = getProfile(lang).skills.radars;
 ---
 
 <section id="skills" class="section-container section-padding">
@@ -19,8 +20,7 @@ const t = useTranslations(lang);
     </h2>
 
     <div class="radars-container" data-animate="fade-up">
-        <RadarChart data={engineeringSkills} />
-        <RadarChart data={practicesSkills} />
+        {radars.map((radar) => <RadarChart data={radar} />)}
     </div>
 
     <p class="skills-hint" data-animate="fade-up">

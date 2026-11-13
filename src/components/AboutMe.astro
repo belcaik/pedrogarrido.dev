@@ -1,6 +1,7 @@
 ---
 import { useTranslations, type Lang } from "../i18n";
 import { UserCircle } from "@lucide/astro";
+import { getProfile } from "../data/profile";
 
 interface Props {
   lang: Lang;
@@ -8,6 +9,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { summary } = getProfile(lang);
 ---
 
 <section id="about" class="section-container section-padding ">
@@ -18,7 +20,7 @@ const t = useTranslations(lang);
 
   <div data-animate="fade-up">
     {
-      (t("about.paragraphs") as string[]).map((paragraph) => (
+      summary.site.map((paragraph) => (
         <p class="text-[1.125rem] md:text-base leading-relaxed text-text-muted m-0">{paragraph}</p>
       ))
     }

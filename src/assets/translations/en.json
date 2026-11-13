@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "Pedro Garrido | Software Developer",
-    "description": "Software Developer specializing in backend systems, DevOps automation, and legacy modernization. 3+ years building scalable solutions."
-  },
   "nav": {
     "experience": "Experience",
     "projects": "Projects",
@@ -12,194 +8,20 @@
     "resume": "Resume"
   },
   "hero": {
-    "badge": "Open to Work",
     "greeting": "Hey, I'm ",
-    "name": "Pedro Garrido",
-    "experience": "3+ years of experience as",
-    "title": "Software Engineer & DevOps Enthusiast",
-    "subtitle": "building scalable backend systems and automating infrastructure.",
-    "location": "Based in Chile 🇨🇱",
     "cta": "Get in touch",
     "linkedin": "LinkedIn",
     "github": "GitHub"
   },
-  "about": {
-    "title": "About Me",
-    "paragraphs": [
-      "I'm a Software Engineer specializing in backend systems, DevOps automation, and legacy modernization. Currently pursuing my Bachelor's in Software Engineering at Universidad Andrés Bello.",
-      "I thrive on solving complex problems and staying up-to-date with emerging technologies. I've helped financial institutions like Citi Bank modernize critical payment systems, achieving 6x performance improvements and saving $36K+ in annual licensing costs through smart automation.",
-      "My toolkit spans .NET Core, Node.js, Python, React, and a deep understanding of CI/CD pipelines with Jenkins, OpenShift, and AWS. I'm passionate about clean architecture, Domain-Driven Design, and building systems that scale."
-    ],
-    "downloadResume": "Download Resume"
-  },
-  "experience": {
-    "title": "Experience",
-    "jobs": [
-      {
-        "company": "Citi Bank",
-        "via": "via Kibernum",
-        "position": "Software Developer",
-        "date": "March 2024 - February 2026",
-        "location": "Remote, Chile",
-        "description": [
-          "Led rewrite of legacy .NET Framework apps into micro-frontend architecture (React + NestJS), achieving 6x performance improvement (30s → 5s)",
-          "Built CI/CD pipelines from scratch for 9 applications using Jenkins, TeamCity, Harness, and OpenShift",
-          "Eliminated $36K+ annual licensing costs by replacing PKWARE with native Windows tooling",
-          "Implemented testing framework achieving 80% code coverage for mission-critical payment systems (FlexCube ↔ BankCard)"
-        ],
-        "tech": [
-          ".NET Core",
-          "NestJS",
-          "React",
-          "Jenkins",
-          "TeamCity",
-          "OpenShift",
-          "Helm",
-          "PowerShell",
-          "SonarQube"
-        ]
-      },
-      {
-        "company": "Tutelkan",
-        "position": "Software Engineer",
-        "date": "January 2023 - March 2024",
-        "location": "Remote, Chile",
-        "description": [
-          "Built full-stack agricultural platform: Vue.js dashboard, React Native mobile app, NestJS API, and Python ML services",
-          "Deployed microservices infrastructure on AWS ECS (6 containers including PostgreSQL, RabbitMQ, and ML inference workers)",
-          "Developed computer vision pipeline with OpenCV + YOLOv5 for automated fruit quality classification"
-        ],
-        "tech": [
-          "NestJS",
-          "Vue.js",
-          "React Native",
-          "Python",
-          "OpenCV",
-          "YOLOv5",
-          "PostgreSQL",
-          "RabbitMQ",
-          "AWS ECS",
-          "Docker"
-        ]
-      },
-      {
-        "company": "Tutelkan",
-        "position": "Software Development Intern",
-        "date": "2022",
-        "location": "Remote, Chile",
-        "description": [
-          "Built internal automation tools to generate client specification documents from iceScrum API, eliminating manual documentation work and including time-tracking KPIs for improved delivery transparency",
-          "Assisted in developing web applications using modern JavaScript frameworks",
-          "Participated in code reviews and learned best practices for software development"
-        ],
-        "tech": ["JavaScript", "Vue.js", "Node.js", "Git"]
-      }
-    ]
-  },
-  "education": {
-    "title": "Education",
-    "items": [
-      {
-        "institution": "Universidad Andrés Bello",
-        "degree": "Bachelor's Degree in Computer Software Engineering",
-        "date": "2025 - Present",
-        "status": "In Progress"
-      },
-      {
-        "institution": "CFT San Agustín",
-        "degree": "Associate's Degree in Computer Programming",
-        "date": "2021 - 2023",
-        "honors": "Graduated with Honors — 6.3/7.0"
-      }
-    ]
-  },
+  "about": { "title": "About Me", "downloadResume": "Download Resume" },
+  "experience": { "title": "Experience" },
+  "education": { "title": "Education" },
   "skills": {
     "title": "Tech Stack",
-    "categories": {
-      "languages": {
-        "title": "Languages",
-        "items": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL"]
-      },
-      "backend": {
-        "title": "Backend",
-        "items": [".NET Core", "NestJS", "Node.js", "Express.js"]
-      },
-      "frontend": {
-        "title": "Frontend",
-        "items": ["React", "Angular", "Vue.js", "HTML5", "CSS3"]
-      },
-      "databases": {
-        "title": "Databases & Messaging",
-        "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"]
-      },
-      "devops": {
-        "title": "DevOps & Cloud",
-        "items": [
-          "Docker",
-          "OpenShift",
-          "Kubernetes",
-          "AWS ECS",
-          "Jenkins",
-          "TeamCity",
-          "Harness",
-          "Helm"
-        ]
-      },
-      "tools": {
-        "title": "Tools & Practices",
-        "items": [
-          "Git",
-          "SonarQube",
-          "BlackDuck",
-          "Snyk",
-          "CI/CD",
-          "DDD",
-          "TDD",
-          "Microservices"
-        ]
-      },
-      "ai": {
-        "title": "AI Tools",
-        "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"]
-      }
-    },
     "hint": "Hover on any axis to see specific technologies"
   },
   "projects": {
     "title": "Projects",
-    "items": [
-      {
-        "name": "UNAB Sync Content",
-        "role": "Developer",
-        "year": "2025",
-        "description": "CLI tool written in Rust that automatically downloads and syncs university course materials from UNAB's learning platform. Uses headless browser automation to navigate the portal and fetch all course content.",
-        "tech": ["Rust", "Headless Browser", "Web Scraping", "CLI"],
-        "github": "https://github.com/belcaik/unab-sync-content",
-        "demo": "",
-        "private": false
-      },
-      {
-        "name": "OCR Temperature Extractor",
-        "role": "Developer",
-        "year": "2024",
-        "description": "Python script that extracts temperature readings from video recordings of thermometers or digital displays and exports them to CSV. Built to automate tedious data collection for a physics lab assignment — while classmates manually noted readings every 5 seconds, this tool did it automatically.",
-        "tech": ["Python", "OpenCV", "Tesseract OCR", "FFmpeg"],
-        "github": "https://github.com/belcaik/ocr_temp_extractor",
-        "demo": "",
-        "private": false
-      },
-      {
-        "name": "ToneDial",
-        "role": "Developer",
-        "year": "2023",
-        "description": "Discord music bot for playing audio in voice channels. Currently a work in progress.",
-        "tech": ["JavaScript", "Discord.js", "Node.js"],
-        "github": "https://github.com/belcaik/tonedial",
-        "demo": "",
-        "private": false,
-        "wip": true
-      }
-    ],
     "privateLabel": "Enterprise Project",
     "viewCode": "Code",
     "viewDemo": "Demo"
@@ -216,30 +38,16 @@
   },
   "contact": {
     "title": "Get In Touch",
-    "headline": "Let's build something together",
-    "description": "I'm currently open to new opportunities — remote, hybrid, or relocation. Whether you have a project in mind, a job opportunity, or just want to connect, feel free to reach out.",
     "info": {
-      "email": {
-        "label": "Email",
-        "value": "hello@pedrogarrido.dev"
-      },
-      "linkedin": {
-        "label": "LinkedIn",
-        "value": "linkedin.com/in/pedrogarridodev",
-        "url": "https://www.linkedin.com/in/pedrogarridodev"
-      },
-      "github": {
-        "label": "GitHub",
-        "value": "github.com/belcaik",
-        "url": "https://github.com/belcaik"
-      }
+      "email": { "label": "Email" },
+      "linkedin": { "label": "LinkedIn" },
+      "github": { "label": "GitHub" }
     }
   },
   "footer": {
-    "tagline": "Software Engineer & DevOps Enthusiast",
     "navigation": "Navigation",
     "connect": "Connect",
-    "copyright": "Pedro Garrido. All rights reserved.",
+    "copyright": "All rights reserved.",
     "builtWith": "Built with Astro"
   },
   "common": {

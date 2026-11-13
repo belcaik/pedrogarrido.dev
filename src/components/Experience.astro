@@ -2,9 +2,8 @@
 import { useTranslations, type Lang } from "../i18n";
 import { Download, CalendarDays } from "@lucide/astro";
 import TimelineEntry from "./TimelineEntry.astro";
-import en from "../assets/translations/en.json";
-import es from "../assets/translations/es.json";
-import { createTimelineContext, type Job, type School } from "../utils";
+import { createTimelineContext } from "../utils";
+import { getProfile } from "../data/profile";
 
 interface Props {
     lang: Lang;
@@ -12,9 +11,9 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const translations = { en, es } as const;
-const jobs = translations[lang].experience.jobs as Job[];
-const schools = translations[lang].education.items as School[];
+const profile = getProfile(lang);
+const jobs = profile.experience;
+const schools = profile.education;
 
 const { slots, totalRows } = createTimelineContext(jobs, schools, lang);
 ---

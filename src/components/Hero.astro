@@ -1,6 +1,7 @@
 ---
 import { Github, Linkedin, Mail } from "@lucide/astro";
 import { getContactData } from "../utils/contact";
+import { getProfile } from "../data/profile";
 import ObfuscatedLink from "./ObfuscatedLink.astro";
 import type { Lang } from "../i18n";
 
@@ -10,6 +11,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const { t, contactInfo } = getContactData(lang);
+const { identity } = getProfile(lang);
 ---
 
 <section id="hero" class="section-container section-padding flex flex-col">
@@ -21,25 +23,25 @@ const { t, contactInfo } = getContactData(lang);
             <span
                 class="font-bold greeting-3d block mb-4 px-0 md:inline md:mb-0"
             >
-                {t("hero.name")}
+                {identity.name}
             </span>
         </span>
         <a
             href={contactInfo.linkedin.url}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${t("hero.badge")} - LinkedIn`}
+            aria-label={`${identity.availability} - LinkedIn`}
             class="open-to-work-badge"
         >
-            <span class="badge-text">{t("hero.badge")}</span>
+            <span class="badge-text">{identity.availability}</span>
         </a>
     </h1>
 
     <h2 data-animate-hero="delay-1">
-        {t("hero.experience")}
-        <span>{t("hero.title")}</span>
-        {t("hero.subtitle")}
-        {t("hero.location")}
+        {identity.hero.experience}
+        <span>{identity.headline}</span>
+        {identity.hero.subtitle}
+        {identity.hero.location}
     </h2>
     <div
         class="flex flex-col md:flex-row gap-4 mt-6"

@@ -1,0 +1,426 @@
+{
+  "identity": {
+    "name": "Pedro Garrido",
+    "email": "hello@pedrogarrido.dev",
+    "country": "Chile",
+    "availability": {
+      "en": "Open to Work",
+      "es": "Disponible para trabajar"
+    },
+    "headline": {
+      "en": "Software Engineer & DevOps Enthusiast",
+      "es": "Ingeniero de Software y Entusiasta DevOps"
+    },
+    "cvHeadline": {
+      "en": "Software Developer | Backend, DevOps & Full-Stack | .NET Core, Node.js, React, CI/CD, AWS",
+      "es": "Desarrollador de Software | Backend, DevOps y Full-Stack | .NET Core, Node.js, React, CI/CD, AWS"
+    },
+    "metaTitle": {
+      "en": "Pedro Garrido | Software Developer",
+      "es": "Pedro Garrido | Desarrollador de Software"
+    },
+    "metaDescription": {
+      "en": "Software Developer specializing in backend systems, DevOps automation, and legacy modernization. 3+ years building scalable solutions.",
+      "es": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Más de 3 años construyendo soluciones escalables."
+    },
+    "hero": {
+      "experience": {
+        "en": "3+ years of experience as",
+        "es": "Más de 3 años de experiencia como"
+      },
+      "subtitle": {
+        "en": "building scalable backend systems and automating infrastructure.",
+        "es": "construyendo sistemas backend escalables y automatizando infraestructura."
+      },
+      "location": {
+        "en": "Based in Chile 🇨🇱",
+        "es": "Desde Chile 🇨🇱"
+      }
+    },
+    "footerTagline": {
+      "en": "Software Engineer & DevOps Enthusiast",
+      "es": "Ingeniero de Software y Entusiasta DevOps"
+    },
+    "contactHeadline": {
+      "en": "Let's build something together",
+      "es": "Construyamos algo juntos"
+    },
+    "contactDescription": {
+      "en": "I'm currently open to new opportunities — remote, hybrid, or relocation. Whether you have a project in mind, a job opportunity, or just want to connect, feel free to reach out.",
+      "es": "Actualmente estoy abierto a nuevas oportunidades — remoto, híbrido o reubicación. Ya sea que tengas un proyecto en mente, una oportunidad laboral, o simplemente quieras conectar, no dudes en escribirme."
+    },
+    "cvLocation": {
+      "en": "Chile — Open to Remote & Relocation",
+      "es": "Chile — Disponible para trabajo remoto y reubicación"
+    }
+  },
+  "links": {
+    "portfolio": {
+      "label": "Portfolio",
+      "display": "pedrogarrido.dev",
+      "url": "https://pedrogarrido.dev"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "display": "linkedin.com/in/pedrogarridodev",
+      "shortDisplay": "pedrogarridodev",
+      "url": "https://www.linkedin.com/in/pedrogarridodev"
+    },
+    "github": {
+      "label": "GitHub",
+      "display": "github.com/belcaik",
+      "shortDisplay": "belcaik",
+      "url": "https://github.com/belcaik"
+    }
+  },
+  "summary": {
+    "site": [
+      {
+        "en": "I'm a Software Engineer specializing in backend systems, DevOps automation, and legacy modernization. Currently pursuing my Bachelor's in Software Engineering at Universidad Andrés Bello.",
+        "es": "Soy Ingeniero de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Actualmente cursando Ingeniería en Software en la Universidad Andrés Bello."
+      },
+      {
+        "en": "I thrive on solving complex problems and staying up-to-date with emerging technologies. I've helped financial institutions like Citi Bank modernize critical payment systems, achieving 6x performance improvements and saving $36K+ in annual licensing costs through smart automation.",
+        "es": "Disfruto resolver problemas complejos y mantenerme al día con tecnologías emergentes. He ayudado a instituciones financieras como Citi Bank a modernizar sistemas críticos de pagos, logrando mejoras de rendimiento de 6x y ahorrando más de $36K USD anuales en costos de licencias mediante automatización."
+      },
+      {
+        "en": "My toolkit spans .NET Core, Node.js, Python, React, and a deep understanding of CI/CD pipelines with Jenkins, OpenShift, and AWS. I'm passionate about clean architecture, Domain-Driven Design, and building systems that scale.",
+        "es": "Mi stack incluye .NET Core, Node.js, Python, React, y un conocimiento profundo de pipelines CI/CD con Jenkins, OpenShift y AWS. Me apasiona la arquitectura limpia, Domain-Driven Design y construir sistemas que escalen."
+      }
+    ],
+    "cv": [
+      {
+        "en": "Software Developer with 3+ years of experience delivering high-impact solutions for financial institutions. I specialize in backend development, DevOps automation, and legacy modernization, consistently achieving measurable results: 6x performance improvements, 80% test coverage, and $36K+ in annual cost savings through smart automation.",
+        "es": "Desarrollador de Software con más de 3 años de experiencia entregando soluciones de alto impacto para instituciones financieras. Me especializo en desarrollo backend, automatización DevOps y modernización de sistemas legacy, logrando resultados medibles de forma consistente: mejoras de rendimiento de 6x, 80% de cobertura de pruebas y más de $36K USD de ahorro anual mediante automatización inteligente."
+      },
+      {
+        "en": "I thrive in environments that value clean architecture, continuous improvement, and cross-functional collaboration. Whether it's designing microservices, building CI/CD pipelines from scratch, or migrating critical systems to modern stacks — I bring a problem-solving mindset and a commitment to delivering production-ready code.",
+        "es": "Me desenvuelvo bien en entornos que valoran la arquitectura limpia, la mejora continua y la colaboración multidisciplinaria. Ya sea diseñando microservicios, construyendo pipelines CI/CD desde cero o migrando sistemas críticos a stacks modernos, aporto una mentalidad orientada a resolver problemas y el compromiso de entregar código listo para producción."
+      }
+    ]
+  },
+  "experience": [
+    {
+      "company": "Citi Bank",
+      "via": {
+        "en": "via Kibernum",
+        "es": "vía Kibernum"
+      },
+      "position": {
+        "en": "Software Developer",
+        "es": "Desarrollador de Software"
+      },
+      "start": { "year": 2024, "month": 3 },
+      "end": { "year": 2026, "month": 2 },
+      "location": {
+        "en": "Remote, Chile",
+        "es": "Remoto, Chile"
+      },
+      "achievements": [
+        {
+          "text": {
+            "en": "Led rewrite of legacy .NET Framework apps into micro-frontend architecture (React + NestJS), achieving 6x performance improvement (30s → 5s)",
+            "es": "Lideré la reescritura de aplicaciones legacy .NET Framework a arquitectura micro-frontend (React + NestJS), logrando una mejora de rendimiento de 6x (30s → 5s)"
+          },
+          "site": true,
+          "cv": true
+        },
+        {
+          "text": {
+            "en": "Built CI/CD pipelines from scratch for 9 applications using Jenkins, TeamCity, Harness, and OpenShift",
+            "es": "Construí pipelines CI/CD desde cero para 9 aplicaciones usando Jenkins, TeamCity, Harness y OpenShift"
+          },
+          "site": true,
+          "cv": true
+        },
+        {
+          "text": {
+            "en": "Eliminated $36K+ annual licensing costs by replacing PKWARE with native Windows tooling",
+            "es": "Eliminé más de $36K USD anuales en costos de licencias reemplazando PKWARE con herramientas nativas de Windows"
+          },
+          "site": true,
+          "cv": true
+        },
+        {
+          "text": {
+            "en": "Implemented testing framework achieving 80% code coverage for mission-critical payment systems (FlexCube ↔ BankCard)",
+            "es": "Implementé framework de testing logrando 80% de cobertura de código para sistemas críticos de pagos (FlexCube ↔ BankCard)"
+          },
+          "site": true,
+          "cv": true
+        },
+        {
+          "text": {
+            "en": "Designed core abstractions and utilities adopted by the entire development team, accelerating delivery velocity.",
+            "es": "Diseñé abstracciones y utilidades base adoptadas por todo el equipo de desarrollo, acelerando la velocidad de entrega."
+          },
+          "site": false,
+          "cv": true
+        }
+      ],
+      "tech": [".NET Core", "NestJS", "React", "Jenkins", "TeamCity", "OpenShift", "Helm", "PowerShell", "SonarQube"],
+      "cv": true
+    },
+    {
+      "company": "Tutelkan",
+      "position": {
+        "en": "Software Engineer",
+        "es": "Ingeniero de Software"
+      },
+      "start": { "year": 2023, "month": 1 },
+      "end": { "year": 2024, "month": 3 },
+      "location": {
+        "en": "Remote, Chile",
+        "es": "Remoto, Chile"
+      },
+      "achievements": [
+        {
+          "text": {
+            "en": "Built full-stack agricultural platform: Vue.js dashboard, React Native mobile app, NestJS API, and Python ML services",
+            "es": "Construí plataforma agrícola full-stack: dashboard en Vue.js, app móvil en React Native, API en NestJS y servicios de ML en Python"
+          },
+          "site": true,
+          "cv": true
+        },
+        {
+          "text": {
+            "en": "Deployed microservices infrastructure on AWS ECS (6 containers including PostgreSQL, RabbitMQ, and ML inference workers)",
+            "es": "Desplegué infraestructura de microservicios en AWS ECS (6 contenedores incluyendo PostgreSQL, RabbitMQ y workers de inferencia ML)"
+          },
+          "site": true,
+          "cv": true
+        },
+        {
+          "text": {
+            "en": "Developed computer vision pipeline with OpenCV + YOLOv5 for automated fruit quality classification",
+            "es": "Desarrollé pipeline de visión computacional con OpenCV + YOLOv5 para clasificación automatizada de calidad de fruta"
+          },
+          "site": true,
+          "cv": true
+        },
+        {
+          "text": {
+            "en": "Applied Domain-Driven Design and clean code practices throughout all projects.",
+            "es": "Apliqué Domain-Driven Design y prácticas de código limpio en todos los proyectos."
+          },
+          "site": false,
+          "cv": true
+        }
+      ],
+      "tech": ["NestJS", "Vue.js", "React Native", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS", "Docker"],
+      "cv": true
+    },
+    {
+      "company": "Tutelkan",
+      "position": {
+        "en": "Software Development Intern",
+        "es": "Practicante de Desarrollo de Software"
+      },
+      "start": { "year": 2022 },
+      "end": { "year": 2022 },
+      "location": {
+        "en": "Remote, Chile",
+        "es": "Remoto, Chile"
+      },
+      "achievements": [
+        {
+          "text": {
+            "en": "Built internal automation tools to generate client specification documents from iceScrum API, eliminating manual documentation work and including time-tracking KPIs for improved delivery transparency",
+            "es": "Desarrollé herramientas internas de automatización para generar documentos de especificación a clientes desde la API de iceScrum, eliminando trabajo manual de documentación e incluyendo KPIs de seguimiento de tiempo para mayor transparencia en las entregas"
+          },
+          "site": true,
+          "cv": false
+        },
+        {
+          "text": {
+            "en": "Assisted in developing web applications using modern JavaScript frameworks",
+            "es": "Asistí en el desarrollo de aplicaciones web usando frameworks JavaScript modernos"
+          },
+          "site": true,
+          "cv": false
+        },
+        {
+          "text": {
+            "en": "Participated in code reviews and learned best practices for software development",
+            "es": "Participé en revisiones de código y aprendí buenas prácticas de desarrollo de software"
+          },
+          "site": true,
+          "cv": false
+        }
+      ],
+      "tech": ["JavaScript", "Vue.js", "Node.js", "Git"],
+      "cv": false
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Andrés Bello",
+      "degree": {
+        "en": "Bachelor's Degree in Computer Software Engineering",
+        "es": "Ingeniería en Software"
+      },
+      "start": { "year": 2025 },
+      "end": null,
+      "status": {
+        "en": "In Progress",
+        "es": "En curso"
+      }
+    },
+    {
+      "institution": "CFT San Agustín",
+      "degree": {
+        "en": "Associate's Degree in Computer Programming",
+        "es": "Analista Programador"
+      },
+      "start": { "year": 2021 },
+      "end": { "year": 2023 },
+      "honors": {
+        "en": "Graduated with Honors — 6.3/7.0",
+        "es": "Egresado con honores — 6.3/7.0"
+      }
+    }
+  ],
+  "skills": {
+    "catalog": [
+      { "title": { "en": "Languages", "es": "Lenguajes" }, "items": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL"] },
+      { "title": { "en": "Backend", "es": "Backend" }, "items": [".NET Core", "NestJS", "Node.js", "Express.js"] },
+      { "title": { "en": "Frontend", "es": "Frontend" }, "items": ["React", "Angular", "Vue.js", "HTML5", "CSS3"] },
+      { "title": { "en": "Databases & Messaging", "es": "Bases de Datos y Mensajería" }, "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"] },
+      { "title": { "en": "DevOps & Cloud", "es": "DevOps y Cloud" }, "items": ["Docker", "OpenShift", "Kubernetes", "AWS ECS", "Jenkins", "TeamCity", "Harness", "Helm"] },
+      { "title": { "en": "Tools & Practices", "es": "Herramientas y Prácticas" }, "items": ["Git", "SonarQube", "BlackDuck", "Snyk", "CI/CD", "DDD", "TDD", { "en": "Microservices", "es": "Microservicios" }] },
+      { "title": { "en": "AI Tools", "es": "Herramientas de IA" }, "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"] }
+    ],
+    "radars": [
+      {
+        "title": "Engineering",
+        "color": "rgba(0, 212, 170, 0.6)",
+        "strokeColor": "rgba(0, 212, 170, 1)",
+        "categories": [
+          { "name": "Backend", "level": 5, "technologies": [".NET Core", "NestJS", "Node.js", "Express.js"] },
+          { "name": "DevOps", "level": 4, "technologies": ["Docker", "OpenShift", "Kubernetes", "Helm", "Jenkins", "TeamCity"] },
+          { "name": "Databases", "level": 4, "technologies": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"] },
+          { "name": "Cloud", "level": 3, "technologies": ["AWS ECS", "Azure basics"] },
+          { "name": "Frontend", "level": 3, "technologies": ["React", "Vue.js", "Angular", "HTML5", "CSS3"] },
+          { "name": "Languages", "level": 4, "technologies": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL", "Rust"] }
+        ]
+      },
+      {
+        "title": "Practices",
+        "color": "rgba(88, 166, 255, 0.6)",
+        "strokeColor": "rgba(88, 166, 255, 1)",
+        "categories": [
+          { "name": "CI/CD", "level": 5, "technologies": ["Jenkins", "TeamCity", "Harness", "GitHub Actions"] },
+          { "name": "Automation", "level": 5, "technologies": ["PowerShell", "Bash", "Python scripts", "Headless browsers"] },
+          { "name": "Architecture", "level": 4, "technologies": ["DDD", "Microservices", "Clean Architecture", "Event-Driven"] },
+          { "name": "Testing", "level": 4, "technologies": ["TDD", "Unit Testing", "Integration Testing", "80% coverage"] },
+          { "name": "Security", "level": 3, "technologies": ["SonarQube", "BlackDuck", "Snyk", "OWASP basics"] },
+          { "name": "AI Tools", "level": 4, "technologies": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"] }
+        ]
+      }
+    ],
+    "cvCategories": [
+      { "title": { "en": "Backend", "es": "Backend" }, "items": [".NET Core", "NestJS", "Node.js", "Python", "Java", "REST APIs"] },
+      { "title": { "en": "Frontend", "es": "Frontend" }, "items": ["React", "Angular", "Vue.js", "TypeScript", "JavaScript"] },
+      { "title": { "en": "DevOps & Cloud", "es": "DevOps y Cloud" }, "items": ["Docker", "OpenShift", "AWS ECS", "Jenkins", "TeamCity", "Helm", "CI/CD"] },
+      { "title": { "en": "Databases", "es": "Bases de Datos" }, "items": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"] },
+      { "title": { "en": "Practices", "es": "Prácticas" }, "items": ["Git", "DDD", "TDD", "Microservices", "SonarQube"] }
+    ]
+  },
+  "projects": [
+    {
+      "name": "UNAB Sync Content",
+      "role": { "en": "Developer", "es": "Desarrollador" },
+      "year": 2025,
+      "description": {
+        "en": "CLI tool written in Rust that automatically downloads and syncs university course materials from UNAB's learning platform. Uses headless browser automation to navigate the portal and fetch all course content.",
+        "es": "Herramienta CLI escrita en Rust que descarga y sincroniza automáticamente los materiales de cursos universitarios desde la plataforma de aprendizaje de la UNAB. Usa automatización de navegador headless para navegar el portal y obtener todo el contenido."
+      },
+      "tech": ["Rust", "Headless Browser", "Web Scraping", "CLI"],
+      "github": "https://github.com/belcaik/unab-sync-content",
+      "demo": "",
+      "private": false,
+      "site": true,
+      "cv": false
+    },
+    {
+      "name": "OCR Temperature Extractor",
+      "role": { "en": "Developer", "es": "Desarrollador" },
+      "year": 2024,
+      "description": {
+        "en": "Python script that extracts temperature readings from video recordings of thermometers or digital displays and exports them to CSV. Built to automate tedious data collection for a physics lab assignment — while classmates manually noted readings every 5 seconds, this tool did it automatically.",
+        "es": "Script en Python que extrae lecturas de temperatura de grabaciones de video de termómetros o pantallas digitales y las exporta a CSV. Construido para automatizar la recolección de datos de un laboratorio de física — mientras mis compañeros anotaban manualmente las lecturas cada 5 segundos, esta herramienta lo hacía automáticamente."
+      },
+      "tech": ["Python", "OpenCV", "Tesseract OCR", "FFmpeg"],
+      "github": "https://github.com/belcaik/ocr_temp_extractor",
+      "demo": "",
+      "private": false,
+      "site": true,
+      "cv": false
+    },
+    {
+      "name": "ToneDial",
+      "role": { "en": "Developer", "es": "Desarrollador" },
+      "year": 2023,
+      "description": {
+        "en": "Discord music bot for playing audio in voice channels. Currently a work in progress.",
+        "es": "Bot de música para Discord para reproducir audio en canales de voz. Actualmente en desarrollo."
+      },
+      "tech": ["JavaScript", "Discord.js", "Node.js"],
+      "github": "https://github.com/belcaik/tonedial",
+      "demo": "",
+      "private": false,
+      "wip": true,
+      "site": true,
+      "cv": false
+    },
+    {
+      "name": { "en": "Enterprise Payment System Modernization", "es": "Modernización de Sistema de Pagos Empresarial" },
+      "role": { "en": "Lead Developer", "es": "Desarrollador Líder" },
+      "year": 2024,
+      "description": {
+        "en": "Led migration of legacy .NET desktop applications to modern micro-frontend architecture for a major financial institution. Moved batch processing from client-side (30s + crashes) to server-side (5s, stable).",
+        "es": "Lideré la migración de aplicaciones de escritorio legacy en .NET a una arquitectura micro-frontend moderna para una importante institución financiera. Trasladé el procesamiento batch desde el cliente (30s y fallos) al servidor (5s, estable)."
+      },
+      "tech": ["React", "NestJS", ".NET Core", "OpenShift", "Helm", "Jenkins"],
+      "private": true,
+      "site": false,
+      "cv": true
+    },
+    {
+      "name": { "en": "Agricultural AI Platform", "es": "Plataforma Agrícola con IA" },
+      "role": { "en": "Developer", "es": "Desarrollador" },
+      "year": 2023,
+      "description": {
+        "en": "End-to-end agricultural technology platform for automated fruit quality classification using computer vision.",
+        "es": "Plataforma tecnológica agrícola end-to-end para la clasificación automatizada de calidad de fruta mediante visión computacional."
+      },
+      "tech": ["Vue.js", "React Native", "NestJS", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS"],
+      "private": true,
+      "site": false,
+      "cv": true
+    },
+    {
+      "name": { "en": "CI/CD Infrastructure Automation", "es": "Automatización de Infraestructura CI/CD" },
+      "role": { "en": "Developer", "es": "Desarrollador" },
+      "year": 2024,
+      "description": {
+        "en": "Automated deployment infrastructure for 9 legacy applications, eliminating manual processes and reducing operational costs.",
+        "es": "Automaticé la infraestructura de despliegue para 9 aplicaciones legacy, eliminando procesos manuales y reduciendo costos operacionales."
+      },
+      "tech": ["Jenkins", "TeamCity", "Harness", "PowerShell", "Windows Server", "OpenShift"],
+      "private": true,
+      "site": false,
+      "cv": true
+    }
+  ],
+  "certifications": [
+    {
+      "name": { "en": "EF SET English Certificate — C2 Proficient", "es": "Certificado EF SET de Inglés — C2 Competente" },
+      "issuer": "EF Standard English Test"
+    },
+    {
+      "name": { "en": "Back End Development and APIs", "es": "Desarrollo Back End y APIs" },
+      "issuer": "freeCodeCamp"
+    }
+  ]
+}

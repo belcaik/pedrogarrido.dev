@@ -1,6 +1,7 @@
 ---
 import { useTranslations, type Lang } from '../i18n';
 import { Github, ExternalLink, FolderOpenDot } from '@lucide/astro';
+import { getProfile } from '../data/profile';
 
 interface Props {
   lang: Lang;
@@ -8,29 +9,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-
-interface Project {
-  name: string;
-  role: string;
-  year: string;
-  description: string;
-  tech: string[];
-  github?: string;
-  demo?: string;
-  private: boolean;
-}
-
-const raw = t('projects.items');
-const projects: Project[] = Array.isArray(raw)
-  ? (raw as unknown[]).filter((item): item is Project => {
-      const p = item as Record<string, unknown>;
-      return (
-        typeof p?.name === 'string' &&
-        typeof p?.description === 'string' &&
-        Array.isArray(p?.tech)
-      );
-    })
-  : [];
+const projects = getProfile(lang).projects.filter((project) => project.site);
 ---
 
 <section id="projects" class="section-container section-padding">

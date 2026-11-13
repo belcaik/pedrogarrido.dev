@@ -3,6 +3,7 @@ import { Linkedin, Mail } from "@lucide/astro";
 import { getContactData } from "../utils/contact";
 import ObfuscatedEmail from "./ObfuscatedEmail.astro";
 import type { Lang } from "../i18n";
+import { getProfile } from "../data/profile";
 
 interface Props {
     lang: Lang;
@@ -10,6 +11,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const { t, contactInfo } = getContactData(lang);
+const { identity } = getProfile(lang);
 ---
 
 <section id="contact" class="section-container section-padding">
@@ -25,21 +27,21 @@ const { t, contactInfo } = getContactData(lang);
                     href={contactInfo.linkedin.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${t("hero.badge")} - LinkedIn`}
+                    aria-label={`${identity.availability} - LinkedIn`}
                     class="open-to-work-badge"
                     data-animate="fade-up"
                 >
-                    <span class="badge-text">{t("hero.badge")}</span>
+                    <span class="badge-text">{identity.availability}</span>
                 </a>
             </h2>
 
             <p class="text-2xl md:text-xl font-semibold mb-4 text-primary">
-                {t("contact.headline")}
+                {identity.contactHeadline}
             </p>
             <p
                 class="text-base md:text-[0.9375rem] leading-relaxed text-text-muted m-0"
             >
-                {t("contact.description")}
+                {identity.contactDescription}
             </p>
         </div>
 
