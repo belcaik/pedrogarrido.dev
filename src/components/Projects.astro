@@ -1,7 +1,7 @@
 ---
-import { useTranslations, type Lang } from '../i18n';
-import { Github, ExternalLink, FolderOpenDot } from '@lucide/astro';
-import { getProfile } from '../data/profile';
+import Diagram from "./Diagram.astro";
+import { getProfile } from "../data/profile";
+import { useTranslations, type Lang } from "../i18n";
 
 interface Props {
   lang: Lang;
@@ -12,96 +12,29 @@ const t = useTranslations(lang);
 const projects = getProfile(lang).projects.filter((project) => project.site);
 ---
 
-<section id="projects" class="section-container section-padding">
-  <h2 class="section-title" data-animate="fade-up">
-    <FolderOpenDot class="section-title-icon" size={24} />
-    {t('projects.title')}
-  </h2>
+<section class="sys" id="projects" aria-labelledby="projects-h">
+  <p class="sys-label mono">03</p>
+  <h2 id="projects-h">{t("projects.title")}</h2>
+  <p class="sys-meta">{t("projects.meta")}</p>
 
-  <div class="grid-cards" data-animate-stagger>
-    {projects.map((project) => (
-      <article class="card card-hover flex flex-col gap-5" data-animate="fade-up">
-        <div class="flex justify-between items-start gap-4 md:flex-col md:items-start md:gap-3">
-          <div class="flex-1">
-            <h3 class="text-card-title text-text mb-1">{project.name}</h3>
-            <p class="text-sm text-text-muted m-0">
-              {project.role} • {project.year}
-            </p>
+  <div class="proj-list">
+    {
+      projects.map((project, index) => (
+        <article class="proj" aria-labelledby={`project-${index}`}>
+          <div>
+            <span class="yr mono">{`${project.year} · ${project.tech[0]}`}</span>
+            <h3 id={`project-${index}`}>
+              {project.name}
+              {project.wip && <span class="wip">{t("projects.wip")}</span>}
+            </h3>
+            <p>{project.description}</p>
+            <a class="src" href={project.github} rel="noopener noreferrer">
+              {t("projects.source")}
+            </a>
           </div>
-          {project.private && (
-            <span class="private-badge">{t('projects.privateLabel')}</span>
-          )}
-        </div>
-
-        <p class="text-text-muted leading-relaxed m-0 flex-1">{project.description}</p>
-
-        <div class="flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
-            <span class="tech-tag">{tech}</span>
-          ))}
-        </div>
-
-        {!project.private && (project.github || project.demo) && (
-          <div class="flex gap-4 pt-2 border-t border-border">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-                aria-label="View code on GitHub"
-              >
-                <Github size={18} />
-                <span>{t('projects.viewCode')}</span>
-              </a>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-                aria-label="View live demo"
-              >
-                <ExternalLink size={18} />
-                <span>{t('projects.viewDemo')}</span>
-              </a>
-            )}
-          </div>
-        )}
-      </article>
-    ))}
+          {project.diagram && <Diagram diagram={project.diagram} lang={lang} />}
+        </article>
+      ))
+    }
   </div>
 </section>
-
-<style>
-  .private-badge {
-    @apply bg-tag-bg text-tag-text px-3 py-1 rounded-xl text-xs font-semibold border border-border whitespace-nowrap uppercase tracking-wide;
-  }
-
-  .project-link {
-    @apply flex items-center gap-2 text-text-muted no-underline text-sm font-medium transition-all duration-200;
-  }
-
-  .project-link:hover {
-    @apply text-primary gap-3;
-  }
-
-  .project-link:focus-visible {
-    @apply outline-none text-primary;
-  }
-
-  .project-link :global(svg) {
-    @apply w-[18px] h-[18px] transition-transform duration-200;
-  }
-
-  .project-link:hover :global(svg) {
-    transform: translateX(2px);
-  }
-
-  @media (max-width: 768px) {
-    .text-card-title {
-      @apply text-card-title-sm;
-    }
-  }
-</style>

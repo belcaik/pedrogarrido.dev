@@ -5,7 +5,7 @@ Personal portfolio website built with Astro.
 ## Tech Stack
 
 - [Astro](https://astro.build/) - Static site generator
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- Plain CSS with design tokens (`src/styles/global.css`) - Styling
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 
 ## Commands

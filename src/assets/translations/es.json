@@ -1,59 +1,57 @@
 {
   "nav": {
-    "experience": "Experiencia",
+    "skip": "Saltar al contenido",
+    "systems": "Sistemas",
     "projects": "Proyectos",
-    "skills": "Stack Tecnológico",
-    "about": "Sobre mí",
     "contact": "Contacto",
-    "resume": "Currículum"
+    "themeDark": "Oscuro",
+    "themeLight": "Claro",
+    "themeToDark": "Cambiar a tema oscuro",
+    "themeToLight": "Cambiar a tema claro"
+  },
+  "language": {
+    "select": "Seleccionar idioma",
+    "current": "Seleccionar idioma, actual",
+    "switchTo": "Cambiar a"
+  },
+  "email": {
+    "noscript": "Activa JavaScript para ver el correo"
   },
   "hero": {
-    "greeting": "Hola, soy ",
-    "cta": "Contáctame",
-    "linkedin": "LinkedIn",
-    "github": "GitHub"
+    "emailLink": "Escríbeme",
+    "emailAria": "Enviar correo"
   },
-  "about": { "title": "Sobre mí", "downloadResume": "Descargar CV" },
-  "experience": { "title": "Experiencia" },
-  "education": { "title": "Educación" },
-  "skills": {
-    "title": "Stack Tecnológico",
-    "hint": "Pasa el cursor sobre cualquier eje para ver las tecnologías"
+  "resume": {
+    "label": "Currículum (PDF)"
+  },
+  "systems": {
+    "index": "Sistemas en esta página",
+    "label": "sistema",
+    "earlier": "Antes"
+  },
+  "diagram": {
+    "before": "antes",
+    "after": "después"
   },
   "projects": {
-    "title": "Proyectos",
-    "privateLabel": "Proyecto Empresarial",
-    "viewCode": "Código",
-    "viewDemo": "Demo"
+    "title": "Herramientas pequeñas",
+    "meta": "Proyectos personales, cada uno una tarea repetitiva convertida en pipeline.",
+    "index": "Herramientas pequeñas",
+    "indexDetail": "Tres proyectos personales",
+    "source": "Código en GitHub",
+    "wip": "En progreso"
   },
-  "github": {
-    "title": "Actividad en GitHub",
-    "stats": {
-      "repos": "Repos Públicos",
-      "stars": "Estrellas Totales",
-      "contributions": "Contribuciones",
-      "followers": "Seguidores"
-    },
-    "viewProfile": "Ver Perfil Completo"
+  "toolbox": {
+    "title": "Herramientas que uso"
+  },
+  "education": {
+    "title": "Educación"
   },
   "contact": {
-    "title": "Contacto",
-    "info": {
-      "email": { "label": "Email" },
-      "linkedin": { "label": "LinkedIn" },
-      "github": { "label": "GitHub" }
-    }
+    "title": "Contacto"
   },
   "footer": {
-    "navigation": "Navegación",
-    "connect": "Conectar",
     "copyright": "Todos los derechos reservados.",
     "builtWith": "Hecho con Astro"
-  },
-  "common": {
-    "present": "Presente",
-    "comingSoon": "Próximamente",
-    "learnMore": "Saber más",
-    "backToTop": "Volver arriba"
   }
 }

@@ -1,92 +1,50 @@
 ---
-import { Linkedin, Mail } from "@lucide/astro";
-import { getContactData } from "../utils/contact";
 import ObfuscatedEmail from "./ObfuscatedEmail.astro";
-import type { Lang } from "../i18n";
-import { getProfile } from "../data/profile";
+import { getProfile, getResumeLink } from "../data/profile";
+import { useTranslations, type Lang } from "../i18n";
 
 interface Props {
-    lang: Lang;
+  lang: Lang;
 }
 
 const { lang } = Astro.props;
-const { t, contactInfo } = getContactData(lang);
-const { identity } = getProfile(lang);
+const t = useTranslations(lang);
+const { education, identity, links } = getProfile(lang);
+const resume = getResumeLink(lang);
 ---
 
-<section id="contact" class="section-container section-padding">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-        <div
-            class="text-left max-w-[700px] mx-auto md:col-span-1"
-            data-animate="fade-right"
-        >
-            <h2 class="section-title">
-                {t("contact.title")}
-
-                <a
-                    href={contactInfo.linkedin.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${identity.availability} - LinkedIn`}
-                    class="open-to-work-badge"
-                    data-animate="fade-up"
-                >
-                    <span class="badge-text">{identity.availability}</span>
-                </a>
-            </h2>
-
-            <p class="text-2xl md:text-xl font-semibold mb-4 text-primary">
-                {identity.contactHeadline}
-            </p>
-            <p
-                class="text-base md:text-[0.9375rem] leading-relaxed text-text-muted m-0"
-            >
-                {identity.contactDescription}
-            </p>
-        </div>
-
-        <div
-            class="flex flex-col gap-6 max-w-[700px] mx-auto md:col-span-1 py-12"
-            data-animate="fade-left"
-        >
-            <div class="flex flex-col gap-6">
-                <div class="flex gap-4 items-start">
-                    <Mail
-                        class="w-6 h-6 text-primary flex-shrink-0 mt-0.5"
-                        size={24}
-                    />
-                    <div class="flex flex-col gap-1">
-                        <span
-                            class="text-sm font-semibold text-text-muted uppercase tracking-wide"
-                            >{contactInfo.email.label}</span
-                        >
-                        <ObfuscatedEmail
-                            email={contactInfo.email.value}
-                            class="text-base text-text"
-                        />
-                    </div>
-                </div>
-
-                <div class="flex gap-4 items-start">
-                    <Linkedin
-                        class="w-6 h-6 text-primary flex-shrink-0 mt-0.5"
-                        size={24}
-                    />
-                    <div class="flex flex-col gap-1">
-                        <span
-                            class="text-sm font-semibold text-text-muted uppercase tracking-wide"
-                            >{contactInfo.linkedin.label}</span
-                        >
-                        <a
-                            class="link-primary text-base"
-                            href={contactInfo.linkedin.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >{contactInfo.linkedin.value}</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="sys" id="contact" aria-labelledby="contact-h">
+  <div class="end">
+    <div>
+      <h2 class="sub-title" id="education-h">{t("education.title")}</h2>
+      <ul class="edu">
+        {
+          education.map((item) => (
+            <li>
+              <span class="mono">{item.date}</span>
+              {`${item.degree}, ${item.institution}. `}
+              {item.status ?? item.honors}
+            </li>
+          ))
+        }
+      </ul>
     </div>
+
+    <div>
+      <h2 class="sub-title" id="contact-h">{t("contact.title")}</h2>
+      <p>{`${identity.availabilityNote} ${identity.contactLead}`}</p>
+      <ObfuscatedEmail email={identity.email} lang={lang} class="mail" />
+      <ul class="links">
+        <li>
+          <a href={links.linkedin.url} rel="noopener noreferrer">{links.linkedin.display}</a>
+        </li>
+        <li>
+          <a href={links.github.url} rel="noopener noreferrer">{links.github.display}</a>
+        </li>
+        <li>
+          <a href={resume.href} download={resume.download}>{t("resume.label")}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>

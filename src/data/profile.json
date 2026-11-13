@@ -2,15 +2,6 @@
   "identity": {
     "name": "Pedro Garrido",
     "email": "hello@pedrogarrido.dev",
-    "country": "Chile",
-    "availability": {
-      "en": "Open to Work",
-      "es": "Disponible para trabajar"
-    },
-    "headline": {
-      "en": "Software Engineer & DevOps Enthusiast",
-      "es": "Ingeniero de Software y Entusiasta DevOps"
-    },
     "cvHeadline": {
       "en": "Software Developer | Backend, DevOps & Full-Stack | .NET Core, Node.js, React, CI/CD, AWS",
       "es": "Desarrollador de Software | Backend, DevOps y Full-Stack | .NET Core, Node.js, React, CI/CD, AWS"
@@ -23,35 +14,21 @@
       "en": "Software Developer specializing in backend systems, DevOps automation, and legacy modernization. 3+ years building scalable solutions.",
       "es": "Desarrollador de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Más de 3 años construyendo soluciones escalables."
     },
-    "hero": {
-      "experience": {
-        "en": "3+ years of experience as",
-        "es": "Más de 3 años de experiencia como"
-      },
-      "subtitle": {
-        "en": "building scalable backend systems and automating infrastructure.",
-        "es": "construyendo sistemas backend escalables y automatizando infraestructura."
-      },
-      "location": {
-        "en": "Based in Chile 🇨🇱",
-        "es": "Desde Chile 🇨🇱"
-      }
-    },
-    "footerTagline": {
-      "en": "Software Engineer & DevOps Enthusiast",
-      "es": "Ingeniero de Software y Entusiasta DevOps"
-    },
-    "contactHeadline": {
-      "en": "Let's build something together",
-      "es": "Construyamos algo juntos"
-    },
-    "contactDescription": {
-      "en": "I'm currently open to new opportunities — remote, hybrid, or relocation. Whether you have a project in mind, a job opportunity, or just want to connect, feel free to reach out.",
-      "es": "Actualmente estoy abierto a nuevas oportunidades — remoto, híbrido o reubicación. Ya sea que tengas un proyecto en mente, una oportunidad laboral, o simplemente quieras conectar, no dudes en escribirme."
-    },
     "cvLocation": {
       "en": "Chile — Open to Remote & Relocation",
       "es": "Chile — Disponible para trabajo remoto y reubicación"
+    },
+    "tagline": {
+      "en": "Backend and DevOps engineer in Chile. I rebuild legacy systems and the pipelines that ship them. Here are the ones I worked on, drawn as they run.",
+      "es": "Ingeniero backend y DevOps en Chile. Reconstruyo sistemas legacy y los pipelines que los despliegan. Estos son los que trabajé, dibujados tal como funcionan."
+    },
+    "availabilityNote": {
+      "en": "Open to work: remote, hybrid, or relocation.",
+      "es": "Disponible para trabajar: remoto, híbrido o reubicación."
+    },
+    "contactLead": {
+      "en": "If one of these diagrams looks like a problem you have, write to me.",
+      "es": "Si alguno de estos diagramas se parece a un problema que tienes, escríbeme."
     }
   },
   "links": {
@@ -63,31 +40,15 @@
     "linkedin": {
       "label": "LinkedIn",
       "display": "linkedin.com/in/pedrogarridodev",
-      "shortDisplay": "pedrogarridodev",
       "url": "https://www.linkedin.com/in/pedrogarridodev"
     },
     "github": {
       "label": "GitHub",
       "display": "github.com/belcaik",
-      "shortDisplay": "belcaik",
       "url": "https://github.com/belcaik"
     }
   },
   "summary": {
-    "site": [
-      {
-        "en": "I'm a Software Engineer specializing in backend systems, DevOps automation, and legacy modernization. Currently pursuing my Bachelor's in Software Engineering at Universidad Andrés Bello.",
-        "es": "Soy Ingeniero de Software especializado en sistemas backend, automatización DevOps y modernización de sistemas legacy. Actualmente cursando Ingeniería en Software en la Universidad Andrés Bello."
-      },
-      {
-        "en": "I thrive on solving complex problems and staying up-to-date with emerging technologies. I've helped financial institutions like Citi Bank modernize critical payment systems, achieving 6x performance improvements and saving $36K+ in annual licensing costs through smart automation.",
-        "es": "Disfruto resolver problemas complejos y mantenerme al día con tecnologías emergentes. He ayudado a instituciones financieras como Citi Bank a modernizar sistemas críticos de pagos, logrando mejoras de rendimiento de 6x y ahorrando más de $36K USD anuales en costos de licencias mediante automatización."
-      },
-      {
-        "en": "My toolkit spans .NET Core, Node.js, Python, React, and a deep understanding of CI/CD pipelines with Jenkins, OpenShift, and AWS. I'm passionate about clean architecture, Domain-Driven Design, and building systems that scale.",
-        "es": "Mi stack incluye .NET Core, Node.js, Python, React, y un conocimiento profundo de pipelines CI/CD con Jenkins, OpenShift y AWS. Me apasiona la arquitectura limpia, Domain-Driven Design y construir sistemas que escalen."
-      }
-    ],
     "cv": [
       {
         "en": "Software Developer with 3+ years of experience delivering high-impact solutions for financial institutions. I specialize in backend development, DevOps automation, and legacy modernization, consistently achieving measurable results: 6x performance improvements, 80% test coverage, and $36K+ in annual cost savings through smart automation.",
@@ -159,6 +120,80 @@
         }
       ],
       "tech": [".NET Core", "NestJS", "React", "Jenkins", "TeamCity", "OpenShift", "Helm", "PowerShell", "SonarQube"],
+      "tagline": {
+        "en": "Payment apps, pipelines",
+        "es": "Aplicaciones de pagos y pipelines"
+      },
+      "intro": {
+        "en": "I led the rewrite of legacy .NET Framework applications into a micro-frontend architecture, built the CI/CD that ships them, removed a paid tool, and put the payment integration under test.",
+        "es": "Lideré la reescritura de aplicaciones legacy .NET Framework hacia una arquitectura micro-frontend, construí el CI/CD que las despliega, eliminé una herramienta de pago y puse bajo pruebas la integración de pagos."
+      },
+      "diagrams": [
+        {
+          "title": { "en": "The rewrite", "es": "La reescritura" },
+          "summary": {
+            "en": "Before and after the rewrite: legacy .NET Framework apps at 30 seconds, React micro-frontends with NestJS at 5 seconds, a 6x improvement",
+            "es": "Antes y después de la reescritura: aplicaciones .NET Framework legacy en 30 segundos, micro-frontends React con NestJS en 5 segundos, una mejora de 6x"
+          },
+          "width": "full",
+          "items": [
+            { "type": "node", "state": "before", "title": { "en": "Legacy .NET Framework apps", "es": "Aplicaciones .NET Framework legacy" }, "figure": "30s" },
+            { "type": "link", "label": { "en": "rewrite, 6x", "es": "reescritura, 6x" } },
+            { "type": "node", "state": "after", "title": { "en": "React micro-frontends + NestJS", "es": "Micro-frontends React + NestJS" }, "figure": "5s" }
+          ]
+        },
+        {
+          "title": { "en": "Pipelines, built from scratch", "es": "Pipelines construidos desde cero" },
+          "summary": {
+            "en": "Nine applications flow through Jenkins, TeamCity and Harness into OpenShift, deployed with Helm",
+            "es": "Nueve aplicaciones pasan por Jenkins, TeamCity y Harness hacia OpenShift, desplegadas con Helm"
+          },
+          "width": "full",
+          "items": [
+            { "type": "node", "tag": { "en": "source", "es": "origen" }, "title": { "en": "9 applications", "es": "9 aplicaciones" } },
+            { "type": "link", "label": { "en": "build, test", "es": "compilar, probar" } },
+            { "type": "node", "tag": { "en": "CI/CD", "es": "CI/CD" }, "title": { "en": "Jenkins, TeamCity, Harness", "es": "Jenkins, TeamCity, Harness" } },
+            { "type": "link", "label": { "en": "deploy", "es": "desplegar" } },
+            { "type": "node", "tag": { "en": "runtime", "es": "entorno" }, "title": { "en": "OpenShift", "es": "OpenShift" }, "sub": { "en": "Helm", "es": "Helm" } }
+          ]
+        },
+        {
+          "title": { "en": "A licence removed", "es": "Una licencia eliminada" },
+          "summary": {
+            "en": "PKWARE replaced by native Windows tooling",
+            "es": "PKWARE reemplazado por herramientas nativas de Windows"
+          },
+          "width": "half",
+          "compact": true,
+          "caption": {
+            "en": "More than $36K a year in licensing costs eliminated.",
+            "es": "Más de $36K USD anuales en costos de licencias eliminados."
+          },
+          "items": [
+            { "type": "node", "state": "before", "title": { "en": "PKWARE", "es": "PKWARE" } },
+            { "type": "link", "label": { "en": "replaced", "es": "reemplazado" } },
+            { "type": "node", "state": "after", "title": { "en": "Native Windows tooling", "es": "Herramientas nativas de Windows" } }
+          ]
+        },
+        {
+          "title": { "en": "A payment integration under test", "es": "Una integración de pagos bajo pruebas" },
+          "summary": {
+            "en": "FlexCube and BankCard, with the integration between them covered by a testing framework at 80 percent code coverage",
+            "es": "FlexCube y BankCard, con la integración entre ambos cubierta por un framework de testing con 80% de cobertura de código"
+          },
+          "width": "half",
+          "compact": true,
+          "caption": {
+            "en": "A testing framework for these mission-critical payment systems, reaching 80% code coverage.",
+            "es": "Un framework de testing para estos sistemas de pagos críticos, que alcanza 80% de cobertura de código."
+          },
+          "items": [
+            { "type": "node", "title": { "en": "FlexCube", "es": "FlexCube" } },
+            { "type": "link", "both": true, "label": { "en": "80% coverage", "es": "80% de cobertura" } },
+            { "type": "node", "title": { "en": "BankCard", "es": "BankCard" } }
+          ]
+        }
+      ],
       "cv": true
     },
     {
@@ -208,6 +243,49 @@
         }
       ],
       "tech": ["NestJS", "Vue.js", "React Native", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS", "Docker"],
+      "tagline": {
+        "en": "Agricultural platform on AWS",
+        "es": "Plataforma agrícola en AWS"
+      },
+      "diagrams": [
+        {
+          "summary": {
+            "en": "Vue.js dashboard and React Native app talk to a NestJS API, which uses PostgreSQL and RabbitMQ on AWS ECS; RabbitMQ feeds the ML inference workers running OpenCV and YOLOv5",
+            "es": "El dashboard en Vue.js y la app en React Native se comunican con una API NestJS, que usa PostgreSQL y RabbitMQ en AWS ECS; RabbitMQ alimenta los workers de inferencia ML con OpenCV y YOLOv5"
+          },
+          "caption": {
+            "en": "Simplified from the role description: the parts I built and where they ran. Exact service boundaries are not shown.",
+            "es": "Simplificado a partir de la descripción del cargo: las partes que construí y dónde corrían. No se muestran los límites exactos de cada servicio."
+          },
+          "items": [
+            {
+              "type": "group",
+              "nodes": [
+                { "type": "node", "tag": { "en": "client", "es": "cliente" }, "title": { "en": "Vue.js dashboard", "es": "Dashboard en Vue.js" } },
+                { "type": "node", "tag": { "en": "client", "es": "cliente" }, "title": { "en": "React Native app", "es": "App en React Native" } }
+              ]
+            },
+            { "type": "link" },
+            { "type": "node", "tag": { "en": "api", "es": "api" }, "title": { "en": "NestJS API", "es": "API en NestJS" } },
+            { "type": "link" },
+            {
+              "type": "boundary",
+              "tag": { "en": "AWS ECS · 6 containers, 3 named here", "es": "AWS ECS · 6 contenedores, 3 nombrados aquí" },
+              "items": [
+                { "type": "node", "title": { "en": "PostgreSQL", "es": "PostgreSQL" } },
+                { "type": "node", "title": { "en": "RabbitMQ", "es": "RabbitMQ" } },
+                { "type": "link" },
+                {
+                  "type": "node",
+                  "tag": { "en": "Python", "es": "Python" },
+                  "title": { "en": "ML inference workers", "es": "Workers de inferencia ML" },
+                  "sub": { "en": "OpenCV + YOLOv5, fruit quality", "es": "OpenCV + YOLOv5, calidad de fruta" }
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "cv": true
     },
     {
@@ -249,6 +327,28 @@
         }
       ],
       "tech": ["JavaScript", "Vue.js", "Node.js", "Git"],
+      "diagrams": [
+        {
+          "summary": {
+            "en": "Internal tools turned iceScrum API data into client specification documents with time-tracking KPIs, replacing manual documentation",
+            "es": "Herramientas internas convirtieron datos de la API de iceScrum en documentos de especificación para clientes con KPIs de seguimiento de tiempo, reemplazando la documentación manual"
+          },
+          "caption": {
+            "en": "Also helped develop web applications with modern JavaScript frameworks and took part in code reviews.",
+            "es": "También ayudé a desarrollar aplicaciones web con frameworks modernos de JavaScript y participé en revisiones de código."
+          },
+          "items": [
+            { "type": "node", "tag": { "en": "source", "es": "origen" }, "title": { "en": "iceScrum API", "es": "API de iceScrum" } },
+            { "type": "link", "label": { "en": "internal tools", "es": "herramientas internas" } },
+            {
+              "type": "node",
+              "tag": { "en": "output", "es": "salida" },
+              "title": { "en": "Client specification documents", "es": "Documentos de especificación para clientes" },
+              "sub": { "en": "with time-tracking KPIs, no manual writing", "es": "con KPIs de seguimiento de tiempo, sin redacción manual" }
+            }
+          ]
+        }
+      ],
       "cv": false
     }
   ],
@@ -290,34 +390,6 @@
       { "title": { "en": "Tools & Practices", "es": "Herramientas y Prácticas" }, "items": ["Git", "SonarQube", "BlackDuck", "Snyk", "CI/CD", "DDD", "TDD", { "en": "Microservices", "es": "Microservicios" }] },
       { "title": { "en": "AI Tools", "es": "Herramientas de IA" }, "items": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"] }
     ],
-    "radars": [
-      {
-        "title": "Engineering",
-        "color": "rgba(0, 212, 170, 0.6)",
-        "strokeColor": "rgba(0, 212, 170, 1)",
-        "categories": [
-          { "name": "Backend", "level": 5, "technologies": [".NET Core", "NestJS", "Node.js", "Express.js"] },
-          { "name": "DevOps", "level": 4, "technologies": ["Docker", "OpenShift", "Kubernetes", "Helm", "Jenkins", "TeamCity"] },
-          { "name": "Databases", "level": 4, "technologies": ["PostgreSQL", "SQL Server", "MongoDB", "RabbitMQ"] },
-          { "name": "Cloud", "level": 3, "technologies": ["AWS ECS", "Azure basics"] },
-          { "name": "Frontend", "level": 3, "technologies": ["React", "Vue.js", "Angular", "HTML5", "CSS3"] },
-          { "name": "Languages", "level": 4, "technologies": ["C#", "TypeScript", "JavaScript", "Python", "Java", "SQL", "Rust"] }
-        ]
-      },
-      {
-        "title": "Practices",
-        "color": "rgba(88, 166, 255, 0.6)",
-        "strokeColor": "rgba(88, 166, 255, 1)",
-        "categories": [
-          { "name": "CI/CD", "level": 5, "technologies": ["Jenkins", "TeamCity", "Harness", "GitHub Actions"] },
-          { "name": "Automation", "level": 5, "technologies": ["PowerShell", "Bash", "Python scripts", "Headless browsers"] },
-          { "name": "Architecture", "level": 4, "technologies": ["DDD", "Microservices", "Clean Architecture", "Event-Driven"] },
-          { "name": "Testing", "level": 4, "technologies": ["TDD", "Unit Testing", "Integration Testing", "80% coverage"] },
-          { "name": "Security", "level": 3, "technologies": ["SonarQube", "BlackDuck", "Snyk", "OWASP basics"] },
-          { "name": "AI Tools", "level": 4, "technologies": ["Claude Code", "GitHub Copilot", "Cursor", "ChatGPT"] }
-        ]
-      }
-    ],
     "cvCategories": [
       { "title": { "en": "Backend", "es": "Backend" }, "items": [".NET Core", "NestJS", "Node.js", "Python", "Java", "REST APIs"] },
       { "title": { "en": "Frontend", "es": "Frontend" }, "items": ["React", "Angular", "Vue.js", "TypeScript", "JavaScript"] },
@@ -329,86 +401,111 @@
   "projects": [
     {
       "name": "UNAB Sync Content",
-      "role": { "en": "Developer", "es": "Desarrollador" },
       "year": 2025,
       "description": {
         "en": "CLI tool written in Rust that automatically downloads and syncs university course materials from UNAB's learning platform. Uses headless browser automation to navigate the portal and fetch all course content.",
         "es": "Herramienta CLI escrita en Rust que descarga y sincroniza automáticamente los materiales de cursos universitarios desde la plataforma de aprendizaje de la UNAB. Usa automatización de navegador headless para navegar el portal y obtener todo el contenido."
       },
       "tech": ["Rust", "Headless Browser", "Web Scraping", "CLI"],
+      "diagram": {
+        "summary": {
+          "en": "UNAB learning platform, through a Rust CLI driving a headless browser, to synced course materials",
+          "es": "Plataforma de aprendizaje de la UNAB, a través de una CLI en Rust que controla un navegador headless, hasta los materiales de cursos sincronizados"
+        },
+        "compact": true,
+        "items": [
+          { "type": "node", "title": { "en": "UNAB learning platform", "es": "Plataforma de aprendizaje de la UNAB" } },
+          { "type": "link" },
+          { "type": "node", "title": { "en": "Rust CLI", "es": "CLI en Rust" }, "sub": { "en": "headless browser", "es": "navegador headless" } },
+          { "type": "link" },
+          { "type": "node", "title": { "en": "Course materials", "es": "Materiales de cursos" }, "sub": { "en": "downloaded and synced", "es": "descargados y sincronizados" } }
+        ]
+      },
       "github": "https://github.com/belcaik/unab-sync-content",
-      "demo": "",
-      "private": false,
       "site": true,
       "cv": false
     },
     {
       "name": "OCR Temperature Extractor",
-      "role": { "en": "Developer", "es": "Desarrollador" },
       "year": 2024,
       "description": {
         "en": "Python script that extracts temperature readings from video recordings of thermometers or digital displays and exports them to CSV. Built to automate tedious data collection for a physics lab assignment — while classmates manually noted readings every 5 seconds, this tool did it automatically.",
         "es": "Script en Python que extrae lecturas de temperatura de grabaciones de video de termómetros o pantallas digitales y las exporta a CSV. Construido para automatizar la recolección de datos de un laboratorio de física — mientras mis compañeros anotaban manualmente las lecturas cada 5 segundos, esta herramienta lo hacía automáticamente."
       },
       "tech": ["Python", "OpenCV", "Tesseract OCR", "FFmpeg"],
+      "diagram": {
+        "summary": {
+          "en": "Video of a thermometer or digital display, processed with FFmpeg, OpenCV and Tesseract OCR, exported to CSV",
+          "es": "Video de un termómetro o de una pantalla digital, procesado con FFmpeg, OpenCV y Tesseract OCR y exportado a CSV"
+        },
+        "compact": true,
+        "items": [
+          { "type": "node", "title": { "en": "Video", "es": "Video" }, "sub": { "en": "thermometer or digital display", "es": "termómetro o pantalla digital" } },
+          { "type": "link" },
+          { "type": "node", "title": { "en": "FFmpeg, OpenCV, Tesseract OCR", "es": "FFmpeg, OpenCV, Tesseract OCR" } },
+          { "type": "link" },
+          { "type": "node", "title": { "en": "CSV", "es": "CSV" }, "sub": { "en": "temperature readings", "es": "lecturas de temperatura" } }
+        ]
+      },
       "github": "https://github.com/belcaik/ocr_temp_extractor",
-      "demo": "",
-      "private": false,
       "site": true,
       "cv": false
     },
     {
       "name": "ToneDial",
-      "role": { "en": "Developer", "es": "Desarrollador" },
       "year": 2023,
       "description": {
         "en": "Discord music bot for playing audio in voice channels. Currently a work in progress.",
         "es": "Bot de música para Discord para reproducir audio en canales de voz. Actualmente en desarrollo."
       },
       "tech": ["JavaScript", "Discord.js", "Node.js"],
+      "diagram": {
+        "summary": {
+          "en": "ToneDial bot on Discord.js and Node.js plays audio into Discord voice channels",
+          "es": "El bot ToneDial, sobre Discord.js y Node.js, reproduce audio en los canales de voz de Discord"
+        },
+        "compact": true,
+        "items": [
+          { "type": "node", "title": { "en": "ToneDial bot", "es": "Bot ToneDial" }, "sub": { "en": "Discord.js, Node.js", "es": "Discord.js, Node.js" } },
+          { "type": "link", "label": { "en": "audio", "es": "audio" } },
+          { "type": "node", "title": { "en": "Discord voice channels", "es": "Canales de voz de Discord" } }
+        ]
+      },
       "github": "https://github.com/belcaik/tonedial",
-      "demo": "",
-      "private": false,
       "wip": true,
       "site": true,
       "cv": false
     },
     {
       "name": { "en": "Enterprise Payment System Modernization", "es": "Modernización de Sistema de Pagos Empresarial" },
-      "role": { "en": "Lead Developer", "es": "Desarrollador Líder" },
       "year": 2024,
       "description": {
         "en": "Led migration of legacy .NET desktop applications to modern micro-frontend architecture for a major financial institution. Moved batch processing from client-side (30s + crashes) to server-side (5s, stable).",
         "es": "Lideré la migración de aplicaciones de escritorio legacy en .NET a una arquitectura micro-frontend moderna para una importante institución financiera. Trasladé el procesamiento batch desde el cliente (30s y fallos) al servidor (5s, estable)."
       },
       "tech": ["React", "NestJS", ".NET Core", "OpenShift", "Helm", "Jenkins"],
-      "private": true,
       "site": false,
       "cv": true
     },
     {
       "name": { "en": "Agricultural AI Platform", "es": "Plataforma Agrícola con IA" },
-      "role": { "en": "Developer", "es": "Desarrollador" },
       "year": 2023,
       "description": {
         "en": "End-to-end agricultural technology platform for automated fruit quality classification using computer vision.",
         "es": "Plataforma tecnológica agrícola end-to-end para la clasificación automatizada de calidad de fruta mediante visión computacional."
       },
       "tech": ["Vue.js", "React Native", "NestJS", "Python", "OpenCV", "YOLOv5", "PostgreSQL", "RabbitMQ", "AWS ECS"],
-      "private": true,
       "site": false,
       "cv": true
     },
     {
       "name": { "en": "CI/CD Infrastructure Automation", "es": "Automatización de Infraestructura CI/CD" },
-      "role": { "en": "Developer", "es": "Desarrollador" },
       "year": 2024,
       "description": {
         "en": "Automated deployment infrastructure for 9 legacy applications, eliminating manual processes and reducing operational costs.",
         "es": "Automaticé la infraestructura de despliegue para 9 aplicaciones legacy, eliminando procesos manuales y reduciendo costos operacionales."
       },
       "tech": ["Jenkins", "TeamCity", "Harness", "PowerShell", "Windows Server", "OpenShift"],
-      "private": true,
       "site": false,
       "cv": true
     }

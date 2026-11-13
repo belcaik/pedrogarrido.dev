@@ -1,59 +1,57 @@
 {
   "nav": {
-    "experience": "Experience",
+    "skip": "Skip to content",
+    "systems": "Systems",
     "projects": "Projects",
-    "skills": "Tech Stack",
-    "about": "About",
     "contact": "Contact",
-    "resume": "Resume"
+    "themeDark": "Dark",
+    "themeLight": "Light",
+    "themeToDark": "Switch to dark theme",
+    "themeToLight": "Switch to light theme"
+  },
+  "language": {
+    "select": "Select language",
+    "current": "Select language, current",
+    "switchTo": "Switch to"
+  },
+  "email": {
+    "noscript": "Enable JavaScript to view email"
   },
   "hero": {
-    "greeting": "Hey, I'm ",
-    "cta": "Get in touch",
-    "linkedin": "LinkedIn",
-    "github": "GitHub"
+    "emailLink": "Email me",
+    "emailAria": "Send email"
   },
-  "about": { "title": "About Me", "downloadResume": "Download Resume" },
-  "experience": { "title": "Experience" },
-  "education": { "title": "Education" },
-  "skills": {
-    "title": "Tech Stack",
-    "hint": "Hover on any axis to see specific technologies"
+  "resume": {
+    "label": "Résumé (PDF)"
+  },
+  "systems": {
+    "index": "Systems on this page",
+    "label": "system",
+    "earlier": "Before that"
+  },
+  "diagram": {
+    "before": "before",
+    "after": "after"
   },
   "projects": {
-    "title": "Projects",
-    "privateLabel": "Enterprise Project",
-    "viewCode": "Code",
-    "viewDemo": "Demo"
+    "title": "Small tools",
+    "meta": "Side projects, each one a chore turned into a pipeline.",
+    "index": "Small tools",
+    "indexDetail": "Three side projects",
+    "source": "Source on GitHub",
+    "wip": "WIP"
   },
-  "github": {
-    "title": "GitHub Activity",
-    "stats": {
-      "repos": "Public Repos",
-      "stars": "Total Stars",
-      "contributions": "Contributions",
-      "followers": "Followers"
-    },
-    "viewProfile": "View Full Profile"
+  "toolbox": {
+    "title": "Parts I reach for"
+  },
+  "education": {
+    "title": "Education"
   },
   "contact": {
-    "title": "Get In Touch",
-    "info": {
-      "email": { "label": "Email" },
-      "linkedin": { "label": "LinkedIn" },
-      "github": { "label": "GitHub" }
-    }
+    "title": "Contact"
   },
   "footer": {
-    "navigation": "Navigation",
-    "connect": "Connect",
     "copyright": "All rights reserved.",
     "builtWith": "Built with Astro"
-  },
-  "common": {
-    "present": "Present",
-    "comingSoon": "Coming Soon",
-    "learnMore": "Learn more",
-    "backToTop": "Back to Top"
   }
 }

@@ -1,103 +1,71 @@
 ---
-import { Github, Linkedin, Mail } from "@lucide/astro";
-import { getContactData } from "../utils/contact";
-import { getProfile } from "../data/profile";
+import { getProfile, getResumeLink, getSystems } from "../data/profile";
+import { useTranslations, type Lang } from "../i18n";
 import ObfuscatedLink from "./ObfuscatedLink.astro";
-import type { Lang } from "../i18n";
 
 interface Props {
-    lang: Lang;
+  lang: Lang;
 }
 
 const { lang } = Astro.props;
-const { t, contactInfo } = getContactData(lang);
-const { identity } = getProfile(lang);
+const t = useTranslations(lang);
+const { identity, links } = getProfile(lang);
+const [firstName, ...lastNames] = identity.name.split(" ");
+const systems = getSystems(lang);
+const resume = getResumeLink(lang);
 ---
 
-<section id="hero" class="section-container section-padding flex flex-col">
-    <h1 data-animate-hero class="hero-title">
-        <span class="hero-title-text">
-            <span class="px-1">
-                {t("hero.greeting")}
-            </span>
-            <span
-                class="font-bold greeting-3d block mb-4 px-0 md:inline md:mb-0"
-            >
-                {identity.name}
-            </span>
-        </span>
-        <a
-            href={contactInfo.linkedin.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${identity.availability} - LinkedIn`}
-            class="open-to-work-badge"
-        >
-            <span class="badge-text">{identity.availability}</span>
-        </a>
+<div class="intro">
+  <div>
+    <h1>
+      {firstName}
+      <br />
+      {lastNames.join(" ")}
     </h1>
-
-    <h2 data-animate-hero="delay-1">
-        {identity.hero.experience}
-        <span>{identity.headline}</span>
-        {identity.hero.subtitle}
-        {identity.hero.location}
-    </h2>
-    <div
-        class="flex flex-col md:flex-row gap-4 mt-6"
-        data-animate-hero="delay-2"
-    >
-        <ObfuscatedLink email={contactInfo.email.value} class="btn-cta">
-            <Mail class="btn-icon" />
-            {t("hero.cta")}
+    <p class="lede">{identity.tagline}</p>
+    <p class="avail">{identity.availabilityNote}</p>
+    <ul class="links">
+      <li>
+        <ObfuscatedLink email={identity.email} ariaLabel={t("hero.emailAria") as string}>
+          {t("hero.emailLink")}
         </ObfuscatedLink>
-        <a
-            class="btn-cta"
-            href={contactInfo.linkedin.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn profile"
-        >
-            <Linkedin class="btn-icon" />
-            {t("hero.linkedin")}
+      </li>
+      <li>
+        <a href={links.linkedin.url} rel="noopener noreferrer">{links.linkedin.label}</a>
+      </li>
+      <li>
+        <a href={links.github.url} rel="noopener noreferrer">{links.github.label}</a>
+      </li>
+      <li>
+        <a href={resume.href} download={resume.download}>{t("resume.label")}</a>
+      </li>
+    </ul>
+  </div>
+
+  <nav class="sys-index" aria-label={t("systems.index") as string}>
+    <ol>
+      {
+        systems.map((system, index) => (
+          <li>
+            <a href={`#${system.id}`}>
+              <span class="mono">{String(index + 1).padStart(2, "0")}</span>
+              <span>
+                <strong>{system.company}</strong>
+                <span class="d">{`${system.tagline ?? ""} · ${system.years}`}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href="#projects">
+          <span class="mono">03</span>
+          <span>
+            <strong>{t("projects.index")}</strong>
+            <span class="d">{t("projects.indexDetail")}</span>
+          </span>
         </a>
-        <a
-            class="btn-cta"
-            href={contactInfo.github?.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub profile"
-        >
-            <Github class="btn-icon" />
-            {t("hero.github")}
-        </a>
-    </div>
-
-    <style>
-        #hero h2 {
-            display: inline-block;
-        }
-
-        .hero-title {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1rem;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .hero-title-text {
-            display: inline;
-        }
-
-        /* Mobile: badge goes below title */
-        @media (max-width: 640px) {
-            .hero-title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-            }
-        }
-    </style>
-</section>
+      </li>
+    </ol>
+  </nav>
+</div>

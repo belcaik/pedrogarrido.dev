@@ -1,0 +1,78 @@
+---
+import type { Diagram as DiagramData } from "../data/profile";
+import type { Lang } from "../i18n";
+import DiagramNode from "./DiagramNode.astro";
+import DiagramLink from "./DiagramLink.astro";
+
+interface Props {
+  diagram: DiagramData;
+  lang: Lang;
+}
+
+const { diagram, lang } = Astro.props;
+
+let connectors = 0;
+const nextConnector = () => connectors++;
+---
+
+<div>
+  {diagram.title && <h3>{diagram.title}</h3>}
+  <div class="diagram" role="group" aria-label={diagram.summary}>
+    <ol class:list={["flow", { tight: diagram.compact }]}>
+      {
+        diagram.items.map((item) => {
+          if (item.type === "node") {
+            return <DiagramNode node={item} lang={lang} as="li" />;
+          }
+          if (item.type === "link") {
+            return <DiagramLink link={item} index={nextConnector()} as="li" />;
+          }
+          if (item.type === "group") {
+            return (
+              <li class="group">
+                {item.nodes.map((node) => (
+                  <DiagramNode node={node} lang={lang} />
+                ))}
+              </li>
+            );
+          }
+          return (
+            <li class="boundary">
+              <span class="k mono">{item.tag}</span>
+              {item.items.map((child) =>
+                child.type === "node" ? (
+                  <DiagramNode node={child} lang={lang} />
+                ) : (
+                  <DiagramLink link={child} index={nextConnector()} />
+                ),
+              )}
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+  {diagram.caption && <p class="cap">{diagram.caption}</p>}
+</div>
+
+<script>
+  // Draw each diagram's connectors once, when it first enters the viewport.
+  const diagrams = document.querySelectorAll<HTMLElement>(".diagram");
+
+  if (!("IntersectionObserver" in window)) {
+    diagrams.forEach((diagram) => diagram.classList.add("drawn"));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("drawn");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 },
+    );
+    diagrams.forEach((diagram) => observer.observe(diagram));
+  }
+</script>
