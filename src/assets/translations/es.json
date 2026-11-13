@@ -34,11 +34,12 @@
     "after": "después"
   },
   "projects": {
-    "title": "Herramientas pequeñas",
-    "meta": "Proyectos personales, cada uno una tarea repetitiva convertida en pipeline.",
-    "index": "Herramientas pequeñas",
-    "indexDetail": "Tres proyectos personales",
-    "source": "Código en GitHub",
+    "title": "Trabajo público",
+    "meta": "Cinco repositorios, cada uno dibujado como el sistema que es.",
+    "index": "Trabajo público",
+    "indexDetail": "Cinco repositorios",
+    "source": "Código",
+    "live": "Sitio",
     "wip": "En progreso"
   },
   "toolbox": {

@@ -1,6 +1,6 @@
 ---
 import Diagram from "./Diagram.astro";
-import { getProfile } from "../data/profile";
+import { getProfile, type ProfileProject } from "../data/profile";
 import { useTranslations, type Lang } from "../i18n";
 
 interface Props {
@@ -10,6 +10,16 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const projects = getProfile(lang).projects.filter((project) => project.site);
+const [lead, ...rest] = projects;
+
+function homepageOf(project: ProfileProject): string | undefined {
+  const homepage = project.homepage?.trim();
+  return homepage ? homepage : undefined;
+}
+
+function techLine(project: ProfileProject): string {
+  return project.tech.join(" · ");
+}
 ---
 
 <section class="sys" id="projects" aria-labelledby="projects-h">
@@ -17,20 +27,79 @@ const projects = getProfile(lang).projects.filter((project) => project.site);
   <h2 id="projects-h">{t("projects.title")}</h2>
   <p class="sys-meta">{t("projects.meta")}</p>
 
-  <div class="proj-list">
+  {
+    lead && (
+      <article class="proj-lead" aria-labelledby="project-lead">
+        <div class="proj-copy">
+          <p class="proj-meta mono">
+            <span>{`${lead.language} · ${lead.year}`}</span>
+            <span aria-hidden="true">·</span>
+            <a
+              href={lead.github}
+              rel="noopener noreferrer"
+              aria-label={`${t("projects.source")}, ${lead.name}`}
+            >
+              {t("projects.source")}
+            </a>
+            {homepageOf(lead) && (
+              <>
+                <span aria-hidden="true">·</span>
+                <a
+                  href={homepageOf(lead)}
+                  rel="noopener noreferrer"
+                  aria-label={`${t("projects.live")}, ${lead.name}`}
+                >
+                  {t("projects.live")}
+                </a>
+              </>
+            )}
+          </p>
+          <h3 id="project-lead">
+            {lead.name}
+            {lead.wip && <span class="wip">{t("projects.wip")}</span>}
+          </h3>
+          <p class="proj-desc">{lead.description}</p>
+          <p class="stackline mono">{techLine(lead)}</p>
+        </div>
+        {lead.diagram && <Diagram diagram={lead.diagram} lang={lang} />}
+      </article>
+    )
+  }
+
+  <div class="proj-grid">
     {
-      projects.map((project, index) => (
-        <article class="proj" aria-labelledby={`project-${index}`}>
-          <div>
-            <span class="yr mono">{`${project.year} · ${project.tech[0]}`}</span>
+      rest.map((project, index) => (
+        <article class="proj-card" aria-labelledby={`project-${index}`}>
+          <div class="proj-copy">
+            <p class="proj-meta mono">
+              <span>{`${project.language} · ${project.year}`}</span>
+              <span aria-hidden="true">·</span>
+              <a
+                href={project.github}
+                rel="noopener noreferrer"
+                aria-label={`${t("projects.source")}, ${project.name}`}
+              >
+                {t("projects.source")}
+              </a>
+              {homepageOf(project) && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <a
+                    href={homepageOf(project)}
+                    rel="noopener noreferrer"
+                    aria-label={`${t("projects.live")}, ${project.name}`}
+                  >
+                    {t("projects.live")}
+                  </a>
+                </>
+              )}
+            </p>
             <h3 id={`project-${index}`}>
               {project.name}
               {project.wip && <span class="wip">{t("projects.wip")}</span>}
             </h3>
-            <p>{project.description}</p>
-            <a class="src" href={project.github} rel="noopener noreferrer">
-              {t("projects.source")}
-            </a>
+            <p class="proj-desc">{project.description}</p>
+            <p class="stackline mono">{techLine(project)}</p>
           </div>
           {project.diagram && <Diagram diagram={project.diagram} lang={lang} />}
         </article>

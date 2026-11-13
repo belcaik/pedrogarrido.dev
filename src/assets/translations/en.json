@@ -34,11 +34,12 @@
     "after": "after"
   },
   "projects": {
-    "title": "Small tools",
-    "meta": "Side projects, each one a chore turned into a pipeline.",
-    "index": "Small tools",
-    "indexDetail": "Three side projects",
-    "source": "Source on GitHub",
+    "title": "Public work",
+    "meta": "Five repositories, each drawn as the system it is.",
+    "index": "Public work",
+    "indexDetail": "Five repositories",
+    "source": "Source",
+    "live": "Live",
     "wip": "WIP"
   },
   "toolbox": {

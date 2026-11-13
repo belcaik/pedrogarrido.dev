@@ -81,6 +81,8 @@ export type ProfileEducation = ResolvedRawProfile["education"][number] & {
 
 export type ProfileProject = Omit<ResolvedRawProfile["projects"][number], "diagram"> & {
   diagram?: Diagram;
+  language?: string;
+  homepage?: string;
 };
 
 export type Profile = Omit<ResolvedRawProfile, "experience" | "education" | "projects"> & {

@@ -400,25 +400,139 @@
   },
   "projects": [
     {
-      "name": "UNAB Sync Content",
-      "year": 2025,
+      "name": "open-nvr",
+      "year": 2026,
+      "language": "Go",
       "description": {
-        "en": "CLI tool written in Rust that automatically downloads and syncs university course materials from UNAB's learning platform. Uses headless browser automation to navigate the portal and fetch all course content.",
-        "es": "Herramienta CLI escrita en Rust que descarga y sincroniza automáticamente los materiales de cursos universitarios desde la plataforma de aprendizaje de la UNAB. Usa automatización de navegador headless para navegar el portal y obtener todo el contenido."
+        "en": "Local Linux integration for a 2NLF NVR running EasyVideo, so the cameras work without the Windows application or a cloud service. go2rtc is the only RTSP client and splits the HEVC streams out to mpv and the browser. Pan, tilt, zoom, light and status use the proprietary HTTP API.",
+        "es": "Integración local en Linux de un NVR 2NLF con EasyVideo, para usar las cámaras sin la aplicación de Windows ni un servicio en la nube. go2rtc es el único cliente RTSP y reparte los flujos HEVC a mpv y al navegador. El paneo, la inclinación, el zoom, la luz y el estado usan la API HTTP propietaria."
       },
-      "tech": ["Rust", "Headless Browser", "Web Scraping", "CLI"],
+      "tech": ["go2rtc", "P6S", "nftables", "ntfy"],
       "diagram": {
         "summary": {
-          "en": "UNAB learning platform, through a Rust CLI driving a headless browser, to synced course materials",
-          "es": "Plataforma de aprendizaje de la UNAB, a través de una CLI en Rust que controla un navegador headless, hasta los materiales de cursos sincronizados"
+          "en": "2NLF EasyVideo NVR to go2rtc, then mpv and the opennvr web UI. PTZ uses the proprietary HTTP API because the NVR has no ONVIF. Baphomet already drops egress. ntfy monitoring on Baphomet is implemented but not deployed.",
+          "es": "NVR 2NLF con EasyVideo hacia go2rtc, y de ahí a mpv y a la web de opennvr. El PTZ usa la API HTTP propietaria porque el NVR no tiene ONVIF. Baphomet ya descarta la salida. El monitoreo con ntfy en Baphomet está implementado, pero no desplegado."
+        },
+        "caption": {
+          "en": "PTZ, light and status use the proprietary HTTP API; the NVR does not offer ONVIF. Baphomet already drops the NVR's egress by default. ntfy monitoring on that host is implemented but not deployed.",
+          "es": "El PTZ, la luz y el estado usan la API HTTP propietaria; el NVR no ofrece ONVIF. Baphomet ya descarta la salida del NVR por defecto. El monitoreo con ntfy en ese equipo está implementado, pero no desplegado."
+        },
+        "items": [
+          { "type": "node", "title": { "en": "2NLF · EasyVideo", "es": "2NLF · EasyVideo" }, "sub": { "en": "RTSP HEVC, P6S", "es": "RTSP HEVC, P6S" } },
+          { "type": "link", "label": { "en": "RTSP", "es": "RTSP" } },
+          { "type": "node", "title": { "en": "go2rtc", "es": "go2rtc" }, "sub": { "en": "only RTSP client", "es": "único cliente RTSP" } },
+          { "type": "link" },
+          {
+            "type": "group",
+            "nodes": [
+              { "type": "node", "title": { "en": "mpv", "es": "mpv" } },
+              { "type": "node", "title": { "en": "browser", "es": "navegador" }, "sub": { "en": "opennvr web, H.264 playback", "es": "opennvr web, reproducción H.264" } }
+            ]
+          }
+        ]
+      },
+      "github": "https://github.com/belcaik/open-nvr",
+      "site": true,
+      "cv": false
+    },
+    {
+      "name": "streams-tools",
+      "year": 2026,
+      "language": "Rust",
+      "description": {
+        "en": "Self-hosted streaming tools, with no public server in front of the channel. Twitch connects through EventSub WebSocket, Kick through Pusher's public WebSocket, and YouTube chat through Innertube, without an API key. Adapters for those sources, a core event bus and a plugin supervisor sit in the middle, and the plugins are workers and overlays: alerts, TTS, interactions and now-playing.",
+        "es": "Herramientas de streaming autoalojadas, sin un servidor público delante del canal. Twitch se conecta por el WebSocket de EventSub, Kick por el WebSocket público de Pusher y el chat de YouTube por Innertube, sin API key. En el medio están los adaptadores de esas fuentes, un bus de eventos en el núcleo y un supervisor de plugins; los plugins son workers y overlays: alertas, TTS, interacciones y now-playing."
+      },
+      "tech": ["EventSub", "Pusher", "Innertube"],
+      "diagram": {
+        "summary": {
+          "en": "Twitch EventSub, Kick Pusher and YouTube Innertube into the streams-tools event bus, then a plugin supervisor for alerts, TTS, interactions and now-playing",
+          "es": "EventSub de Twitch, Pusher de Kick e Innertube de YouTube hacia el bus de eventos de streams-tools, y de ahí un supervisor de plugins para alertas, TTS, interacciones y now-playing"
         },
         "compact": true,
         "items": [
-          { "type": "node", "title": { "en": "UNAB learning platform", "es": "Plataforma de aprendizaje de la UNAB" } },
+          {
+            "type": "group",
+            "nodes": [
+              { "type": "node", "title": { "en": "Twitch", "es": "Twitch" }, "sub": { "en": "EventSub WebSocket", "es": "WebSocket de EventSub" } },
+              { "type": "node", "title": { "en": "Kick", "es": "Kick" }, "sub": { "en": "Pusher WebSocket", "es": "WebSocket de Pusher" } },
+              { "type": "node", "title": { "en": "YouTube", "es": "YouTube" }, "sub": { "en": "Innertube chat", "es": "chat de Innertube" } }
+            ]
+          },
           { "type": "link" },
-          { "type": "node", "title": { "en": "Rust CLI", "es": "CLI en Rust" }, "sub": { "en": "headless browser", "es": "navegador headless" } },
+          { "type": "node", "title": { "en": "event bus", "es": "bus de eventos" }, "sub": { "en": "crates/core", "es": "crates/core" } },
           { "type": "link" },
-          { "type": "node", "title": { "en": "Course materials", "es": "Materiales de cursos" }, "sub": { "en": "downloaded and synced", "es": "descargados y sincronizados" } }
+          { "type": "node", "title": { "en": "plugin supervisor", "es": "supervisor de plugins" }, "sub": { "en": "alerts, TTS, interactions, now-playing", "es": "alertas, TTS, interacciones, now-playing" } }
+        ]
+      },
+      "github": "https://github.com/belcaik/streams-tools",
+      "site": true,
+      "cv": false
+    },
+    {
+      "name": "Vassago",
+      "year": 2026,
+      "language": "Python",
+      "description": {
+        "en": "Self-hosted calendar stack. u_crawler writes LMS deadlines and delivery windows as ICS into a shared volume. caldir merges them into canonical per-course calendars, publishes those collections to Radicale over CalDAV, and mirrors them to Google Tasks and Google Calendar through two bridges. caldir runs on container start and then every 15 minutes; u_crawler runs daily at 05:00 (cron 0 5 * * *).",
+        "es": "Stack de calendarios autoalojado. u_crawler escribe los plazos y las ventanas de entrega del LMS como ICS en un volumen compartido. caldir los fusiona en calendarios canónicos por curso, publica esas colecciones en Radicale por CalDAV y las refleja en Google Tasks y Google Calendar con dos puentes. caldir corre al arrancar el contenedor y luego cada 15 minutos; u_crawler corre cada día a las 05:00 (cron 0 5 * * *)."
+      },
+      "tech": ["Docker Compose", "Radicale", "CalDAV", "u_crawler"],
+      "diagram": {
+        "summary": {
+          "en": "u_crawler writes ICS, caldir merges it with merge-ucrawler.py, then Radicale (CalDAV) and the Google bridges publish it",
+          "es": "u_crawler escribe ICS, caldir lo fusiona con merge-ucrawler.py, y Radicale (CalDAV) y los puentes de Google lo publican"
+        },
+        "caption": {
+          "en": "The bridges are bridge-vtodo.py and bridge-windows.py. verify-sync.py checks that the two phases converged.",
+          "es": "Los puentes son bridge-vtodo.py y bridge-windows.py. verify-sync.py comprueba que las dos fases convergieron."
+        },
+        "compact": true,
+        "items": [
+          { "type": "node", "title": { "en": "u_crawler", "es": "u_crawler" }, "sub": { "en": "ICS deadlines and windows", "es": "ICS de plazos y ventanas" } },
+          { "type": "link", "label": { "en": "ICS", "es": "ICS" } },
+          { "type": "node", "title": { "en": "caldir", "es": "caldir" }, "sub": { "en": "merge-ucrawler.py", "es": "merge-ucrawler.py" } },
+          { "type": "link" },
+          {
+            "type": "group",
+            "nodes": [
+              { "type": "node", "title": { "en": "Radicale", "es": "Radicale" }, "sub": { "en": "CalDAV", "es": "CalDAV" } },
+              { "type": "node", "title": { "en": "Google bridges", "es": "puentes de Google" }, "sub": { "en": "Tasks, Calendar", "es": "Tasks, Calendar" } }
+            ]
+          }
+        ]
+      },
+      "github": "https://github.com/belcaik/vassago",
+      "site": true,
+      "cv": false
+    },
+    {
+      "name": "u_crawler",
+      "year": 2026,
+      "language": "Rust",
+      "description": {
+        "en": "Rust CLI that mirrors Canvas courses (pages, assignments, attachments, announcements) and the Zoom cloud recordings linked from them. Canvas is read with a personal access token over the REST API, and pages and assignments are stored as Markdown. Zoom stays behind an LTI launch, so headless Chrome completes the institution SSO, the session is cached in SQLite, and ffmpeg downloads the recordings. A repeat run skips unchanged files by ETag and resumes an interrupted download.",
+        "es": "CLI en Rust que refleja los cursos de Canvas (páginas, tareas, adjuntos y anuncios) y las grabaciones de Zoom en la nube enlazadas desde ellos. Canvas se lee con un token de acceso personal por la API REST, y las páginas y las tareas se guardan en Markdown. Zoom queda detrás de un lanzamiento LTI: un Chrome headless completa el SSO de la institución, la sesión se guarda en SQLite y ffmpeg descarga las grabaciones. Al repetir, los archivos sin cambios se omiten por ETag y una descarga interrumpida se retoma."
+      },
+      "tech": ["Canvas API", "chromiumoxide", "ffmpeg", "SQLite"],
+      "diagram": {
+        "summary": {
+          "en": "Canvas REST and Zoom LTI, through u_crawler, into a course folder of Markdown, files and recordings",
+          "es": "REST de Canvas y LTI de Zoom, a través de u_crawler, hasta una carpeta del curso con Markdown, archivos y grabaciones"
+        },
+        "compact": true,
+        "items": [
+          {
+            "type": "group",
+            "nodes": [
+              { "type": "node", "title": { "en": "Canvas", "es": "Canvas" }, "sub": { "en": "REST, access token", "es": "REST, token de acceso" } },
+              { "type": "node", "title": { "en": "Zoom", "es": "Zoom" }, "sub": { "en": "LTI, headless Chrome, ffmpeg", "es": "LTI, Chrome headless, ffmpeg" } }
+            ]
+          },
+          { "type": "link" },
+          { "type": "node", "title": { "en": "u_crawler", "es": "u_crawler" }, "sub": { "en": "SQLite session", "es": "sesión en SQLite" } },
+          { "type": "link" },
+          { "type": "node", "title": { "en": "course folder", "es": "carpeta del curso" }, "sub": { "en": "Markdown, files, recordings", "es": "Markdown, archivos, grabaciones" } }
         ]
       },
       "github": "https://github.com/belcaik/unab-sync-content",
@@ -427,52 +541,28 @@
     },
     {
       "name": "OCR Temperature Extractor",
-      "year": 2024,
+      "year": 2025,
+      "language": "Python",
       "description": {
-        "en": "Python script that extracts temperature readings from video recordings of thermometers or digital displays and exports them to CSV. Built to automate tedious data collection for a physics lab assignment — while classmates manually noted readings every 5 seconds, this tool did it automatically.",
-        "es": "Script en Python que extrae lecturas de temperatura de grabaciones de video de termómetros o pantallas digitales y las exporta a CSV. Construido para automatizar la recolección de datos de un laboratorio de física — mientras mis compañeros anotaban manualmente las lecturas cada 5 segundos, esta herramienta lo hacía automáticamente."
+        "en": "Python tool that reads temperatures off a fixed lab video. A polygon over the thermometer on the first frame marks the region. The script seeks to each timestamp, and the crop goes through grayscale, resize, denoise, threshold, morphology and deskew, then PaddleOCR or Tesseract. The CSV has three columns: Medicion, Tiempo, temperatura.",
+        "es": "Herramienta en Python que lee temperaturas de un video fijo de laboratorio. Un polígono sobre el termómetro, en el primer cuadro, marca la región. El script salta a cada marca de tiempo, y el recorte pasa por escala de grises, redimensionado, reducción de ruido, umbral, morfología y corrección de inclinación, y después por PaddleOCR o Tesseract. El CSV tiene tres columnas: Medicion, Tiempo y temperatura."
       },
-      "tech": ["Python", "OpenCV", "Tesseract OCR", "FFmpeg"],
+      "tech": ["OpenCV", "PaddleOCR", "Tesseract"],
       "diagram": {
         "summary": {
-          "en": "Video of a thermometer or digital display, processed with FFmpeg, OpenCV and Tesseract OCR, exported to CSV",
-          "es": "Video de un termómetro o de una pantalla digital, procesado con FFmpeg, OpenCV y Tesseract OCR y exportado a CSV"
+          "en": "A lab video of a thermometer, through an OpenCV preprocess and PaddleOCR or Tesseract, to a three-column CSV",
+          "es": "Un video de laboratorio de un termómetro, por un preproceso en OpenCV y PaddleOCR o Tesseract, hasta un CSV de tres columnas"
         },
         "compact": true,
         "items": [
-          { "type": "node", "title": { "en": "Video", "es": "Video" }, "sub": { "en": "thermometer or digital display", "es": "termómetro o pantalla digital" } },
+          { "type": "node", "title": { "en": "lab video", "es": "video de laboratorio" }, "sub": { "en": "polygon on the thermometer", "es": "polígono sobre el termómetro" } },
           { "type": "link" },
-          { "type": "node", "title": { "en": "FFmpeg, OpenCV, Tesseract OCR", "es": "FFmpeg, OpenCV, Tesseract OCR" } },
-          { "type": "link" },
-          { "type": "node", "title": { "en": "CSV", "es": "CSV" }, "sub": { "en": "temperature readings", "es": "lecturas de temperatura" } }
+          { "type": "node", "title": { "en": "OpenCV", "es": "OpenCV" }, "sub": { "en": "PaddleOCR or Tesseract", "es": "PaddleOCR o Tesseract" } },
+          { "type": "link", "label": { "en": "OCR", "es": "OCR" } },
+          { "type": "node", "title": { "en": "CSV", "es": "CSV" }, "sub": { "en": "Medicion, Tiempo, temperatura", "es": "Medicion, Tiempo, temperatura" } }
         ]
       },
       "github": "https://github.com/belcaik/ocr_temp_extractor",
-      "site": true,
-      "cv": false
-    },
-    {
-      "name": "ToneDial",
-      "year": 2023,
-      "description": {
-        "en": "Discord music bot for playing audio in voice channels. Currently a work in progress.",
-        "es": "Bot de música para Discord para reproducir audio en canales de voz. Actualmente en desarrollo."
-      },
-      "tech": ["JavaScript", "Discord.js", "Node.js"],
-      "diagram": {
-        "summary": {
-          "en": "ToneDial bot on Discord.js and Node.js plays audio into Discord voice channels",
-          "es": "El bot ToneDial, sobre Discord.js y Node.js, reproduce audio en los canales de voz de Discord"
-        },
-        "compact": true,
-        "items": [
-          { "type": "node", "title": { "en": "ToneDial bot", "es": "Bot ToneDial" }, "sub": { "en": "Discord.js, Node.js", "es": "Discord.js, Node.js" } },
-          { "type": "link", "label": { "en": "audio", "es": "audio" } },
-          { "type": "node", "title": { "en": "Discord voice channels", "es": "Canales de voz de Discord" } }
-        ]
-      },
-      "github": "https://github.com/belcaik/tonedial",
-      "wip": true,
       "site": true,
       "cv": false
     },
